@@ -1,0 +1,306 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CEB322D3176E0E6400F46463 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB322D2176E0E6400F46463 /* UIKit.framework */; };
+		CEB322D5176E0E6400F46463 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB322D4176E0E6400F46463 /* Foundation.framework */; };
+		CEB322D7176E0E6400F46463 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB322D6176E0E6400F46463 /* CoreGraphics.framework */; };
+		CEB322DD176E0E6400F46463 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEB322DB176E0E6400F46463 /* InfoPlist.strings */; };
+		CEB322DF176E0E6400F46463 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB322DE176E0E6400F46463 /* main.m */; };
+		CEB322E3176E0E6400F46463 /* DigitalMenuAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB322E2176E0E6400F46463 /* DigitalMenuAppDelegate.m */; };
+		CEB322E5176E0E6400F46463 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = CEB322E4176E0E6400F46463 /* Default.png */; };
+		CEB322E7176E0E6400F46463 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEB322E6176E0E6400F46463 /* Default@2x.png */; };
+		CEB322E9176E0E6400F46463 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEB322E8176E0E6400F46463 /* Default-568h@2x.png */; };
+		CEB322EC176E0E6400F46463 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEB322EA176E0E6400F46463 /* MainStoryboard.storyboard */; };
+		CEB322EF176E0E6400F46463 /* DigitalMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB322EE176E0E6400F46463 /* DigitalMenuViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CEB322CF176E0E6400F46463 /* DigitalMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DigitalMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEB322D2176E0E6400F46463 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		CEB322D4176E0E6400F46463 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CEB322D6176E0E6400F46463 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		CEB322DA176E0E6400F46463 /* DigitalMenu-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DigitalMenu-Info.plist"; sourceTree = "<group>"; };
+		CEB322DC176E0E6400F46463 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CEB322DE176E0E6400F46463 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CEB322E0176E0E6400F46463 /* DigitalMenu-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DigitalMenu-Prefix.pch"; sourceTree = "<group>"; };
+		CEB322E1176E0E6400F46463 /* DigitalMenuAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DigitalMenuAppDelegate.h; sourceTree = "<group>"; };
+		CEB322E2176E0E6400F46463 /* DigitalMenuAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DigitalMenuAppDelegate.m; sourceTree = "<group>"; };
+		CEB322E4176E0E6400F46463 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		CEB322E6176E0E6400F46463 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		CEB322E8176E0E6400F46463 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		CEB322EB176E0E6400F46463 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		CEB322ED176E0E6400F46463 /* DigitalMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DigitalMenuViewController.h; sourceTree = "<group>"; };
+		CEB322EE176E0E6400F46463 /* DigitalMenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DigitalMenuViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CEB322CC176E0E6400F46463 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEB322D3176E0E6400F46463 /* UIKit.framework in Frameworks */,
+				CEB322D5176E0E6400F46463 /* Foundation.framework in Frameworks */,
+				CEB322D7176E0E6400F46463 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CEB322C6176E0E6400F46463 = {
+			isa = PBXGroup;
+			children = (
+				CEB322D8176E0E6400F46463 /* DigitalMenu */,
+				CEB322D1176E0E6400F46463 /* Frameworks */,
+				CEB322D0176E0E6400F46463 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CEB322D0176E0E6400F46463 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CEB322CF176E0E6400F46463 /* DigitalMenu.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CEB322D1176E0E6400F46463 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CEB322D2176E0E6400F46463 /* UIKit.framework */,
+				CEB322D4176E0E6400F46463 /* Foundation.framework */,
+				CEB322D6176E0E6400F46463 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CEB322D8176E0E6400F46463 /* DigitalMenu */ = {
+			isa = PBXGroup;
+			children = (
+				CEB322E1176E0E6400F46463 /* DigitalMenuAppDelegate.h */,
+				CEB322E2176E0E6400F46463 /* DigitalMenuAppDelegate.m */,
+				CEB322EA176E0E6400F46463 /* MainStoryboard.storyboard */,
+				CEB322ED176E0E6400F46463 /* DigitalMenuViewController.h */,
+				CEB322EE176E0E6400F46463 /* DigitalMenuViewController.m */,
+				CEB322D9176E0E6400F46463 /* Supporting Files */,
+			);
+			path = DigitalMenu;
+			sourceTree = "<group>";
+		};
+		CEB322D9176E0E6400F46463 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CEB322DA176E0E6400F46463 /* DigitalMenu-Info.plist */,
+				CEB322DB176E0E6400F46463 /* InfoPlist.strings */,
+				CEB322DE176E0E6400F46463 /* main.m */,
+				CEB322E0176E0E6400F46463 /* DigitalMenu-Prefix.pch */,
+				CEB322E4176E0E6400F46463 /* Default.png */,
+				CEB322E6176E0E6400F46463 /* Default@2x.png */,
+				CEB322E8176E0E6400F46463 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CEB322CE176E0E6400F46463 /* DigitalMenu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CEB322F2176E0E6400F46463 /* Build configuration list for PBXNativeTarget "DigitalMenu" */;
+			buildPhases = (
+				CEB322CB176E0E6400F46463 /* Sources */,
+				CEB322CC176E0E6400F46463 /* Frameworks */,
+				CEB322CD176E0E6400F46463 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DigitalMenu;
+			productName = DigitalMenu;
+			productReference = CEB322CF176E0E6400F46463 /* DigitalMenu.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CEB322C7176E0E6400F46463 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = DigitalMenu;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Stanislav Pak";
+			};
+			buildConfigurationList = CEB322CA176E0E6400F46463 /* Build configuration list for PBXProject "DigitalMenu" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CEB322C6176E0E6400F46463;
+			productRefGroup = CEB322D0176E0E6400F46463 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CEB322CE176E0E6400F46463 /* DigitalMenu */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CEB322CD176E0E6400F46463 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEB322DD176E0E6400F46463 /* InfoPlist.strings in Resources */,
+				CEB322E5176E0E6400F46463 /* Default.png in Resources */,
+				CEB322E7176E0E6400F46463 /* Default@2x.png in Resources */,
+				CEB322E9176E0E6400F46463 /* Default-568h@2x.png in Resources */,
+				CEB322EC176E0E6400F46463 /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CEB322CB176E0E6400F46463 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEB322DF176E0E6400F46463 /* main.m in Sources */,
+				CEB322E3176E0E6400F46463 /* DigitalMenuAppDelegate.m in Sources */,
+				CEB322EF176E0E6400F46463 /* DigitalMenuViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CEB322DB176E0E6400F46463 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CEB322DC176E0E6400F46463 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		CEB322EA176E0E6400F46463 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CEB322EB176E0E6400F46463 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CEB322F0176E0E6400F46463 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		CEB322F1176E0E6400F46463 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CEB322F3176E0E6400F46463 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DigitalMenu/DigitalMenu-Prefix.pch";
+				INFOPLIST_FILE = "DigitalMenu/DigitalMenu-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		CEB322F4176E0E6400F46463 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DigitalMenu/DigitalMenu-Prefix.pch";
+				INFOPLIST_FILE = "DigitalMenu/DigitalMenu-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CEB322CA176E0E6400F46463 /* Build configuration list for PBXProject "DigitalMenu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEB322F0176E0E6400F46463 /* Debug */,
+				CEB322F1176E0E6400F46463 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CEB322F2176E0E6400F46463 /* Build configuration list for PBXNativeTarget "DigitalMenu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEB322F3176E0E6400F46463 /* Debug */,
+				CEB322F4176E0E6400F46463 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CEB322C7176E0E6400F46463 /* Project object */;
+}

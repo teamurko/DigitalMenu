@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DigitalMenuViewController : UIViewController
+@interface DigitalMenuViewController : UIViewController <UITextFieldDelegate>
+
+@property (weak, nonatomic) IBOutlet UITextField *nameField;
+@property (weak, nonatomic) IBOutlet UILabel *gTitle;
+@property (copy, nonatomic) NSString *userName;
+
+- (IBAction)showRestaurants:(id)sender;
 
 @end

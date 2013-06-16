@@ -1,23 +1,90 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2519" systemVersion="12A206j" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1856"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--class Prefix:identifier View Controller-->
+        <!--Digital Menu View Controller-->
         <scene sceneID="5">
             <objects>
                 <viewController id="2" customClass="DigitalMenuViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <view key="view" contentMode="scaleToFill" id="eLu-yC-Q8t">
+                        <rect key="frame" x="0.0" y="20" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Digital menu" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fd1-CK-isn">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PQw-Gn-tuz">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Show">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showRestaurants:" destination="2" eventType="touchUpInside" id="p4z-n7-vu6"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V5v-hV-y6S">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="172" id="8Oz-hL-8Dj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="2" id="WS8-lp-MnW"/>
+                                </connections>
+                            </textField>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0rO-fc-d7R">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="E9Y-53-F51"/>
+                                    <constraint firstAttribute="width" constant="240" id="O7o-Mb-4ls"/>
+                                </constraints>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fd1-CK-isn" firstAttribute="leading" secondItem="eLu-yC-Q8t" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="0T9-pw-6R0"/>
+                            <constraint firstItem="V5v-hV-y6S" firstAttribute="centerX" secondItem="fd1-CK-isn" secondAttribute="centerX" type="default" id="9bC-zp-T1b"/>
+                            <constraint firstItem="PQw-Gn-tuz" firstAttribute="leading" secondItem="eLu-yC-Q8t" secondAttribute="leading" constant="40" id="JVg-mR-GAD"/>
+                            <constraint firstItem="0rO-fc-d7R" firstAttribute="top" secondItem="eLu-yC-Q8t" secondAttribute="top" constant="177" id="Ly2-aw-gla"/>
+                            <constraint firstItem="fd1-CK-isn" firstAttribute="top" secondItem="eLu-yC-Q8t" secondAttribute="top" constant="20" symbolic="YES" type="default" id="MGd-13-rTi"/>
+                            <constraint firstAttribute="trailing" secondItem="fd1-CK-isn" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Y6l-en-JmY"/>
+                            <constraint firstAttribute="bottom" secondItem="PQw-Gn-tuz" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="Z1M-P0-Y9B"/>
+                            <constraint firstItem="0rO-fc-d7R" firstAttribute="leading" secondItem="eLu-yC-Q8t" secondAttribute="leading" constant="49" id="n0P-vD-tPd"/>
+                            <constraint firstItem="V5v-hV-y6S" firstAttribute="top" secondItem="eLu-yC-Q8t" secondAttribute="top" constant="84" id="pHM-pZ-Lzf"/>
+                        </constraints>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="gTitle" destination="fd1-CK-isn" id="c2N-Aj-aRd"/>
+                        <outlet property="nameField" destination="V5v-hV-y6S" id="Nhh-XN-uLR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="146" y="72"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="DigitalMenuViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DigitalMenuViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="showRestaurants:"/>
+                <relationship kind="outlet" name="gTitle" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="nameField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

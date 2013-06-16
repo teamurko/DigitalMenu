@@ -18,6 +18,7 @@
 		CEB322E9176E0E6400F46463 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEB322E8176E0E6400F46463 /* Default-568h@2x.png */; };
 		CEB322EC176E0E6400F46463 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEB322EA176E0E6400F46463 /* MainStoryboard.storyboard */; };
 		CEB322EF176E0E6400F46463 /* DigitalMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB322EE176E0E6400F46463 /* DigitalMenuViewController.m */; };
+		CEB322F6176E321A00F46463 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB322F5176E321A00F46463 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		CEB322EB176E0E6400F46463 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		CEB322ED176E0E6400F46463 /* DigitalMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DigitalMenuViewController.h; sourceTree = "<group>"; };
 		CEB322EE176E0E6400F46463 /* DigitalMenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DigitalMenuViewController.m; sourceTree = "<group>"; };
+		CEB322F5176E321A00F46463 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEB322F6176E321A00F46463 /* MapKit.framework in Frameworks */,
 				CEB322D3176E0E6400F46463 /* UIKit.framework in Frameworks */,
 				CEB322D5176E0E6400F46463 /* Foundation.framework in Frameworks */,
 				CEB322D7176E0E6400F46463 /* CoreGraphics.framework in Frameworks */,
@@ -56,6 +59,7 @@
 		CEB322C6176E0E6400F46463 = {
 			isa = PBXGroup;
 			children = (
+				CEB322F5176E321A00F46463 /* MapKit.framework */,
 				CEB322D8176E0E6400F46463 /* DigitalMenu */,
 				CEB322D1176E0E6400F46463 /* Frameworks */,
 				CEB322D0176E0E6400F46463 /* Products */,

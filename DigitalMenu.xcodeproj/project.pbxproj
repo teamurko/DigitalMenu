@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE1A7889177262E300864D25 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1A7888177262E300864D25 /* DataManager.m */; };
 		CE75BFBF176F974D00E17482 /* RestException.m in Sources */ = {isa = PBXBuildFile; fileRef = CE75BFBE176F974D00E17482 /* RestException.m */; };
 		CEB322D3176E0E6400F46463 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB322D2176E0E6400F46463 /* UIKit.framework */; };
 		CEB322D5176E0E6400F46463 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB322D4176E0E6400F46463 /* Foundation.framework */; };
@@ -24,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE1A7887177262E300864D25 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		CE1A7888177262E300864D25 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		CE75BFBD176F974D00E17482 /* RestException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestException.h; sourceTree = "<group>"; };
 		CE75BFBE176F974D00E17482 /* RestException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestException.m; sourceTree = "<group>"; };
 		CEB322CF176E0E6400F46463 /* DigitalMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DigitalMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +105,8 @@
 				CEB322D9176E0E6400F46463 /* Supporting Files */,
 				CE75BFBD176F974D00E17482 /* RestException.h */,
 				CE75BFBE176F974D00E17482 /* RestException.m */,
+				CE1A7887177262E300864D25 /* DataManager.h */,
+				CE1A7888177262E300864D25 /* DataManager.m */,
 			);
 			path = DigitalMenu;
 			sourceTree = "<group>";
@@ -191,6 +196,7 @@
 				CEB322E3176E0E6400F46463 /* DigitalMenuAppDelegate.m in Sources */,
 				CEB322EF176E0E6400F46463 /* DigitalMenuViewController.m in Sources */,
 				CE75BFBF176F974D00E17482 /* RestException.m in Sources */,
+				CE1A7889177262E300864D25 /* DataManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

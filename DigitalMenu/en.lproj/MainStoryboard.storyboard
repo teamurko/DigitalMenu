@@ -34,31 +34,28 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xm7-HF-ChM">
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Show my location">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CHO-LO-xwh">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="216" id="ulC-lI-anF"/>
+                                </constraints>
                                 <connections>
-                                    <action selector="showLocation:" destination="2" eventType="touchUpInside" id="tlc-CG-FXd"/>
+                                    <outlet property="dataSource" destination="2" id="VSq-9I-Cew"/>
+                                    <outlet property="delegate" destination="2" id="O1y-Oi-ZsE"/>
                                 </connections>
-                            </button>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="fd1-CK-isn" firstAttribute="leading" secondItem="eLu-yC-Q8t" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="0T9-pw-6R0"/>
-                            <constraint firstAttribute="bottom" secondItem="xm7-HF-ChM" secondAttribute="bottom" constant="93" id="AsD-RG-ipw"/>
                             <constraint firstItem="0rO-fc-d7R" firstAttribute="centerX" secondItem="fd1-CK-isn" secondAttribute="centerX" type="default" id="BTU-cR-7MN"/>
-                            <constraint firstItem="fd1-CK-isn" firstAttribute="top" secondItem="eLu-yC-Q8t" secondAttribute="top" constant="20" symbolic="YES" type="default" id="MGd-13-rTi"/>
-                            <constraint firstItem="0rO-fc-d7R" firstAttribute="top" secondItem="fd1-CK-isn" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="QUi-3H-cZF"/>
-                            <constraint firstItem="4yr-Cq-dRi" firstAttribute="top" secondItem="eLu-yC-Q8t" secondAttribute="top" constant="248" id="Rh8-8e-NQj"/>
+                            <constraint firstItem="CHO-LO-xwh" firstAttribute="leading" secondItem="eLu-yC-Q8t" secondAttribute="leading" type="default" id="KAn-tY-hrB"/>
                             <constraint firstAttribute="trailing" secondItem="fd1-CK-isn" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Y6l-en-JmY"/>
-                            <constraint firstItem="xm7-HF-ChM" firstAttribute="centerX" secondItem="4yr-Cq-dRi" secondAttribute="centerX" type="default" id="Yzk-lS-UxL"/>
+                            <constraint firstItem="fd1-CK-isn" firstAttribute="top" secondItem="eLu-yC-Q8t" secondAttribute="top" constant="12" id="cnT-uh-VPe"/>
+                            <constraint firstItem="CHO-LO-xwh" firstAttribute="bottom" secondItem="eLu-yC-Q8t" secondAttribute="bottom" type="default" id="llh-Hi-iVS"/>
                             <constraint firstItem="4yr-Cq-dRi" firstAttribute="centerX" secondItem="0rO-fc-d7R" secondAttribute="centerX" type="default" id="pda-NN-gbZ"/>
+                            <constraint firstItem="CHO-LO-xwh" firstAttribute="trailing" secondItem="eLu-yC-Q8t" secondAttribute="trailing" type="default" id="soy-JP-3Bk"/>
+                            <constraint firstItem="4yr-Cq-dRi" firstAttribute="top" secondItem="0rO-fc-d7R" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="ssv-93-2Dc"/>
+                            <constraint firstItem="0rO-fc-d7R" firstAttribute="top" secondItem="fd1-CK-isn" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="uWl-zU-XkU"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -66,6 +63,7 @@
                     <connections>
                         <outlet property="gTitle" destination="fd1-CK-isn" id="c2N-Aj-aRd"/>
                         <outlet property="mapView" destination="0rO-fc-d7R" id="jCI-hl-ya7"/>
+                        <outlet property="restaurantsFrontList" destination="CHO-LO-xwh" id="z3I-bQ-GID"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>

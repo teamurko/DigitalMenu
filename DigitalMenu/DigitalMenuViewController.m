@@ -7,41 +7,82 @@
 //
 
 #import "DigitalMenuViewController.h"
+#import "RestException.h"
 
 #import <CoreLocation/CoreLocation.h>
 
 
 @interface DigitalMenuViewController ()
 
+- (MKUserLocation*) getCurrentLocation;
+
 @end
 
 @implementation DigitalMenuViewController
 
+CLLocationManager *locationManager;
+MKUserLocation *userLocation;
+
+
 @synthesize userName = _userName;
 @synthesize gTitle = _gTitle;
-@synthesize locationManager = _locationManager;
+@synthesize restaurantsFrontList = _restaurantsFrontList;
+@synthesize restaurantButtons = _restaurantButtons;
+@synthesize mapView = _mapView;
+@synthesize nameField = _nameField;
+
+- (MKUserLocation*) getCurrentLocation
+{
+    NSLog(@"Get current loc");
+    if (nil == userLocation) {
+        @try {
+            userLocation = self.mapView.annotations[0];
+        }
+        @catch (NSException *exception) {
+            NSException *ex = [RestException
+                           exceptionWithName:@"Cannot init user location"
+                           reason:@"No map annotations"
+                           userInfo:nil];
+            @throw ex;
+        }
+        @finally {
+        }
+        userLocation.title = [@"You are here:" stringByAppendingFormat:
+                            @"(%.4f, %.4f)",
+                            userLocation.coordinate.latitude,
+                            userLocation.coordinate.longitude];
+    }
+    return userLocation;
+}
+
+- (void) loadData
+{
+    NSLog(@"Load data");
+    if (nil == self.restaurantButtons) {
+        self.restaurantButtons = [[NSArray alloc] initWithObjects:@"John Donn", @"Cantina", @"McDonalds", @"KFC", nil];
+//        self.restaurantButtons = [[NSArray alloc] init];
+//        [self.restaurantButtons arrayByAddingObject:[[UIButton alloc] init]];
+    }
+    [self.restaurantsFrontList reloadAllComponents];
+}
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+    [self loadData];
 	// Do any additional setup after loading the view, typically from a nib.
     self.mapView.showsUserLocation = YES;
-    if (nil == self.locationManager) {
-        self.locationManager = [[CLLocationManager alloc] init];
+    if (nil == locationManager) {
+        locationManager = [[CLLocationManager alloc] init];
     }
-    [self.locationManager setDelegate:self];
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
-    self.locationManager.distanceFilter = 500;
-    [self.locationManager startUpdatingLocation];
-    
-//    MKAnnotationView *annotation = [[MKAnnotationView alloc] init];
-//    [annotation setAccessibilityHint:@"You are here"];
-//    [self.mapView addAnnotation:annotation];
+    [locationManager setDelegate:self];
+    locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
+    locationManager.distanceFilter = 500;
+    [locationManager startUpdatingLocation];
+    [super viewDidLoad];
 }
 
-- (void) locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+- (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    NSLog(@"New location: %@", newLocation);
 }
 
 - (void)didReceiveMemoryWarning
@@ -71,12 +112,34 @@
  */
 
 - (IBAction)showLocation:(id)sender {
-    self.locationManager.delegate = self;
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
-    CLLocation *location = self.locationManager.location;
+    /*
+    CLLocation *location = locationManager.location;
+    NSLog(@"Annotations %@", self.mapView.annotations);
+    for (MKUserLocation *location in self.mapView.annotations) {
+        NSLog(@"Title: %@", location.title);
+        NSLog(@"Description %@", location.description);
+        NSLog(@"Debug description %@", location.debugDescription);
+    }
     location.accessibilityLabel = @"You are here";
     NSLog(@"location %@", location);
     NSLog(@"Coordinates: %+.6f %+.6f\n", location.coordinate.latitude, location.coordinate.longitude);
-
+     */
 }
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return [self.restaurantButtons count];
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return [self.restaurantButtons objectAtIndex:row];
+}
+
+-  (void)selectRow:(NSInteger)row inComponent:(NSInteger)component animated: (BOOL) animated {
+    NSLog(@"Get row %d", row);
+}
+
 @end

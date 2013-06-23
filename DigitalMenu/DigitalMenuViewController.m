@@ -7,7 +7,8 @@
 //
 
 #import "DigitalMenuViewController.h"
-#import "RestException.h"
+#import "MenuException.h"
+#import "DataManager.h"
 
 #import <CoreLocation/CoreLocation.h>
 
@@ -22,7 +23,6 @@
 
 CLLocationManager *locationManager;
 MKUserLocation *userLocation;
-
 
 @synthesize userName = _userName;
 @synthesize gTitle = _gTitle;
@@ -39,7 +39,7 @@ MKUserLocation *userLocation;
             userLocation = self.mapView.annotations[0];
         }
         @catch (NSException *exception) {
-            NSException *ex = [RestException
+            NSException *ex = [MenuException
                            exceptionWithName:@"Cannot init user location"
                            reason:@"No map annotations"
                            userInfo:nil];
@@ -57,9 +57,12 @@ MKUserLocation *userLocation;
 
 - (void) loadData
 {
-    NSLog(@"Load data");
+    NSLog(@"Load data digital menu view controller");
+    [dataManager load];
+    
     if (nil == self.restaurantButtons) {
-        self.restaurantButtons = [[NSArray alloc] initWithObjects:@"John Donn", @"Cantina", @"McDonalds", @"KFC", nil];
+        self.restaurantButtons = [dataManager houseIds];
+//        self.restaurantButtons = [[NSArray alloc] initWithObjects:@"John Donn", @"Cantina", @"McDonalds", @"KFC", nil];
 //        self.restaurantButtons = [[NSArray alloc] init];
 //        [self.restaurantButtons arrayByAddingObject:[[UIButton alloc] init]];
     }

@@ -21,13 +21,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "DigitalMenu/DigitalMenuViewController.m"
-         timestampString = "393287794.311203"
+         timestampString = "393632943.72428"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "34"
-         endingLineNumber = "34"
-         landmarkName = "-getCurrentLocation"
-         landmarkType = "5">
+         startingLineNumber = "33"
+         endingLineNumber = "33"
+         landmarkName = "@implementation DigitalMenuViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -38,9 +38,20 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "21"
-         endingLineNumber = "21"
-         landmarkName = "@implementation DigitalMenuViewController"
-         landmarkType = "3">
+         endingLineNumber = "21">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "DigitalMenu/DigitalMenuViewController.m"
+         timestampString = "393632943.72428"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "60"
+         endingLineNumber = "60"
+         landmarkName = "-loadData"
+         landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

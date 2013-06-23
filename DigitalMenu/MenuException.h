@@ -1,13 +1,13 @@
 //
-//  RestException.m
+//  RestException.h
 //  DigitalMenu
 //
 //  Created by Stanislav Pak on 17.06.13.
 //  Copyright (c) 2013 Stanislav Pak. All rights reserved.
 //
 
-#import "RestException.h"
+#import <Foundation/Foundation.h>
 
-@implementation RestException
+@interface MenuException : NSException
 
 @end

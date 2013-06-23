@@ -12,10 +12,11 @@
     NSMutableDictionary* data;
 }
 
-@property (weak, nonatomic) NSMutableDictionary* data;
+@property (copy, nonatomic) NSMutableDictionary* data;
 
 -(void) load;
--(NSArray*) restaurants;
+-(NSArray*) houseIds;
+-(NSDictionary*) houseInfo:(NSString*)houseId;
 -(NSArray*) cuisines:(NSString*)restaurantId;
 -(NSArray*) dishes:(NSString*)restaurantId secondValue:(NSString*)cuisineId;
 

@@ -7,25 +7,32 @@
 //
 
 #import "DataManager.h"
+#import "json/SBJsonParser.h"
 
 @implementation DataManager
 
 @synthesize data = _data;
 
 -(void) load {
-    for (NSString *name in [[NSArray alloc] initWithObjects:@"Shushi-Mushi", @"Cantina", @"Segafredo", nil]) {
-        NSMutableArray *cuisines = [[NSMutableArray alloc] init];
-        for (NSString *cuisine in [[NSArray alloc]
-                                   initWithObjects:@"Ukranian", @"Chineese", @"Spanish", @"French", nil]) {
-            [cuisines addObject:cuisine];
-        }
-        [self.data setValue:cuisines forKey:name];
-    }
+    NSBundle *bundle = [NSBundle mainBundle];
+    NSString *dataPath = [bundle pathForResource:@"data.json" ofType:nil inDirectory:nil];
+    
+    NSFileManager* fileManager = [[NSFileManager alloc] init];
+    NSData *fileContents = [fileManager contentsAtPath:dataPath];
+    SBJsonParser *parser = [[SBJsonParser alloc] init];
+    self.data = [[[parser objectWithData:fileContents] objectForKey:@"houses"] copy];
+    NSLog(@"houses: %@", self.data);
 }
 
--(NSArray*) restaurants {
+-(NSArray*) houseIds {
+    NSLog(@"DATA: %@", self.data);
     return self.data.allKeys;
 }
+
+-(NSDictionary*) houseInfo:(NSString*) houseId {
+    return [self.data objectForKey:houseId];
+}
+
 
 -(NSArray*) cuisines:(NSString*)restaurantId {
     return [self.data objectForKey:restaurantId];

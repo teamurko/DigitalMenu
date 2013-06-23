@@ -1,0 +1,83 @@
+{
+"houses": {
+    "kfc": {
+        "name": "KFC on Kievskaya",
+        "description" : "Very good and cheap fast food",
+        "address": "пл. Киевского Вокзала, 2, Москва, Россия",
+        "location": {
+            "lon": 37.566268,
+            "lat": 55.744185
+        },
+        "cuisines": {
+            "chineese": {
+                "hot_dishes": {
+                    "noodles_with_chicken": {
+                        "description": "very good dish",
+                        "price": 400
+                    }
+                },
+                "drinks": {
+                    "sencha_tea": {
+                        "description": "best tea ever",
+                        "price": 100
+                    }
+                }
+            },
+            "russian": {
+                "hot_dishes": {
+                    "borsch": {
+                        "description": "national dish",
+                        "price": 150
+                    }
+                },
+                "drinks": {
+                    "kvas": {
+                        "description": "just taste it",
+                        "price": 80
+                    }
+                }
+            }
+        }
+    },
+    "mcds": {
+        "name": "McDonalds on Smolenskaya",
+        "description" : "Very good and cheap fast food",
+        "address": "ул. Арбат, 50, Москва, Россия",
+        "location": {
+            "lon": 37.584313,
+            "lat": 55.747472
+        },
+        "cuisines": {
+            "chineese": {
+                "hot_dishes": {
+                    "noodles_with_chicken": {
+                        "description": "very good dish",
+                        "price": 400
+                    }
+                },
+                "drinks": {
+                    "sencha_tea": {
+                        "description": "best tea ever",
+                        "price": 100
+                    }
+                }
+            },
+            "russian": {
+                "hot_dishes": {
+                    "borsch": {
+                        "description": "national dish",
+                        "price": 150
+                    }
+                },
+                "drinks": {
+                    "kvas": {
+                        "description": "just taste it",
+                        "price": 80
+                    }
+                }
+            }
+        }
+    }
+
+}
+}

@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Stanislav Pak. All rights reserved.
 //
 
+#import "DataManager.h"
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
@@ -16,6 +17,7 @@
     NSString *userName;
     IBOutlet UIPickerView *restaurantsFrontList;
     NSArray *restaurantButtons;
+    DataManager *dataManager;
 }
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
@@ -23,7 +25,8 @@
 @property (copy, nonatomic) NSString *userName;
 @property (weak, nonatomic) IBOutlet UIPickerView *restaurantsFrontList;
 @property (copy, nonatomic) NSArray *restaurantButtons;
-//- (IBAction)showRestaurants:(id)sender;
+@property (weak, nonatomic) DataManager *dataManager;
 - (IBAction)showLocation:(id)sender;
+
 
 @end

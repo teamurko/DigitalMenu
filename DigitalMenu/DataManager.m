@@ -36,9 +36,16 @@
     return [[[self.data objectForKey:houseId] objectForKey:@"cuisines"] allKeys];
 }
 
--(NSArray*) dishes:(NSString*)houseId secondValue:(NSString*)cuisineId {
-    return nil;
+-(NSArray*) dishesCategories:(NSString *)houseId secondValue:(NSString *)cuisineId {
+    return [[[[self.data objectForKey:houseId] objectForKey:@"cuisines"] objectForKey:cuisineId] allKeys];
 }
+
+-(NSDictionary*) dishes:(NSString*)houseId andCuisineId:(NSString*)cuisineId andDishesCategory:(NSString*)dishesCategory
+{
+    NSDictionary *dishesCategories = [[[self.data objectForKey:houseId] objectForKey:@"cuisines"] objectForKey:cuisineId];
+    return [dishesCategories objectForKey:dishesCategory];
+}
+
 
 
 @end

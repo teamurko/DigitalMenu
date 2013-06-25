@@ -11,6 +11,9 @@
 		CE4F0B8A1773A961003A5F92 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = CE4F0B891773A961003A5F92 /* data.json */; };
 		CE58AE731779019500F01173 /* CuisinesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE58AE721779019500F01173 /* CuisinesViewController.m */; };
 		CE58AE761779158800F01173 /* DishCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE58AE751779158800F01173 /* DishCategoriesViewController.m */; };
+		CE71E4CD177A37CC0018C76B /* spring.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CE71E4CC177A37CC0018C76B /* spring.jpg */; };
+		CE71E4D0177A3B080018C76B /* DishesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE71E4CF177A3B080018C76B /* DishesViewController.m */; };
+		CE71E4D3177A48AB0018C76B /* BasketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE71E4D2177A48AB0018C76B /* BasketViewController.m */; };
 		CE75BFBF176F974D00E17482 /* MenuException.m in Sources */ = {isa = PBXBuildFile; fileRef = CE75BFBE176F974D00E17482 /* MenuException.m */; };
 		CEAA59A8177725620027B164 /* FoodPlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA59A7177725620027B164 /* FoodPlacesViewController.m */; };
 		CEB322D3176E0E6400F46463 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB322D2176E0E6400F46463 /* UIKit.framework */; };
@@ -46,6 +49,11 @@
 		CE58AE721779019500F01173 /* CuisinesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CuisinesViewController.m; sourceTree = "<group>"; };
 		CE58AE741779158800F01173 /* DishCategoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DishCategoriesViewController.h; sourceTree = "<group>"; };
 		CE58AE751779158800F01173 /* DishCategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DishCategoriesViewController.m; sourceTree = "<group>"; };
+		CE71E4CC177A37CC0018C76B /* spring.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = spring.jpg; sourceTree = "<group>"; };
+		CE71E4CE177A3B080018C76B /* DishesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DishesViewController.h; sourceTree = "<group>"; };
+		CE71E4CF177A3B080018C76B /* DishesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DishesViewController.m; sourceTree = "<group>"; };
+		CE71E4D1177A48AB0018C76B /* BasketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasketViewController.h; sourceTree = "<group>"; };
+		CE71E4D2177A48AB0018C76B /* BasketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasketViewController.m; sourceTree = "<group>"; };
 		CE75BFBD176F974D00E17482 /* MenuException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuException.h; sourceTree = "<group>"; };
 		CE75BFBE176F974D00E17482 /* MenuException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuException.m; sourceTree = "<group>"; };
 		CEAA59A6177725620027B164 /* FoodPlacesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodPlacesViewController.h; sourceTree = "<group>"; };
@@ -157,6 +165,10 @@
 				CE58AE721779019500F01173 /* CuisinesViewController.m */,
 				CE58AE741779158800F01173 /* DishCategoriesViewController.h */,
 				CE58AE751779158800F01173 /* DishCategoriesViewController.m */,
+				CE71E4CE177A3B080018C76B /* DishesViewController.h */,
+				CE71E4CF177A3B080018C76B /* DishesViewController.m */,
+				CE71E4D1177A48AB0018C76B /* BasketViewController.h */,
+				CE71E4D2177A48AB0018C76B /* BasketViewController.m */,
 			);
 			path = DigitalMenu;
 			sourceTree = "<group>";
@@ -164,6 +176,7 @@
 		CEB322D9176E0E6400F46463 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CE71E4CC177A37CC0018C76B /* spring.jpg */,
 				CEB322DA176E0E6400F46463 /* DigitalMenu-Info.plist */,
 				CEB322DB176E0E6400F46463 /* InfoPlist.strings */,
 				CEB322DE176E0E6400F46463 /* main.m */,
@@ -269,6 +282,7 @@
 				CEB322E9176E0E6400F46463 /* Default-568h@2x.png in Resources */,
 				CEB322EC176E0E6400F46463 /* MainStoryboard.storyboard in Resources */,
 				CE4F0B8A1773A961003A5F92 /* data.json in Resources */,
+				CE71E4CD177A37CC0018C76B /* spring.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +311,8 @@
 				CEAA59A8177725620027B164 /* FoodPlacesViewController.m in Sources */,
 				CE58AE731779019500F01173 /* CuisinesViewController.m in Sources */,
 				CE58AE761779158800F01173 /* DishCategoriesViewController.m in Sources */,
+				CE71E4D0177A3B080018C76B /* DishesViewController.m in Sources */,
+				CE71E4D3177A48AB0018C76B /* BasketViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

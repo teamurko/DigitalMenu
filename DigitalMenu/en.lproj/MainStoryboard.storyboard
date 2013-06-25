@@ -12,34 +12,29 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Welcome to digital menu" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fd1-CK-isn">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.99999999999999989" contentMode="left" text="Я могу выбрать место на карте" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="299" translatesAutoresizingMaskIntoConstraints="NO" id="fd1-CK-isn">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="3bP-fl-xSi"/>
+                                    <constraint firstAttribute="width" constant="299" id="cKm-KM-YYS"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0rO-fc-d7R">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="270" id="FwP-lx-v9P"/>
-                                    <constraint firstAttribute="height" constant="183" id="rCY-m7-VTm"/>
+                                    <constraint firstAttribute="height" constant="307" id="vus-wT-YSP"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="2" id="CH1-MO-ALD"/>
                                 </connections>
                             </mapView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Choose a food place nearby" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4yr-Cq-dRi">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="256" id="JJj-bI-5Ol"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zfI-9I-zUT">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="94" id="7he-Vp-Nnm"/>
+                                    <constraint firstAttribute="width" constant="78" id="0Ke-d6-xC5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="All cafes">
+                                <state key="normal" title="К списку">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -51,8 +46,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VyC-la-yql">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="119" id="Pf9-mP-szZ"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Show nearest">
+                                <state key="normal" title="Мне повезет!">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -63,20 +61,36 @@
                                     <action selector="showNearestHouse:" destination="2" eventType="touchUpInside" id="uKB-QD-NtF"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aVo-Nx-HPY">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="96" id="AlL-zC-zK5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Мой выбор">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="bap-mo-XEh" kind="push" id="mCX-7Z-QDK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="fd1-CK-isn" firstAttribute="leading" secondItem="eLu-yC-Q8t" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="0T9-pw-6R0"/>
-                            <constraint firstItem="0rO-fc-d7R" firstAttribute="centerX" secondItem="fd1-CK-isn" secondAttribute="centerX" type="default" id="0Tm-QX-oFv"/>
-                            <constraint firstAttribute="bottom" secondItem="4yr-Cq-dRi" secondAttribute="bottom" constant="135" id="3Sz-yl-Sua"/>
-                            <constraint firstItem="VyC-la-yql" firstAttribute="leading" secondItem="4yr-Cq-dRi" secondAttribute="leading" type="default" id="93R-eQ-wei"/>
-                            <constraint firstItem="zfI-9I-zUT" firstAttribute="trailing" secondItem="4yr-Cq-dRi" secondAttribute="trailing" type="default" id="Wla-ZL-mYI"/>
-                            <constraint firstAttribute="trailing" secondItem="fd1-CK-isn" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Y6l-en-JmY"/>
-                            <constraint firstItem="fd1-CK-isn" firstAttribute="top" secondItem="eLu-yC-Q8t" secondAttribute="top" constant="12" id="cnT-uh-VPe"/>
-                            <constraint firstAttribute="bottom" secondItem="VyC-la-yql" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="lZn-zM-DUb"/>
-                            <constraint firstItem="4yr-Cq-dRi" firstAttribute="centerX" secondItem="0rO-fc-d7R" secondAttribute="centerX" type="default" id="pda-NN-gbZ"/>
-                            <constraint firstAttribute="bottom" secondItem="zfI-9I-zUT" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="srB-Dz-qHR"/>
-                            <constraint firstItem="0rO-fc-d7R" firstAttribute="top" secondItem="fd1-CK-isn" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="uWl-zU-XkU"/>
+                            <constraint firstItem="fd1-CK-isn" firstAttribute="top" secondItem="eLu-yC-Q8t" secondAttribute="top" constant="2" id="7hm-wI-xms"/>
+                            <constraint firstItem="zfI-9I-zUT" firstAttribute="leading" secondItem="aVo-Nx-HPY" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="DFE-R4-J6c"/>
+                            <constraint firstAttribute="bottom" secondItem="VyC-la-yql" secondAttribute="bottom" constant="11" id="KTc-JT-Dlf"/>
+                            <constraint firstItem="VyC-la-yql" firstAttribute="leading" secondItem="eLu-yC-Q8t" secondAttribute="leading" constant="6" id="LNM-Is-0dy"/>
+                            <constraint firstItem="0rO-fc-d7R" firstAttribute="leading" secondItem="fd1-CK-isn" secondAttribute="leading" type="default" id="LVz-Qb-hgC"/>
+                            <constraint firstItem="fd1-CK-isn" firstAttribute="trailing" secondItem="0rO-fc-d7R" secondAttribute="trailing" type="default" id="Vhd-Jf-fL4"/>
+                            <constraint firstItem="aVo-Nx-HPY" firstAttribute="baseline" secondItem="VyC-la-yql" secondAttribute="baseline" type="default" id="cnE-8W-Nnx"/>
+                            <constraint firstItem="0rO-fc-d7R" firstAttribute="top" secondItem="eLu-yC-Q8t" secondAttribute="top" constant="40" id="jKt-d8-4x5"/>
+                            <constraint firstItem="0rO-fc-d7R" firstAttribute="centerX" secondItem="eLu-yC-Q8t" secondAttribute="centerX" type="default" id="sMP-LY-e9o"/>
+                            <constraint firstItem="aVo-Nx-HPY" firstAttribute="leading" secondItem="VyC-la-yql" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="u0u-oi-32J"/>
+                            <constraint firstItem="aVo-Nx-HPY" firstAttribute="baseline" secondItem="zfI-9I-zUT" secondAttribute="baseline" type="default" id="xeA-kb-iDF"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -90,6 +104,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="303" y="55"/>
+        </scene>
+        <!--Basket View Controller-->
+        <scene sceneID="I7n-19-H1D">
+            <objects>
+                <tableViewController id="bap-mo-XEh" customClass="BasketViewController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="zPs-O2-KG0"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D4U-XJ-Ctu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="308" y="769"/>
         </scene>
         <!--Food Places View Controller-->
         <scene sceneID="174-e8-sLq">
@@ -115,15 +139,27 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c5G-M7-tKx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="846" y="875"/>
+            <point key="canvasLocation" x="1322" y="55"/>
         </scene>
         <!--Dish Categories View Controller-->
         <scene sceneID="0Ak-d5-D88">
             <objects>
-                <tableViewController id="OXP-LY-JrH" customClass="DishCategoriesViewController" sceneMemberID="viewController"/>
+                <tableViewController id="OXP-LY-JrH" customClass="DishCategoriesViewController" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="qXJ-yY-tog" kind="custom" id="VvE-B3-cHQ"/>
+                    </connections>
+                </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sEa-jc-oG0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1314" y="875"/>
+            <point key="canvasLocation" x="1822" y="55"/>
+        </scene>
+        <!--Dishes View Controller-->
+        <scene sceneID="HFD-fI-mYN">
+            <objects>
+                <tableViewController id="qXJ-yY-tog" customClass="DishesViewController" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uAh-Ye-hVg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2305" y="55"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gvT-qA-b3l">

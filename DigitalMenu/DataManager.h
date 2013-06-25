@@ -18,6 +18,7 @@
 -(NSArray*) houseIds;
 -(NSDictionary*) houseInfo:(NSString*)houseId;
 -(NSArray*) cuisines:(NSString*)houseId;
--(NSArray*) dishes:(NSString*)houseId secondValue:(NSString*)cuisineId;
+-(NSArray*) dishesCategories:(NSString*)houseId secondValue:(NSString*)cuisineId;
+-(NSDictionary*) dishes:(NSString*)houseId andCuisineId:(NSString*)cuisineId andDishesCategory:(NSString*)dishesCategories;
 
 @end

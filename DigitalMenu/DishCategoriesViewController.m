@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Stanislav Pak. All rights reserved.
 //
 
+#import "DishesViewController.h"
 #import "DishCategoriesViewController.h"
 
 @interface DishCategoriesViewController ()
@@ -34,6 +35,7 @@
         self.houseId = theHouseId;
         self.cuisineId = theCuisineId;
         self.title = [NSString stringWithFormat:@"Dish categories, house %@, cuisine %@", self.houseId, self.cuisineId];
+        self.tableView.scrollEnabled = YES;
     }
     return self;
 }
@@ -121,13 +123,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    NSString *dishesCategory = [[[[[self.dataManager houseInfo:self.houseId] objectForKey:@"cuisines"] objectForKey:self.cuisineId] allKeys] objectAtIndex:[indexPath row]];
+    DishesViewController *viewController = [[DishesViewController alloc] initWithData:self.dataManager andHouseId:self.houseId andCuisineId:self.cuisineId andDishesCategory:dishesCategory];
+     [self.navigationController pushViewController:viewController animated:YES];
 }
 
 @end

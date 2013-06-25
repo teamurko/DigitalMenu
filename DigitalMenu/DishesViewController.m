@@ -1,22 +1,23 @@
 //
-//  CuisinesViewController.m
+//  DishesViewController.m
 //  DigitalMenu
 //
-//  Created by Stanislav Pak on 25.06.13.
+//  Created by Stanislav Pak on 26.06.13.
 //  Copyright (c) 2013 Stanislav Pak. All rights reserved.
 //
 
-#import "CuisinesViewController.h"
-#import "DishCategoriesViewController.h"
+#import "DishesViewController.h"
 
-@interface CuisinesViewController ()
+@interface DishesViewController ()
 
 @end
 
-@implementation CuisinesViewController
-
-@synthesize dataManager = _dataManager;
+@implementation DishesViewController
 @synthesize houseId = _houseId;
+@synthesize cuisineId = _cuisineId;
+@synthesize dishesCategory = _dishesCategory;
+@synthesize dataManager = _dataManager;
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -27,25 +28,17 @@
     return self;
 }
 
-- (id)initWithHouseId:(NSString*) theHouseId
+- (id) initWithData:(DataManager*)theDataManager andHouseId:(NSString*)theHouseId andCuisineId:(NSString*)theCuisineId andDishesCategory:(NSString*)theDishesCategory;
 {
-    self = [super initWithNibName:nil bundle:nil];
+    self = [self init];
     if (self) {
+        self.dataManager = theDataManager;
         self.houseId = theHouseId;
+        self.cuisineId = theCuisineId;
+        self.dishesCategory = theDishesCategory;
+        self.tableView.scrollEnabled = YES;
     }
     return self;
-}
-
-- (void) loadView
-{
-    UITableView *tableView = [[UITableView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame] style:UITableViewStylePlain];
-    tableView.delegate = self;
-    tableView.dataSource = self;
-    self.dataManager = [[DataManager alloc] init];
-    [self.dataManager load];
-    tableView.scrollEnabled = YES;
-    self.view = tableView;
-    [tableView reloadData];
 }
 
 
@@ -55,7 +48,7 @@
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
-    
+ 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -66,12 +59,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    self.title = [NSString stringWithFormat:@"%@ cuisines", self.houseId];
-}
-
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -81,18 +68,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"%@", [self.dataManager houseIds]);
-    NSLog(@"House name: %@", self.houseId);
-    NSLog(@"Row no %d", [[self.dataManager cuisines:self.houseId] count]);
-    return [[self.dataManager cuisines:self.houseId] count];
+    return [[[self.dataManager dishes:self.houseId andCuisineId:self.cuisineId andDishesCategory:self.dishesCategory] allKeys] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSDictionary *dishes = [self.dataManager dishes:self.houseId andCuisineId:self.cuisineId andDishesCategory:self.dishesCategory];
     UITableViewCell *cell = [[UITableViewCell alloc] init];
-    NSArray *cuisineNames = [self.dataManager cuisines:self.houseId];
-    cell.textLabel.text = [cuisineNames objectAtIndex:[indexPath row]];
-    
+    cell.textLabel.text = [[dishes allKeys] objectAtIndex:[indexPath row]];
     return cell;
 }
 
@@ -139,10 +122,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"Select cuisine");
-    NSString *cuisineId = [[[[self.dataManager houseInfo:self.houseId] objectForKey:@"cuisines"] allKeys] objectAtIndex:[indexPath row]];
-    DishCategoriesViewController *viewController = [[DishCategoriesViewController alloc] initWithData:self.dataManager andHouseId:self.houseId andCuisineId:cuisineId];
-    [self.navigationController pushViewController:viewController animated:YES];
+    // Navigation logic may go here. Create and push another view controller.
+    /*
+     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+     // ...
+     // Pass the selected object to the new view controller.
+     [self.navigationController pushViewController:detailViewController animated:YES];
+     */
 }
 
 @end

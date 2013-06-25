@@ -1,22 +1,18 @@
 //
-//  CuisinesViewController.m
+//  BasketViewController.m
 //  DigitalMenu
 //
-//  Created by Stanislav Pak on 25.06.13.
+//  Created by Stanislav Pak on 26.06.13.
 //  Copyright (c) 2013 Stanislav Pak. All rights reserved.
 //
 
-#import "CuisinesViewController.h"
-#import "DishCategoriesViewController.h"
+#import "BasketViewController.h"
 
-@interface CuisinesViewController ()
+@interface BasketViewController ()
 
 @end
 
-@implementation CuisinesViewController
-
-@synthesize dataManager = _dataManager;
-@synthesize houseId = _houseId;
+@implementation BasketViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -27,35 +23,13 @@
     return self;
 }
 
-- (id)initWithHouseId:(NSString*) theHouseId
-{
-    self = [super initWithNibName:nil bundle:nil];
-    if (self) {
-        self.houseId = theHouseId;
-    }
-    return self;
-}
-
-- (void) loadView
-{
-    UITableView *tableView = [[UITableView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame] style:UITableViewStylePlain];
-    tableView.delegate = self;
-    tableView.dataSource = self;
-    self.dataManager = [[DataManager alloc] init];
-    [self.dataManager load];
-    tableView.scrollEnabled = YES;
-    self.view = tableView;
-    [tableView reloadData];
-}
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
-    
+ 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -66,32 +40,28 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    self.title = [NSString stringWithFormat:@"%@ cuisines", self.houseId];
-}
-
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+#warning Potentially incomplete method implementation.
+    // Return the number of sections.
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"%@", [self.dataManager houseIds]);
-    NSLog(@"House name: %@", self.houseId);
-    NSLog(@"Row no %d", [[self.dataManager cuisines:self.houseId] count]);
-    return [[self.dataManager cuisines:self.houseId] count];
+#warning Incomplete method implementation.
+    // Return the number of rows in the section.
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [[UITableViewCell alloc] init];
-    NSArray *cuisineNames = [self.dataManager cuisines:self.houseId];
-    cell.textLabel.text = [cuisineNames objectAtIndex:[indexPath row]];
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    // Configure the cell...
     
     return cell;
 }
@@ -139,10 +109,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"Select cuisine");
-    NSString *cuisineId = [[[[self.dataManager houseInfo:self.houseId] objectForKey:@"cuisines"] allKeys] objectAtIndex:[indexPath row]];
-    DishCategoriesViewController *viewController = [[DishCategoriesViewController alloc] initWithData:self.dataManager andHouseId:self.houseId andCuisineId:cuisineId];
-    [self.navigationController pushViewController:viewController animated:YES];
+    // Navigation logic may go here. Create and push another view controller.
+    /*
+     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+     // ...
+     // Pass the selected object to the new view controller.
+     [self.navigationController pushViewController:detailViewController animated:YES];
+     */
 }
 
 @end

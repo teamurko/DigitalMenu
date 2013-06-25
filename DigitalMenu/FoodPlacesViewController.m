@@ -34,8 +34,8 @@
     tableView.dataSource = self;
     self.dataManager = [[DataManager alloc] init];
     [self.dataManager load];
-    NSLog(@"houses : %@", self.dataManager);
-    NSLog(@"houses : %d", [[self.dataManager houseIds] count]);
+    tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"spring.jpg"]];
+    tableView.scrollEnabled = YES;
     self.view = tableView;
     [tableView reloadData];
 }

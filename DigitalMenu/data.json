@@ -28,6 +28,42 @@
                     "borsch": {
                         "description": "national dish",
                         "price": 150
+                    },
+                    "uha": {
+                        "description": "soup with fish",
+                        "price": 200
+                    },
+                    "borsch2": {
+                        "description": "national dish",
+                        "price": 150
+                    },
+                    "uha2": {
+                        "description": "soup with fish",
+                        "price": 200
+                    },
+                    "borsch3": {
+                        "description": "national dish",
+                        "price": 150
+                    },
+                    "uha3": {
+                        "description": "soup with fish",
+                        "price": 200
+                    },
+                    "borsch4": {
+                        "description": "national dish",
+                        "price": 150
+                    },
+                    "uha4": {
+                        "description": "soup with fish",
+                        "price": 200
+                    },
+                    "borsch5": {
+                        "description": "national dish",
+                        "price": 150
+                    },
+                    "uha5": {
+                        "description": "soup with fish",
+                        "price": 200
                     }
                 },
                 "drinks": {

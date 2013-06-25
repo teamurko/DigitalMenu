@@ -17,7 +17,7 @@
 -(void) load;
 -(NSArray*) houseIds;
 -(NSDictionary*) houseInfo:(NSString*)houseId;
--(NSArray*) cuisines:(NSString*)restaurantId;
--(NSArray*) dishes:(NSString*)restaurantId secondValue:(NSString*)cuisineId;
+-(NSArray*) cuisines:(NSString*)houseId;
+-(NSArray*) dishes:(NSString*)houseId secondValue:(NSString*)cuisineId;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "DigitalMenuViewController.h"
 #import "MenuException.h"
+#import "CuisinesViewController.h"
 #import "DataManager.h"
 
 #import <CoreLocation/CoreLocation.h>
@@ -127,6 +128,13 @@ MKUserLocation *userLocation;
     NSLog(@"location %@", location);
     NSLog(@"Coordinates: %+.6f %+.6f\n", location.coordinate.latitude, location.coordinate.longitude);
      */
+}
+
+- (IBAction)showNearestHouse:(id)sender {
+    // implement nearest house find
+    NSString *nearestHouseId = @"kfc";
+    CuisinesViewController *viewController = [[CuisinesViewController alloc] initWithHouseId:nearestHouseId];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {

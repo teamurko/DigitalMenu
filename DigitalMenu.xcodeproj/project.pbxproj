@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		CE1A7889177262E300864D25 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1A7888177262E300864D25 /* DataManager.m */; };
 		CE4F0B8A1773A961003A5F92 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = CE4F0B891773A961003A5F92 /* data.json */; };
+		CE58AE731779019500F01173 /* CuisinesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE58AE721779019500F01173 /* CuisinesViewController.m */; };
+		CE58AE761779158800F01173 /* DishCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE58AE751779158800F01173 /* DishCategoriesViewController.m */; };
 		CE75BFBF176F974D00E17482 /* MenuException.m in Sources */ = {isa = PBXBuildFile; fileRef = CE75BFBE176F974D00E17482 /* MenuException.m */; };
 		CEAA59A8177725620027B164 /* FoodPlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA59A7177725620027B164 /* FoodPlacesViewController.m */; };
 		CEB322D3176E0E6400F46463 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB322D2176E0E6400F46463 /* UIKit.framework */; };
@@ -40,6 +42,10 @@
 		CE1A7887177262E300864D25 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		CE1A7888177262E300864D25 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		CE4F0B891773A961003A5F92 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
+		CE58AE711779019500F01173 /* CuisinesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CuisinesViewController.h; sourceTree = "<group>"; };
+		CE58AE721779019500F01173 /* CuisinesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CuisinesViewController.m; sourceTree = "<group>"; };
+		CE58AE741779158800F01173 /* DishCategoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DishCategoriesViewController.h; sourceTree = "<group>"; };
+		CE58AE751779158800F01173 /* DishCategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DishCategoriesViewController.m; sourceTree = "<group>"; };
 		CE75BFBD176F974D00E17482 /* MenuException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuException.h; sourceTree = "<group>"; };
 		CE75BFBE176F974D00E17482 /* MenuException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuException.m; sourceTree = "<group>"; };
 		CEAA59A6177725620027B164 /* FoodPlacesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodPlacesViewController.h; sourceTree = "<group>"; };
@@ -147,6 +153,10 @@
 				CE1A7888177262E300864D25 /* DataManager.m */,
 				CEAA59A6177725620027B164 /* FoodPlacesViewController.h */,
 				CEAA59A7177725620027B164 /* FoodPlacesViewController.m */,
+				CE58AE711779019500F01173 /* CuisinesViewController.h */,
+				CE58AE721779019500F01173 /* CuisinesViewController.m */,
+				CE58AE741779158800F01173 /* DishCategoriesViewController.h */,
+				CE58AE751779158800F01173 /* DishCategoriesViewController.m */,
 			);
 			path = DigitalMenu;
 			sourceTree = "<group>";
@@ -285,6 +295,8 @@
 				CEB738781776597F008B29A8 /* SBJsonStreamWriterState.m in Sources */,
 				CEB738791776597F008B29A8 /* SBJsonWriter.m in Sources */,
 				CEAA59A8177725620027B164 /* FoodPlacesViewController.m in Sources */,
+				CE58AE731779019500F01173 /* CuisinesViewController.m in Sources */,
+				CE58AE761779158800F01173 /* DishCategoriesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

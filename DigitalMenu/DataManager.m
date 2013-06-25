@@ -21,11 +21,9 @@
     NSData *fileContents = [fileManager contentsAtPath:dataPath];
     SBJsonParser *parser = [[SBJsonParser alloc] init];
     self.data = [[[parser objectWithData:fileContents] objectForKey:@"houses"] copy];
-    NSLog(@"houses: %@", self.data);
 }
 
 -(NSArray*) houseIds {
-    NSLog(@"DATA: %@", self.data);
     return self.data.allKeys;
 }
 
@@ -34,11 +32,11 @@
 }
 
 
--(NSArray*) cuisines:(NSString*)restaurantId {
-    return [self.data objectForKey:restaurantId];
+-(NSArray*) cuisines:(NSString*)houseId {
+    return [[[self.data objectForKey:houseId] objectForKey:@"cuisines"] allKeys];
 }
 
--(NSArray*) dishes:(NSString*)restaurantId secondValue:(NSString*)cuisineId {
+-(NSArray*) dishes:(NSString*)houseId secondValue:(NSString*)cuisineId {
     return nil;
 }
 

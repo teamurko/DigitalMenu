@@ -27,6 +27,6 @@
 @property (copy, nonatomic) NSArray *restaurantButtons;
 @property (weak, nonatomic) DataManager *dataManager;
 - (IBAction)showLocation:(id)sender;
-
+- (IBAction)showNearestHouse:(id)sender;
 
 @end

@@ -1,20 +1,20 @@
 //
-//  FoodPlacesViewController.m
+//  DishCategoriesViewController.m
 //  DigitalMenu
 //
-//  Created by Stanislav Pak on 23.06.13.
+//  Created by Stanislav Pak on 25.06.13.
 //  Copyright (c) 2013 Stanislav Pak. All rights reserved.
 //
 
-#import "DataManager.h"
-#import "CuisinesViewController.h"
-#import "FoodPlacesViewController.h"
+#import "DishCategoriesViewController.h"
 
-@interface FoodPlacesViewController ()
+@interface DishCategoriesViewController ()
 
 @end
 
-@implementation FoodPlacesViewController
+@implementation DishCategoriesViewController
+@synthesize houseId = _houseId;
+@synthesize cuisineId = _cuisineId;
 @synthesize dataManager = _dataManager;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -26,31 +26,28 @@
     return self;
 }
 
-- (void) loadView
+- (id) initWithData:(DataManager*)theDataManager andHouseId:(NSString *)theHouseId andCuisineId:(NSString *)theCuisineId
 {
-    NSLog(@"LOAD VIEW");
-    UITableView *tableView = [[UITableView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame] style:UITableViewStylePlain];
-    tableView.delegate = self;
-    tableView.dataSource = self;
-    self.dataManager = [[DataManager alloc] init];
-    [self.dataManager load];
-    NSLog(@"houses : %@", self.dataManager);
-    NSLog(@"houses : %d", [[self.dataManager houseIds] count]);
-    self.view = tableView;
-    [tableView reloadData];
+    self = [self init];
+    if (self) {
+        self.dataManager = theDataManager;
+        self.houseId = theHouseId;
+        self.cuisineId = theCuisineId;
+        self.title = [NSString stringWithFormat:@"Dish categories, house %@, cuisine %@", self.houseId, self.cuisineId];
+    }
+    return self;
 }
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"Food places view loaded");
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    self.title = @"Available houses";
 }
 
 - (void)didReceiveMemoryWarning
@@ -63,33 +60,23 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return [[self.dataManager houseIds] count];
+    NSArray *categories = [[[[self.dataManager houseInfo:self.houseId] objectForKey:@"cuisines"] objectForKey:self.cuisineId] allKeys];
+    return [categories count];
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"Cell for row at index path %@", indexPath);
     UITableViewCell *cell = [[UITableViewCell alloc] init];
-    NSString *id = [[self.dataManager houseIds] objectAtIndex:[indexPath row]];
-    NSLog(@"ID: %@", id);
-    NSDictionary *info = [self.dataManager houseInfo:id];
-    NSLog(@"INFO : %@", info);
-    cell.textLabel.text = [info objectForKey:@"name"];
-    NSLog(@"Cell: %@", cell);
-    NSLog(@"text: %@", cell.textLabel.text);
+    //TODO remove copy-paste
+    NSArray *categories = [[[[self.dataManager houseInfo:self.houseId] objectForKey:@"cuisines"] objectForKey:self.cuisineId] allKeys];
+    cell.textLabel.text = [categories objectAtIndex:[indexPath row]];
     return cell;
 }
- 
 
 /*
 // Override to support conditional editing of the table view.
@@ -134,10 +121,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"Select restaurant");
-    NSString *houseId = [[self.dataManager houseIds] objectAtIndex:[indexPath row]];
-    CuisinesViewController *cuisinesViewController = [[CuisinesViewController alloc] initWithHouseId:houseId];
-    [self.navigationController pushViewController:cuisinesViewController animated:YES];
+    // Navigation logic may go here. Create and push another view controller.
+    /*
+     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+     // ...
+     // Pass the selected object to the new view controller.
+     [self.navigationController pushViewController:detailViewController animated:YES];
+     */
 }
 
 @end

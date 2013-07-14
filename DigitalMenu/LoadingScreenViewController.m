@@ -8,14 +8,15 @@
 
 #import <CoreLocation/CoreLocation.h>
 
-#import "LoadingViewController.h"
+#import "LoadingScreenViewController.h"
 #import "MainViewController.h"
+#import "Debug.h"
 
-@interface LoadingViewController ()
+@interface LoadingScreenViewController ()
 
 @end
 
-@implementation LoadingViewController
+@implementation LoadingScreenViewController
 
 CLLocationManager *locationManager;
 CLLocation *location;
@@ -40,34 +41,47 @@ bool locationFound = NO;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void) loadView
 {
-    NSLog(@"LOAD LOADING SCREEN VIEW");
+    debug();
     UITextView *textView = [[UITextView alloc] init];
     textView.text = @"Loading nearest restaurants..";
+    [textView setFont:[UIFont boldSystemFontOfSize:17]];
     [textView setTextColor:[UIColor blackColor]];
     [textView setTextAlignment:NSTextAlignmentJustified];
-    self.view = textView;
+    [textView setFrame:CGRectMake(10, 80, 100, 120)]; //FIXME does not work
     [textView reloadInputViews];
+    self.view = textView;
 }
 
 - (void) viewDidAppear:(BOOL)animated
 {
+    debug();
     if (nil == locationManager) {
         locationManager = [[CLLocationManager alloc] init];
     }
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [locationManager startUpdatingLocation];
+    while ([self.delegate isDataLoaded] == NO) {
+        [NSThread sleepForTimeInterval:0.1];
+    }
+    [self.delegate dismissLoadingScreen:YES];
+}
+
+- (void) viewDidDisappear:(BOOL)animated
+{
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
 }
 
 

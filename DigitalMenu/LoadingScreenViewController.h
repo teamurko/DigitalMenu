@@ -9,12 +9,15 @@
 #import <CoreLocation/CoreLocation.h>
 #import <UIKit/UIKit.h>
 
-@interface LoadingViewController : UIViewController <CLLocationManagerDelegate>
+#import "LoadingScreenViewControllerDelegate.h"
+
+@interface LoadingScreenViewController : UIViewController <CLLocationManagerDelegate>
 {
     UITextView *view;
 }
 
 @property (strong, nonatomic) UITextView *view;
+@property (assign, nonatomic) id<LoadingScreenViewControllerDelegate> delegate;
 
 - (CLLocation*) getCurrentLocation;
 

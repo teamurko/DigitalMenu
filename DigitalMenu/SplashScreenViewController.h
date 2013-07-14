@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+#import "SplashScreenViewControllerDelegate.h"
+
 @interface SplashScreenViewController: UIViewController 
 {
     UIImageView *view;
 }
 
 @property (strong, nonatomic) UIImageView *view;
+@property (assign, nonatomic) id<SplashScreenViewControllerDelegate> delegate;
 
 @end

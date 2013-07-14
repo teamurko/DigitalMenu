@@ -6,13 +6,17 @@
 //  Copyright (c) 2013 Stanislav Pak. All rights reserved.
 //
 
-#import "MainViewController.h"
-#import "MenuException.h"
-#import "CuisinesViewController.h"
-#import "DataManager.h"
-
 #import <CoreLocation/CoreLocation.h>
 
+#import "SplashScreenViewController.h"
+#import "LoadingScreenViewController.h"
+#import "CuisinesViewController.h"
+#import "MenuException.h"
+
+#import "DataManager.h"
+#import "Debug.h"
+
+#import "MainViewController.h"
 
 @interface MainViewController ()
 
@@ -24,6 +28,7 @@
 
 CLLocationManager *locationManager;
 MKUserLocation *userLocation;
+BOOL isLoaded = NO;
 
 @synthesize userName = _userName;
 @synthesize gTitle = _gTitle;
@@ -31,6 +36,8 @@ MKUserLocation *userLocation;
 @synthesize restaurantButtons = _restaurantButtons;
 @synthesize mapView = _mapView;
 @synthesize nameField = _nameField;
+@synthesize dataManager = _dataManager;
+@synthesize restsViewController = _restsViewController;
 
 - (MKUserLocation*) getCurrentLocation
 {
@@ -58,22 +65,83 @@ MKUserLocation *userLocation;
 
 - (void) loadData
 {
-    NSLog(@"Load data digital menu view controller");
+    isLoaded = false;
+    debug();
+    [NSThread sleepForTimeInterval:2];
     [dataManager load];
-    
-    if (nil == self.restaurantButtons) {
-        self.restaurantButtons = [dataManager houseIds];
-//        self.restaurantButtons = [[NSArray alloc] initWithObjects:@"John Donn", @"Cantina", @"McDonalds", @"KFC", nil];
-//        self.restaurantButtons = [[NSArray alloc] init];
-//        [self.restaurantButtons arrayByAddingObject:[[UIButton alloc] init]];
+//    if (nil == self.restaurantButtons) {
+//        self.restaurantButtons = [dataManager houseIds];
+//    }
+//    [self.restaurantsFrontList reloadAllComponents];
+    isLoaded = true;
+}
+
+- (void) showSplashScreen:(BOOL)animated
+{
+    debug();
+    SplashScreenViewController *splashViewController = [[SplashScreenViewController alloc] init];
+    splashViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    splashViewController.delegate = self;
+    [splashViewController.navigationItem setHidesBackButton:YES];
+//    [self.navigationController pushViewController:splashViewController animated:YES];
+    [self presentViewController:splashViewController animated:animated completion:nil];
+}
+
+- (void) dismissSplashScreen:(BOOL)animated
+{
+    debug();
+    [[self presentedViewController] dismissViewControllerAnimated:animated completion:nil];
+}
+
+- (void) showLoadingScreen:(BOOL)animated
+{
+    debug();
+    LoadingScreenViewController *loadingViewController = [[LoadingScreenViewController alloc] init];
+    loadingViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    loadingViewController.delegate = self;
+    [loadingViewController.navigationItem setHidesBackButton:YES];
+    [self presentViewController:loadingViewController animated:YES completion:nil];
+}
+
+- (void) showLoading:(BOOL)animated
+{
+    debug();
+    [self showLoadingScreen:animated];
+}
+
+- (void) dismissLoadingScreen:(BOOL)animated
+{
+    debug();
+    [[self presentedViewController] dismissViewControllerAnimated:animated completion:nil];
+    [self loadView];
+}
+
+- (void) loadView
+{
+    debug();
+    if (isLoaded == NO) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
+            [self loadData];
+        });
+        [self showSplashScreen:YES];
+    } else {
+        UITextView *textView = [[UITextView alloc] init];
+        textView.text = @"Main view";
+        [textView setFont:[UIFont boldSystemFontOfSize:20]];
+        [textView reloadInputViews];
+
+        self.restsViewController.view = [[UITableView alloc] init];
+        self.restsViewController.view.backgroundColor = [UIColor redColor];
+        UIView *mainView = [[UIView alloc] init];
+        self.view = mainView;
+        [self.view addSubview:self.restsViewController.view];
     }
-    [self.restaurantsFrontList reloadAllComponents];
 }
 
 - (void)viewDidLoad
 {
-    [self loadData];
-	// Do any additional setup after loading the view, typically from a nib.
+    debug();
+    [super viewDidLoad];
     self.mapView.showsUserLocation = YES;
     if (nil == locationManager) {
         locationManager = [[CLLocationManager alloc] init];
@@ -82,19 +150,36 @@ MKUserLocation *userLocation;
     locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
     locationManager.distanceFilter = 500;
     [locationManager startUpdatingLocation];
-    [super viewDidLoad];
 }
 
-- (void) loadView
+- (void) viewWillAppear:(BOOL)animated
 {
-    UIView *newView = [[UIView alloc] init];
-    UISearchBar *searchBar = [[UISearchBar alloc] init];
-    searchBar.text = @"поиск";
-    [newView addSubview:searchBar];
-    [newView addSubview:self.mapView];
-    self.view = newView;
-    [newView reloadInputViews];
+//    [self showLoadingScreen:YES];
+//    [NSThread sleepForTimeInterval:3];
+//    [self dismissLoadingScreen:YES];
 }
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    debug();
+    /*
+    while (true) {
+        [NSThread sleepForTimeInterval:1];
+        if (isDataLoaded) {
+            [self dismissLoadingScreen:animated];
+            NSLog(@"DATA LOADED");
+            break;
+        }
+    } 
+     */
+}
+
+- (BOOL) isDataLoaded
+{
+    NSLog(@"isDataLoaded %d", isLoaded);
+    return isLoaded;
+}
+
 
 - (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
@@ -103,7 +188,6 @@ MKUserLocation *userLocation;
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 /*

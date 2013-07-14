@@ -40,7 +40,7 @@
 		CEB738781776597F008B29A8 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB7386D1776597F008B29A8 /* SBJsonStreamWriterState.m */; };
 		CEB738791776597F008B29A8 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB7386F1776597F008B29A8 /* SBJsonWriter.m */; };
 		CEE865D7178CAC17004780AC /* SplashScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE865D6178CAC17004780AC /* SplashScreenViewController.m */; };
-		CEE865DA178CBAE3004780AC /* LoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE865D9178CBAE3004780AC /* LoadingViewController.m */; };
+		CEE865DA178CBAE3004780AC /* LoadingScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE865D9178CBAE3004780AC /* LoadingScreenViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,8 +101,11 @@
 		CEB7386F1776597F008B29A8 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		CEE865D5178CAC17004780AC /* SplashScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScreenViewController.h; sourceTree = "<group>"; };
 		CEE865D6178CAC17004780AC /* SplashScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashScreenViewController.m; sourceTree = "<group>"; };
-		CEE865D8178CBAE3004780AC /* LoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingViewController.h; sourceTree = "<group>"; };
-		CEE865D9178CBAE3004780AC /* LoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingViewController.m; sourceTree = "<group>"; };
+		CEE865D8178CBAE3004780AC /* LoadingScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingScreenViewController.h; sourceTree = "<group>"; };
+		CEE865D9178CBAE3004780AC /* LoadingScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingScreenViewController.m; sourceTree = "<group>"; };
+		CEF93BC91792F25C0006F8CB /* SplashScreenViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SplashScreenViewControllerDelegate.h; sourceTree = "<group>"; };
+		CEF93BCB179303D60006F8CB /* Debug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Debug.h; sourceTree = "<group>"; };
+		CEF93BCC179322BD0006F8CB /* LoadingScreenViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadingScreenViewControllerDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,8 +180,11 @@
 				CE71E4D2177A48AB0018C76B /* BasketViewController.m */,
 				CEE865D5178CAC17004780AC /* SplashScreenViewController.h */,
 				CEE865D6178CAC17004780AC /* SplashScreenViewController.m */,
-				CEE865D8178CBAE3004780AC /* LoadingViewController.h */,
-				CEE865D9178CBAE3004780AC /* LoadingViewController.m */,
+				CEE865D8178CBAE3004780AC /* LoadingScreenViewController.h */,
+				CEE865D9178CBAE3004780AC /* LoadingScreenViewController.m */,
+				CEF93BC91792F25C0006F8CB /* SplashScreenViewControllerDelegate.h */,
+				CEF93BCB179303D60006F8CB /* Debug.h */,
+				CEF93BCC179322BD0006F8CB /* LoadingScreenViewControllerDelegate.h */,
 			);
 			path = DigitalMenu;
 			sourceTree = "<group>";
@@ -324,7 +330,7 @@
 				CE71E4D0177A3B080018C76B /* DishesViewController.m in Sources */,
 				CE71E4D3177A48AB0018C76B /* BasketViewController.m in Sources */,
 				CEE865D7178CAC17004780AC /* SplashScreenViewController.m in Sources */,
-				CEE865DA178CBAE3004780AC /* LoadingViewController.m in Sources */,
+				CEE865DA178CBAE3004780AC /* LoadingScreenViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,10 +7,14 @@
 //
 
 #import "DataManager.h"
+#import "SplashScreenViewController.h"
+#import "SplashScreenViewControllerDelegate.h"
+#import "LoadingScreenViewControllerDelegate.h"
+
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-@interface MainViewController : UIViewController <UITextFieldDelegate, CLLocationManagerDelegate, UIPickerViewDelegate, UIPickerViewDataSource> {
+@interface MainViewController : UIViewController <UITextFieldDelegate, CLLocationManagerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, SplashScreenViewControllerDelegate, LoadingScreenViewControllerDelegate> {
     IBOutlet MKMapView *mapView;
     IBOutlet UITextField *nameField;
     IBOutlet UILabel *gTitle;
@@ -18,9 +22,8 @@
     IBOutlet UIPickerView *restaurantsFrontList;
     NSArray *restaurantButtons;
     DataManager *dataManager;
-    UIView *view;
+    UITableViewController *restsViewController;
 }
-@property (strong, nonatomic) UIView *view;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UILabel *gTitle;
@@ -28,6 +31,7 @@
 @property (weak, nonatomic) IBOutlet UIPickerView *restaurantsFrontList;
 @property (copy, nonatomic) NSArray *restaurantButtons;
 @property (weak, nonatomic) DataManager *dataManager;
+@property (strong, nonatomic) UITableViewController *restsViewController;
 - (IBAction)showLocation:(id)sender;
 - (IBAction)showNearestHouse:(id)sender;
 

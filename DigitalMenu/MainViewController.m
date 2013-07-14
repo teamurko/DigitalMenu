@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Stanislav Pak. All rights reserved.
 //
 
-#import "DigitalMenuViewController.h"
+#import "MainViewController.h"
 #import "MenuException.h"
 #import "CuisinesViewController.h"
 #import "DataManager.h"
@@ -14,13 +14,13 @@
 #import <CoreLocation/CoreLocation.h>
 
 
-@interface DigitalMenuViewController ()
+@interface MainViewController ()
 
 - (MKUserLocation*) getCurrentLocation;
 
 @end
 
-@implementation DigitalMenuViewController
+@implementation MainViewController
 
 CLLocationManager *locationManager;
 MKUserLocation *userLocation;
@@ -83,6 +83,17 @@ MKUserLocation *userLocation;
     locationManager.distanceFilter = 500;
     [locationManager startUpdatingLocation];
     [super viewDidLoad];
+}
+
+- (void) loadView
+{
+    UIView *newView = [[UIView alloc] init];
+    UISearchBar *searchBar = [[UISearchBar alloc] init];
+    searchBar.text = @"поиск";
+    [newView addSubview:searchBar];
+    [newView addSubview:self.mapView];
+    self.view = newView;
+    [newView reloadInputViews];
 }
 
 - (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations

@@ -26,7 +26,7 @@
 		CEB322E7176E0E6400F46463 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEB322E6176E0E6400F46463 /* Default@2x.png */; };
 		CEB322E9176E0E6400F46463 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEB322E8176E0E6400F46463 /* Default-568h@2x.png */; };
 		CEB322EC176E0E6400F46463 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEB322EA176E0E6400F46463 /* MainStoryboard.storyboard */; };
-		CEB322EF176E0E6400F46463 /* DigitalMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB322EE176E0E6400F46463 /* DigitalMenuViewController.m */; };
+		CEB322EF176E0E6400F46463 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB322EE176E0E6400F46463 /* MainViewController.m */; };
 		CEB322F6176E321A00F46463 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB322F5176E321A00F46463 /* MapKit.framework */; };
 		CEB322F8176E5D3A00F46463 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB322F7176E5D3A00F46463 /* CoreLocation.framework */; };
 		CEB738701776597F008B29A8 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB7385D1776597F008B29A8 /* SBJsonParser.m */; };
@@ -39,6 +39,8 @@
 		CEB738771776597F008B29A8 /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB7386B1776597F008B29A8 /* SBJsonStreamWriterAccumulator.m */; };
 		CEB738781776597F008B29A8 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB7386D1776597F008B29A8 /* SBJsonStreamWriterState.m */; };
 		CEB738791776597F008B29A8 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB7386F1776597F008B29A8 /* SBJsonWriter.m */; };
+		CEE865D7178CAC17004780AC /* SplashScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE865D6178CAC17004780AC /* SplashScreenViewController.m */; };
+		CEE865DA178CBAE3004780AC /* LoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE865D9178CBAE3004780AC /* LoadingViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,8 +74,8 @@
 		CEB322E6176E0E6400F46463 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		CEB322E8176E0E6400F46463 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		CEB322EB176E0E6400F46463 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		CEB322ED176E0E6400F46463 /* DigitalMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DigitalMenuViewController.h; sourceTree = "<group>"; };
-		CEB322EE176E0E6400F46463 /* DigitalMenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DigitalMenuViewController.m; sourceTree = "<group>"; };
+		CEB322ED176E0E6400F46463 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		CEB322EE176E0E6400F46463 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		CEB322F5176E321A00F46463 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		CEB322F7176E5D3A00F46463 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CEB7385B1776597F008B29A8 /* SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson.h; sourceTree = "<group>"; };
@@ -97,6 +99,10 @@
 		CEB7386D1776597F008B29A8 /* SBJsonStreamWriterState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterState.m; sourceTree = "<group>"; };
 		CEB7386E1776597F008B29A8 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		CEB7386F1776597F008B29A8 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		CEE865D5178CAC17004780AC /* SplashScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScreenViewController.h; sourceTree = "<group>"; };
+		CEE865D6178CAC17004780AC /* SplashScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashScreenViewController.m; sourceTree = "<group>"; };
+		CEE865D8178CBAE3004780AC /* LoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingViewController.h; sourceTree = "<group>"; };
+		CEE865D9178CBAE3004780AC /* LoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,8 +158,8 @@
 				CEB322E1176E0E6400F46463 /* DigitalMenuAppDelegate.h */,
 				CEB322E2176E0E6400F46463 /* DigitalMenuAppDelegate.m */,
 				CEB322EA176E0E6400F46463 /* MainStoryboard.storyboard */,
-				CEB322ED176E0E6400F46463 /* DigitalMenuViewController.h */,
-				CEB322EE176E0E6400F46463 /* DigitalMenuViewController.m */,
+				CEB322ED176E0E6400F46463 /* MainViewController.h */,
+				CEB322EE176E0E6400F46463 /* MainViewController.m */,
 				CEB322D9176E0E6400F46463 /* Supporting Files */,
 				CE75BFBD176F974D00E17482 /* MenuException.h */,
 				CE75BFBE176F974D00E17482 /* MenuException.m */,
@@ -169,6 +175,10 @@
 				CE71E4CF177A3B080018C76B /* DishesViewController.m */,
 				CE71E4D1177A48AB0018C76B /* BasketViewController.h */,
 				CE71E4D2177A48AB0018C76B /* BasketViewController.m */,
+				CEE865D5178CAC17004780AC /* SplashScreenViewController.h */,
+				CEE865D6178CAC17004780AC /* SplashScreenViewController.m */,
+				CEE865D8178CBAE3004780AC /* LoadingViewController.h */,
+				CEE865D9178CBAE3004780AC /* LoadingViewController.m */,
 			);
 			path = DigitalMenu;
 			sourceTree = "<group>";
@@ -295,7 +305,7 @@
 			files = (
 				CEB322DF176E0E6400F46463 /* main.m in Sources */,
 				CEB322E3176E0E6400F46463 /* DigitalMenuAppDelegate.m in Sources */,
-				CEB322EF176E0E6400F46463 /* DigitalMenuViewController.m in Sources */,
+				CEB322EF176E0E6400F46463 /* MainViewController.m in Sources */,
 				CE75BFBF176F974D00E17482 /* MenuException.m in Sources */,
 				CE1A7889177262E300864D25 /* DataManager.m in Sources */,
 				CEB738701776597F008B29A8 /* SBJsonParser.m in Sources */,
@@ -313,6 +323,8 @@
 				CE58AE761779158800F01173 /* DishCategoriesViewController.m in Sources */,
 				CE71E4D0177A3B080018C76B /* DishesViewController.m in Sources */,
 				CE71E4D3177A48AB0018C76B /* BasketViewController.m in Sources */,
+				CEE865D7178CAC17004780AC /* SplashScreenViewController.m in Sources */,
+				CEE865DA178CBAE3004780AC /* LoadingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

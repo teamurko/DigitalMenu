@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-@interface DigitalMenuViewController : UIViewController <UITextFieldDelegate, CLLocationManagerDelegate, UIPickerViewDelegate, UIPickerViewDataSource> {
+@interface MainViewController : UIViewController <UITextFieldDelegate, CLLocationManagerDelegate, UIPickerViewDelegate, UIPickerViewDataSource> {
     IBOutlet MKMapView *mapView;
     IBOutlet UITextField *nameField;
     IBOutlet UILabel *gTitle;
@@ -18,7 +18,9 @@
     IBOutlet UIPickerView *restaurantsFrontList;
     NSArray *restaurantButtons;
     DataManager *dataManager;
+    UIView *view;
 }
+@property (strong, nonatomic) UIView *view;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UILabel *gTitle;

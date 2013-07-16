@@ -7,15 +7,19 @@
 //
 
 #import "DataManager.h"
-#import "json/SBJsonParser.h"
+#import "Json/SBJsonParser.h"
+#import "Debug.h"
 
 @implementation DataManager
 
 const NSString *SERVER = @"http://ec2-54-229-72-121.eu-west-1.compute.amazonaws.com:8080";
+const NSString *URL = @"/serverServices/";
 
-@synthesize data = _data;
+@synthesize dataDict = _dataDict;
 
--(void) load {
+-(void) load
+{
+    debug();
     /*
     NSBundle *bundle = [NSBundle mainBundle];
     NSString *dataPath = [bundle pathForResource:@"data.json" ofType:nil inDirectory:nil];
@@ -44,11 +48,29 @@ const NSString *SERVER = @"http://ec2-54-229-72-121.eu-west-1.compute.amazonaws.
         NSLog(@"key %@", key);
         [tempData setValue:rest forKey:key];
     }
-    if (self.data == nil) {
-        self.data = tempData;
+    if (self.dataDict == nil) {
+        self.dataDict = tempData;
     }
 
-    NSLog(@"DATA2 %@", self.data);
+    NSLog(@"DATA2 %@", self.dataDict);
+}
+
+-(NSArray*) restaurantsByLocation:(double)longitude andLatitude:(double)latitude
+{
+    NSString *string_url = [NSString stringWithFormat:@"%@%@/find?longitude=%f&latitude=%f",
+                            SERVER, URL, longitude, latitude];
+    NSURL *url = [[NSURL alloc] initWithString:string_url];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url
+                                                cachePolicy:NSURLRequestReturnCacheDataElseLoad
+                                            timeoutInterval:5];
+    NSURLResponse *response;
+    NSError *error;
+    NSData *responseData = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:&error];
+    NSString *data = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+    SBJsonParser *parser = [[SBJsonParser alloc] init];
+    NSArray *result = [[parser objectWithString:data] objectForKey:@"restaurant"];
+    NSLog(@"%@", result);
+    return result;
 }
 
 -(NSArray*) houseIds {
@@ -74,26 +96,26 @@ const NSString *SERVER = @"http://ec2-54-229-72-121.eu-west-1.compute.amazonaws.
         [result addObject:[[d objectForKey:@"id"] copy]];
     }
     NSLog(@"result %@", result);
-    NSLog(@"keys %@", self.data.allKeys);
+    NSLog(@"keys %@", self.dataDict.allKeys);
     return result;
 }
 
 -(NSDictionary*) houseInfo:(NSString*) houseId {
-    return [self.data objectForKey:houseId];
+    return [self.dataDict objectForKey:houseId];
 }
 
 
 -(NSArray*) cuisines:(NSString*)houseId {
-    return [[[self.data objectForKey:houseId] objectForKey:@"cuisines"] allKeys];
+    return [[[self.dataDict objectForKey:houseId] objectForKey:@"cuisines"] allKeys];
 }
 
 -(NSArray*) dishesCategories:(NSString *)houseId secondValue:(NSString *)cuisineId {
-    return [[[[self.data objectForKey:houseId] objectForKey:@"cuisines"] objectForKey:cuisineId] allKeys];
+    return [[[[self.dataDict objectForKey:houseId] objectForKey:@"cuisines"] objectForKey:cuisineId] allKeys];
 }
 
 -(NSDictionary*) dishes:(NSString*)houseId andCuisineId:(NSString*)cuisineId andDishesCategory:(NSString*)dishesCategory
 {
-    NSDictionary *dishesCategories = [[[self.data objectForKey:houseId] objectForKey:@"cuisines"] objectForKey:cuisineId];
+    NSDictionary *dishesCategories = [[[self.dataDict objectForKey:houseId] objectForKey:@"cuisines"] objectForKey:cuisineId];
     return [dishesCategories objectForKey:dishesCategory];
 }
 

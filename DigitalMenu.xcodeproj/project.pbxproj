@@ -14,7 +14,7 @@
 		CE71E4CD177A37CC0018C76B /* spring.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CE71E4CC177A37CC0018C76B /* spring.jpg */; };
 		CE71E4D0177A3B080018C76B /* DishesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE71E4CF177A3B080018C76B /* DishesViewController.m */; };
 		CE71E4D3177A48AB0018C76B /* BasketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE71E4D2177A48AB0018C76B /* BasketViewController.m */; };
-		CE75BFBF176F974D00E17482 /* MenuException.m in Sources */ = {isa = PBXBuildFile; fileRef = CE75BFBE176F974D00E17482 /* MenuException.m */; };
+		CE75BFBF176F974D00E17482 /* RestException.m in Sources */ = {isa = PBXBuildFile; fileRef = CE75BFBE176F974D00E17482 /* RestException.m */; };
 		CEAA59A8177725620027B164 /* FoodPlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA59A7177725620027B164 /* FoodPlacesViewController.m */; };
 		CEB322D3176E0E6400F46463 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB322D2176E0E6400F46463 /* UIKit.framework */; };
 		CEB322D5176E0E6400F46463 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB322D4176E0E6400F46463 /* Foundation.framework */; };
@@ -56,8 +56,8 @@
 		CE71E4CF177A3B080018C76B /* DishesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DishesViewController.m; sourceTree = "<group>"; };
 		CE71E4D1177A48AB0018C76B /* BasketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasketViewController.h; sourceTree = "<group>"; };
 		CE71E4D2177A48AB0018C76B /* BasketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasketViewController.m; sourceTree = "<group>"; };
-		CE75BFBD176F974D00E17482 /* MenuException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuException.h; sourceTree = "<group>"; };
-		CE75BFBE176F974D00E17482 /* MenuException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuException.m; sourceTree = "<group>"; };
+		CE75BFBD176F974D00E17482 /* RestException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestException.h; sourceTree = "<group>"; };
+		CE75BFBE176F974D00E17482 /* RestException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestException.m; sourceTree = "<group>"; };
 		CEAA59A6177725620027B164 /* FoodPlacesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodPlacesViewController.h; sourceTree = "<group>"; };
 		CEAA59A7177725620027B164 /* FoodPlacesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodPlacesViewController.m; sourceTree = "<group>"; };
 		CEB322CF176E0E6400F46463 /* DigitalMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DigitalMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,35 +156,17 @@
 		CEB322D8176E0E6400F46463 /* DigitalMenu */ = {
 			isa = PBXGroup;
 			children = (
+				CEF936FF1795C1700045178B /* Delegates */,
+				CEF936FE1795C1130045178B /* Util */,
+				CEF936FD1795C1000045178B /* DataSource */,
+				CEF936FC1795C0BD0045178B /* Controllers */,
+				CEF936FB1795C0160045178B /* Views */,
 				CEC9D49817775D0900D4EF79 /* data */,
-				CEB7385A1776597F008B29A8 /* json */,
+				CEB7385A1776597F008B29A8 /* Json */,
 				CEB322E1176E0E6400F46463 /* DigitalMenuAppDelegate.h */,
 				CEB322E2176E0E6400F46463 /* DigitalMenuAppDelegate.m */,
 				CEB322EA176E0E6400F46463 /* MainStoryboard.storyboard */,
-				CEB322ED176E0E6400F46463 /* MainViewController.h */,
-				CEB322EE176E0E6400F46463 /* MainViewController.m */,
 				CEB322D9176E0E6400F46463 /* Supporting Files */,
-				CE75BFBD176F974D00E17482 /* MenuException.h */,
-				CE75BFBE176F974D00E17482 /* MenuException.m */,
-				CE1A7887177262E300864D25 /* DataManager.h */,
-				CE1A7888177262E300864D25 /* DataManager.m */,
-				CEAA59A6177725620027B164 /* FoodPlacesViewController.h */,
-				CEAA59A7177725620027B164 /* FoodPlacesViewController.m */,
-				CE58AE711779019500F01173 /* CuisinesViewController.h */,
-				CE58AE721779019500F01173 /* CuisinesViewController.m */,
-				CE58AE741779158800F01173 /* DishCategoriesViewController.h */,
-				CE58AE751779158800F01173 /* DishCategoriesViewController.m */,
-				CE71E4CE177A3B080018C76B /* DishesViewController.h */,
-				CE71E4CF177A3B080018C76B /* DishesViewController.m */,
-				CE71E4D1177A48AB0018C76B /* BasketViewController.h */,
-				CE71E4D2177A48AB0018C76B /* BasketViewController.m */,
-				CEE865D5178CAC17004780AC /* SplashScreenViewController.h */,
-				CEE865D6178CAC17004780AC /* SplashScreenViewController.m */,
-				CEE865D8178CBAE3004780AC /* LoadingScreenViewController.h */,
-				CEE865D9178CBAE3004780AC /* LoadingScreenViewController.m */,
-				CEF93BC91792F25C0006F8CB /* SplashScreenViewControllerDelegate.h */,
-				CEF93BCB179303D60006F8CB /* Debug.h */,
-				CEF93BCC179322BD0006F8CB /* LoadingScreenViewControllerDelegate.h */,
 			);
 			path = DigitalMenu;
 			sourceTree = "<group>";
@@ -204,7 +186,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		CEB7385A1776597F008B29A8 /* json */ = {
+		CEB7385A1776597F008B29A8 /* Json */ = {
 			isa = PBXGroup;
 			children = (
 				CEB7385B1776597F008B29A8 /* SBJson.h */,
@@ -229,6 +211,7 @@
 				CEB7386E1776597F008B29A8 /* SBJsonWriter.h */,
 				CEB7386F1776597F008B29A8 /* SBJsonWriter.m */,
 			);
+			name = Json;
 			path = json;
 			sourceTree = "<group>";
 		};
@@ -238,6 +221,64 @@
 				CE4F0B891773A961003A5F92 /* data.json */,
 			);
 			name = data;
+			sourceTree = "<group>";
+		};
+		CEF936FB1795C0160045178B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		CEF936FC1795C0BD0045178B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CEAA59A7177725620027B164 /* FoodPlacesViewController.m */,
+				CEAA59A6177725620027B164 /* FoodPlacesViewController.h */,
+				CEE865D9178CBAE3004780AC /* LoadingScreenViewController.m */,
+				CEE865D8178CBAE3004780AC /* LoadingScreenViewController.h */,
+				CEE865D5178CAC17004780AC /* SplashScreenViewController.h */,
+				CEE865D6178CAC17004780AC /* SplashScreenViewController.m */,
+				CE58AE711779019500F01173 /* CuisinesViewController.h */,
+				CE58AE721779019500F01173 /* CuisinesViewController.m */,
+				CE71E4CE177A3B080018C76B /* DishesViewController.h */,
+				CE71E4CF177A3B080018C76B /* DishesViewController.m */,
+				CE71E4D1177A48AB0018C76B /* BasketViewController.h */,
+				CE71E4D2177A48AB0018C76B /* BasketViewController.m */,
+				CE58AE741779158800F01173 /* DishCategoriesViewController.h */,
+				CE58AE751779158800F01173 /* DishCategoriesViewController.m */,
+				CEB322ED176E0E6400F46463 /* MainViewController.h */,
+				CEB322EE176E0E6400F46463 /* MainViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		CEF936FD1795C1000045178B /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				CE1A7887177262E300864D25 /* DataManager.h */,
+				CE1A7888177262E300864D25 /* DataManager.m */,
+			);
+			name = DataSource;
+			sourceTree = "<group>";
+		};
+		CEF936FE1795C1130045178B /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				CEF93BCB179303D60006F8CB /* Debug.h */,
+				CE75BFBD176F974D00E17482 /* RestException.h */,
+				CE75BFBE176F974D00E17482 /* RestException.m */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
+		CEF936FF1795C1700045178B /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				CEF93BC91792F25C0006F8CB /* SplashScreenViewControllerDelegate.h */,
+				CEF93BCC179322BD0006F8CB /* LoadingScreenViewControllerDelegate.h */,
+			);
+			name = Delegates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,7 +353,7 @@
 				CEB322DF176E0E6400F46463 /* main.m in Sources */,
 				CEB322E3176E0E6400F46463 /* DigitalMenuAppDelegate.m in Sources */,
 				CEB322EF176E0E6400F46463 /* MainViewController.m in Sources */,
-				CE75BFBF176F974D00E17482 /* MenuException.m in Sources */,
+				CE75BFBF176F974D00E17482 /* RestException.m in Sources */,
 				CE1A7889177262E300864D25 /* DataManager.m in Sources */,
 				CEB738701776597F008B29A8 /* SBJsonParser.m in Sources */,
 				CEB738711776597F008B29A8 /* SBJsonStreamParser.m in Sources */,

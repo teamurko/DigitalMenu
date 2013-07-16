@@ -6,19 +6,16 @@
 //  Copyright (c) 2013 Stanislav Pak. All rights reserved.
 //
 
-#import <CoreLocation/CoreLocation.h>
 #import <UIKit/UIKit.h>
 
 #import "LoadingScreenViewControllerDelegate.h"
 
-@interface LoadingScreenViewController : UIViewController <CLLocationManagerDelegate>
+@interface LoadingScreenViewController : UIViewController
 {
-    UITextView *view;
+    UIView *view;
 }
 
-@property (strong, nonatomic) UITextView *view;
+@property (strong, nonatomic) UIView *view;
 @property (assign, nonatomic) id<LoadingScreenViewControllerDelegate> delegate;
-
-- (CLLocation*) getCurrentLocation;
 
 @end

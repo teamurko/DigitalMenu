@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Stanislav Pak. All rights reserved.
 //
 
-#import <CoreLocation/CoreLocation.h>
+#import <QuartzCore/QuartzCore.h>
 
 #import "LoadingScreenViewController.h"
 #import "MainViewController.h"
@@ -50,26 +50,21 @@ bool locationFound = NO;
 
 - (void) loadView
 {
-    debug();
-    UITextView *textView = [[UITextView alloc] init];
-    textView.text = @"Loading nearest restaurants..";
-    [textView setFont:[UIFont boldSystemFontOfSize:17]];
-    [textView setTextColor:[UIColor blackColor]];
+    UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(10, 190, 300, 40)];
+    textView.text = @"Определение вашего местоположения..";
+    [textView setFont:[UIFont boldSystemFontOfSize:14]];
+    [textView setTextColor:[UIColor whiteColor]];
     [textView setTextAlignment:NSTextAlignmentJustified];
-    [textView setFrame:CGRectMake(10, 80, 100, 120)]; //FIXME does not work
+    [textView setBackgroundColor:[UIColor blackColor]];
+    textView.layer.borderWidth = 3.0f;
     [textView reloadInputViews];
-    self.view = textView;
+    self.view = [[UIView alloc] init];
+    [self.view addSubview:textView];
+    [self.view clipsToBounds];
 }
 
 - (void) viewDidAppear:(BOOL)animated
 {
-    debug();
-    if (nil == locationManager) {
-        locationManager = [[CLLocationManager alloc] init];
-    }
-    locationManager.delegate = self;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [locationManager startUpdatingLocation];
     while ([self.delegate isDataLoaded] == NO) {
         [NSThread sleepForTimeInterval:0.1];
     }
@@ -85,27 +80,27 @@ bool locationFound = NO;
 }
 
 
-#pragma mark - CLLocationManagerDelegate
-
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
-{
-    NSLog(@"DID FAIL WITH ERROR: %@", error);
-    UIAlertView *errorAlert = [[UIAlertView alloc]
-                               initWithTitle:@"Error" message:@"Failed to Get Your Location" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [errorAlert show];
-    locationFound = NO;
-}
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
-{
-    NSLog(@"DID UPDATE LOCATION: %@", newLocation);
-    location = newLocation;
-    if (locationFound == NO) {
-        locationFound = YES;
-        MainViewController *mainController = [[MainViewController alloc] init];
-        [mainController.navigationItem setHidesBackButton:YES];
-        [self.navigationController pushViewController:mainController animated:YES];
-    }
-}
+//#pragma mark - CLLocationManagerDelegate
+//
+//- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+//{
+//    NSLog(@"DID FAIL WITH ERROR: %@", error);
+//    UIAlertView *errorAlert = [[UIAlertView alloc]
+//                               initWithTitle:@"Error" message:@"Failed to Get Your Location" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//    [errorAlert show];
+//    locationFound = NO;
+//}
+//
+//- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+//{
+//    NSLog(@"DID UPDATE LOCATION: %@", newLocation);
+//    location = newLocation;
+//    if (locationFound == NO) {
+//        locationFound = YES;
+//        MainViewController *mainController = [[MainViewController alloc] init];
+//        [mainController.navigationItem setHidesBackButton:YES];
+//        [self.navigationController pushViewController:mainController animated:YES];
+//    }
+//}
 
 @end

@@ -29,24 +29,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    debug();
 }
 
 - (void) viewDidAppear:(BOOL)animated
 {
-    debug();
     [NSThread sleepForTimeInterval:0.2];
     [self.delegate dismissSplashScreen:animated];
 }
 
 - (void) viewWillDisappear:(BOOL)animated
 {
-    debug();
 }
 
 - (void) viewDidDisappear:(BOOL)animated
 {
-    debug();
     [self.delegate showLoading:animated];
 }
 
@@ -57,7 +53,6 @@
 
 - (void) loadView
 {
-    debug();
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"spring.jpg"]];
     self.view = imageView;
     [imageView reloadInputViews];

@@ -7,11 +7,12 @@
 //
 
 #import <CoreLocation/CoreLocation.h>
+#import <QuartzCore/QuartzCore.h>
 
 #import "SplashScreenViewController.h"
 #import "LoadingScreenViewController.h"
 #import "CuisinesViewController.h"
-#import "MenuException.h"
+#import "RestException.h"
 
 #import "DataManager.h"
 #import "Debug.h"
@@ -29,73 +30,65 @@
 CLLocationManager *locationManager;
 MKUserLocation *userLocation;
 BOOL isLoaded = NO;
+BOOL didStartLoading = NO;
+BOOL didGuess = NO;
 
-@synthesize userName = _userName;
-@synthesize gTitle = _gTitle;
-@synthesize restaurantsFrontList = _restaurantsFrontList;
-@synthesize restaurantButtons = _restaurantButtons;
-@synthesize mapView = _mapView;
-@synthesize nameField = _nameField;
 @synthesize dataManager = _dataManager;
-@synthesize restsViewController = _restsViewController;
+@synthesize restaurantsView = _restaurantsView;
 
 - (MKUserLocation*) getCurrentLocation
 {
-    NSLog(@"Get current loc");
-    if (nil == userLocation) {
-        @try {
-            userLocation = self.mapView.annotations[0];
-        }
-        @catch (NSException *exception) {
-            NSException *ex = [MenuException
-                           exceptionWithName:@"Cannot init user location"
-                           reason:@"No map annotations"
-                           userInfo:nil];
-            @throw ex;
-        }
-        @finally {
-        }
-        userLocation.title = [@"You are here:" stringByAppendingFormat:
-                            @"(%.4f, %.4f)",
-                            userLocation.coordinate.latitude,
-                            userLocation.coordinate.longitude];
-    }
-    return userLocation;
+//    NSLog(@"Get current loc");
+//    if (nil == userLocation) {
+//        @try {
+//            userLocation = self.mapView.annotations[0];
+//        }
+//        @catch (NSException *exception) {
+//            NSException *ex = [MenuException
+//                           exceptionWithName:@"Cannot init user location"
+//                           reason:@"No map annotations"
+//                           userInfo:nil];
+//            @throw ex;
+//        }
+//        @finally {
+//        }
+//        userLocation.title = [@"You are here:" stringByAppendingFormat:
+//                            @"(%.4f, %.4f)",
+//                            userLocation.coordinate.latitude,
+//                            userLocation.coordinate.longitude];
+//    }
+//    return userLocation;
 }
 
 - (void) loadData
 {
-    isLoaded = false;
     debug();
+    isLoaded = false;
     [NSThread sleepForTimeInterval:2];
-    [dataManager load];
-//    if (nil == self.restaurantButtons) {
-//        self.restaurantButtons = [dataManager houseIds];
-//    }
-//    [self.restaurantsFrontList reloadAllComponents];
+    if (!self.dataManager) {
+        self.dataManager = [[DataManager alloc] init];
+    }
+    [self.dataManager load];
+    [self.dataManager restaurantsByLocation:37.5843 andLatitude:55.7475];
     isLoaded = true;
 }
 
 - (void) showSplashScreen:(BOOL)animated
 {
-    debug();
     SplashScreenViewController *splashViewController = [[SplashScreenViewController alloc] init];
     splashViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     splashViewController.delegate = self;
     [splashViewController.navigationItem setHidesBackButton:YES];
-//    [self.navigationController pushViewController:splashViewController animated:YES];
     [self presentViewController:splashViewController animated:animated completion:nil];
 }
 
 - (void) dismissSplashScreen:(BOOL)animated
 {
-    debug();
     [[self presentedViewController] dismissViewControllerAnimated:animated completion:nil];
 }
 
 - (void) showLoadingScreen:(BOOL)animated
 {
-    debug();
     LoadingScreenViewController *loadingViewController = [[LoadingScreenViewController alloc] init];
     loadingViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     loadingViewController.delegate = self;
@@ -105,78 +98,92 @@ BOOL isLoaded = NO;
 
 - (void) showLoading:(BOOL)animated
 {
-    debug();
     [self showLoadingScreen:animated];
 }
 
 - (void) dismissLoadingScreen:(BOOL)animated
 {
-    debug();
     [[self presentedViewController] dismissViewControllerAnimated:animated completion:nil];
     [self loadView];
 }
 
+- (void) addGuessView
+{
+    UIView *guessView = [[UIView alloc] initWithFrame:CGRectMake(20, 120, 280, 140)];
+    guessView.layer.borderWidth = 1.0f;
+    
+    UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, 240, 40)];
+    textLabel.text = @"    Вы находитесь в ресторане X?";
+    [textLabel setFont:[UIFont boldSystemFontOfSize:12]];
+    textLabel.layer.borderWidth = 1.0f;
+    
+    UIButton *yesButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 70, 80, 40)];
+    [yesButton setBackgroundColor:[UIColor blueColor]];
+    [yesButton setTitle:@"YES" forState:UIControlStateNormal];
+    [yesButton setTitle:@"NO" forState:UIControlStateSelected];
+    yesButton.userInteractionEnabled = YES;
+    yesButton.layer.borderWidth = 2.0f;
+    
+    [guessView addSubview:textLabel];
+    [guessView addSubview:yesButton];
+    
+    [self.view addSubview:guessView];
+}
+
 - (void) loadView
 {
-    debug();
-    if (isLoaded == NO) {
+    if (!didStartLoading && !isLoaded) {
+        didStartLoading = YES;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
             [self loadData];
         });
         [self showSplashScreen:YES];
-    } else {
-        UITextView *textView = [[UITextView alloc] init];
-        textView.text = @"Main view";
-        [textView setFont:[UIFont boldSystemFontOfSize:20]];
-        [textView reloadInputViews];
-
-        self.restsViewController.view = [[UITableView alloc] init];
-        self.restsViewController.view.backgroundColor = [UIColor redColor];
+    } else if (isLoaded) {
         UIView *mainView = [[UIView alloc] init];
+        [mainView setBackgroundColor:[UIColor whiteColor]];
         self.view = mainView;
-        [self.view addSubview:self.restsViewController.view];
+
+        self.restaurantsView = [[UITableView alloc] initWithFrame:CGRectMake(10, 150, 300, 250)];
+        self.restaurantsView.layer.borderWidth = 1.0f;
+        [self.restaurantsView setHidden:YES];
+        
+        [self.view addSubview:self.restaurantsView];
+        
+        
+        UILabel *restaurantsLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 130, 300, 20)];
+        restaurantsLabel.text = @"  Ближайшие рестораны";
+        restaurantsLabel.layer.borderWidth = 1.0f;
+        [restaurantsLabel setHidden:YES];
+        [self.view addSubview:restaurantsLabel];
+        
+        [self addGuessView];
+        self.view.clipsToBounds = YES;
     }
 }
 
 - (void)viewDidLoad
 {
-    debug();
     [super viewDidLoad];
-    self.mapView.showsUserLocation = YES;
-    if (nil == locationManager) {
-        locationManager = [[CLLocationManager alloc] init];
-    }
-    [locationManager setDelegate:self];
-    locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
-    locationManager.distanceFilter = 500;
-    [locationManager startUpdatingLocation];
+//    self.mapView.showsUserLocation = YES;
+//    if (nil == locationManager) {
+//        locationManager = [[CLLocationManager alloc] init];
+//    }
+//    [locationManager setDelegate:self];
+//    locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
+//    locationManager.distanceFilter = 500;
+//    [locationManager startUpdatingLocation];
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
-//    [self showLoadingScreen:YES];
-//    [NSThread sleepForTimeInterval:3];
-//    [self dismissLoadingScreen:YES];
 }
 
 - (void) viewDidAppear:(BOOL)animated
 {
-    debug();
-    /*
-    while (true) {
-        [NSThread sleepForTimeInterval:1];
-        if (isDataLoaded) {
-            [self dismissLoadingScreen:animated];
-            NSLog(@"DATA LOADED");
-            break;
-        }
-    } 
-     */
 }
 
 - (BOOL) isDataLoaded
 {
-    NSLog(@"isDataLoaded %d", isLoaded);
     return isLoaded;
 }
 
@@ -223,29 +230,6 @@ BOOL isLoaded = NO;
     NSLog(@"location %@", location);
     NSLog(@"Coordinates: %+.6f %+.6f\n", location.coordinate.latitude, location.coordinate.longitude);
      */
-}
-
-- (IBAction)showNearestHouse:(id)sender {
-    // implement nearest house find
-    NSString *nearestHouseId = @"kfc";
-    CuisinesViewController *viewController = [[CuisinesViewController alloc] initWithHouseId:nearestHouseId];
-    [self.navigationController pushViewController:viewController animated:YES];
-}
-
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    return 1;
-}
-
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return [self.restaurantButtons count];
-}
-
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return [self.restaurantButtons objectAtIndex:row];
-}
-
--  (void)selectRow:(NSInteger)row inComponent:(NSInteger)component animated: (BOOL) animated {
-    NSLog(@"Get row %d", row);
 }
 
 @end

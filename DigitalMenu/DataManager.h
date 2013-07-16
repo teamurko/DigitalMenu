@@ -9,12 +9,15 @@
 #import <Foundation/Foundation.h>
 
 @interface DataManager : NSObject {
-    NSMutableDictionary* data;
+    NSMutableDictionary* dataDict;
 }
 
-@property (copy, nonatomic) NSMutableDictionary* data;
+@property (strong, nonatomic) NSMutableDictionary* dataDict;
 
 -(void) load;
+-(NSArray*) restaurantsByLocation: (double)longitude andLatitude:(double)latitude;
+
+
 -(NSArray*) houseIds;
 -(NSDictionary*) houseInfo:(NSString*)houseId;
 -(NSArray*) cuisines:(NSString*)houseId;

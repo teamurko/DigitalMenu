@@ -41,24 +41,25 @@ const NSString *URL = @"/serverServices/";
     SBJsonParser *parser = [[SBJsonParser alloc] init];
     NSDictionary *rests = [[parser objectWithString:data] objectForKey:@"restaurant"];
     NSMutableDictionary *tempData = [[NSMutableDictionary alloc] init];
-    NSLog(@"rests %@", rests);
+//    NSLog(@"rests %@", rests);
 
     for (NSDictionary *rest in rests) {
         NSString *key = [rest objectForKey:@"id"];
-        NSLog(@"key %@", key);
+//        NSLog(@"key %@", key);
         [tempData setValue:rest forKey:key];
     }
     if (self.dataDict == nil) {
         self.dataDict = tempData;
     }
 
-    NSLog(@"DATA2 %@", self.dataDict);
+//    NSLog(@"DATA2 %@", self.dataDict);
 }
 
--(NSArray*) restaurantsByLocation:(double)longitude andLatitude:(double)latitude
+-(NSArray*) restaurantsByLocation:(CLLocation*)location
 {
+
     NSString *string_url = [NSString stringWithFormat:@"%@%@/find?longitude=%f&latitude=%f",
-                            SERVER, URL, longitude, latitude];
+                            SERVER, URL, location.coordinate.longitude, location.coordinate.latitude];
     NSURL *url = [[NSURL alloc] initWithString:string_url];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url
                                                 cachePolicy:NSURLRequestReturnCacheDataElseLoad
@@ -69,7 +70,7 @@ const NSString *URL = @"/serverServices/";
     NSString *data = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     SBJsonParser *parser = [[SBJsonParser alloc] init];
     NSArray *result = [[parser objectWithString:data] objectForKey:@"restaurant"];
-    NSLog(@"%@", result);
+//    NSLog(@"%@", result);
     return result;
 }
 

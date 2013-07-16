@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface DataManager : NSObject {
     NSMutableDictionary* dataDict;
@@ -15,7 +16,7 @@
 @property (strong, nonatomic) NSMutableDictionary* dataDict;
 
 -(void) load;
--(NSArray*) restaurantsByLocation: (double)longitude andLatitude:(double)latitude;
+-(NSArray*) restaurantsByLocation: (CLLocation*) location;
 
 
 -(NSArray*) houseIds;

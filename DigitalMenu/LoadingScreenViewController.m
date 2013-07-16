@@ -9,7 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "LoadingScreenViewController.h"
-#import "MainViewController.h"
+#import "PickRestaurantViewController.h"
 #import "Debug.h"
 
 @interface LoadingScreenViewController ()

@@ -10,19 +10,10 @@
 #import <CoreLocation/CoreLocation.h>
 
 @interface DataManager : NSObject {
-    NSMutableDictionary* dataDict;
 }
 
-@property (strong, nonatomic) NSMutableDictionary* dataDict;
-
--(void) load;
--(NSArray*) restaurantsByLocation: (CLLocation*) location;
-
-
--(NSArray*) houseIds;
--(NSDictionary*) houseInfo:(NSString*)houseId;
--(NSArray*) cuisines:(NSString*)houseId;
--(NSArray*) dishesCategories:(NSString*)houseId secondValue:(NSString*)cuisineId;
--(NSDictionary*) dishes:(NSString*)houseId andCuisineId:(NSString*)cuisineId andDishesCategory:(NSString*)dishesCategories;
++(void) load;
++(NSArray*) restaurantsByLocation: (CLLocation*) location;
++(NSDictionary*) restaurantById: (NSInteger) restaurantId;
 
 @end

@@ -173,7 +173,6 @@
 				CEF936FE1795C1130045178B /* Util */,
 				CEF936FD1795C1000045178B /* DataSource */,
 				CEF936FC1795C0BD0045178B /* Controllers */,
-				CEF936FB1795C0160045178B /* Views */,
 				CEC9D49817775D0900D4EF79 /* data */,
 				CEB7385A1776597F008B29A8 /* Json */,
 				CEB322E1176E0E6400F46463 /* DigitalMenuAppDelegate.h */,
@@ -234,13 +233,6 @@
 				CE4F0B891773A961003A5F92 /* data.json */,
 			);
 			name = data;
-			sourceTree = "<group>";
-		};
-		CEF936FB1795C0160045178B /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Views;
 			sourceTree = "<group>";
 		};
 		CEF936FC1795C0BD0045178B /* Controllers */ = {

@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RestaurantViewController : UINavigationController
+@interface RestaurantViewController : UIViewController
+{
+    NSInteger restaurantId;
+}
+
+@property NSInteger restaurantId;
+
+- (id) initWithRestaurandId:(NSInteger) restaurantId;
 
 @end

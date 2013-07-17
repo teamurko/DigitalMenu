@@ -26,7 +26,6 @@
 
 @implementation PickRestaurantViewController
 
-@synthesize dataManager = _dataManager;
 @synthesize restaurantsView = _restaurantsView;
 
 
@@ -42,11 +41,10 @@ BOOL didGuess = NO;
 {
     debug();
     isLoaded = false;
-    [NSThread sleepForTimeInterval:2];
-    if (!self.dataManager) {
-        self.dataManager = [[DataManager alloc] init];
+    [DataManager load];
+    while (!userLocation) {
+        [NSThread sleepForTimeInterval:0.2];
     }
-    [self.dataManager load];
     isLoaded = true;
 }
 
@@ -109,7 +107,8 @@ BOOL didGuess = NO;
         alertView.messageFont = messageFont;
     }];
     
-    NSString * guessPlaceName = [[[self.dataManager restaurantsByLocation:userLocation] objectAtIndex:0] objectForKey:@"name"];
+    NSArray *candidates = [DataManager restaurantsByLocation:userLocation];
+    NSString * guessPlaceName = [[candidates objectAtIndex:0] objectForKey:@"name"];
     NSString *message = [[NSString alloc] initWithFormat:@"Вы находитесь в %@?", guessPlaceName];
     [WCAlertView showAlertWithTitle:@"Угадайка" message:message customizationBlock:^(WCAlertView *alertView) {
         
@@ -123,20 +122,21 @@ BOOL didGuess = NO;
                 [view setHidden:NO];
             }
         } else {
-            [self showRestaurantView:YES];
+            NSString *id = [[candidates objectAtIndex:0] objectForKey:@"id"];
+            [self showRestaurantView:id.intValue andAnimated:YES];
         }
     } cancelButtonTitle:@"Нет, показать список" otherButtonTitles:@"Да, перейти на страницу", nil];
 }
 
-- (void) showRestaurantView:(BOOL)animated
+- (void) showRestaurantView: (NSInteger)restaurandId andAnimated:(BOOL)animated
 {
-    RestaurantViewController *restaurantViewController = [[RestaurantViewController alloc] init];
+    RestaurantViewController *restaurantViewController = [[RestaurantViewController alloc] initWithRestaurandId:restaurandId];
     restaurantViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
 //    restaurantViewController.delegate = self;
-    [restaurantViewController.navigationItem setHidesBackButton:NO animated:YES];
-    restaurantViewController.navigationItem.leftBarButtonItem.title = @"List";
-    restaurantViewController.navigationItem.rightBarButtonItem.title = @"Map";
-    [self presentViewController:restaurantViewController animated:YES completion:nil];
+//    [restaurantViewController.navigationItem setHidesBackButton:YES animated:YES];
+//    restaurantViewController.navigationItem.leftBarButtonItem.title = @"List";
+//    restaurantViewController.navigationItem.rightBarButtonItem.title = @"Map";
+    [self.navigationController pushViewController:restaurantViewController animated:YES];
 }
 
 
@@ -195,9 +195,9 @@ BOOL didGuess = NO;
     if (locations.count > 0) {
         userLocation = [locations objectAtIndex:0];
         //FIXME remove after debug
-        userLocation = [[CLLocation alloc] initWithLatitude:55.7475 longitude:37.5843];
+//        userLocation = [[CLLocation alloc] initWithLatitude:55.7475 longitude:37.5843];
+        userLocation = [[CLLocation alloc] initWithLatitude:55.746475 longitude:37.675166];
     }
-    NSLog(@"Location: %@", userLocation);
 }
 
 - (void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
@@ -230,14 +230,13 @@ BOOL didGuess = NO;
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    //    [self.dataManager restaurantsByLocation:<#(double)#> andLatitude:<#(double)#>]
-    return [self.dataManager restaurantsByLocation:userLocation].count;
+    return [DataManager restaurantsByLocation:userLocation].count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [[UITableViewCell alloc] init];
-    cell.textLabel.text = [[[self.dataManager restaurantsByLocation:userLocation] objectAtIndex:indexPath.row] objectForKey:@"name"];
+    cell.textLabel.text = [[[DataManager restaurantsByLocation:userLocation] objectAtIndex:indexPath.row] objectForKey:@"name"];
     cell.layer.borderWidth = 1.0f;
     return cell;
 }
@@ -251,12 +250,14 @@ BOOL didGuess = NO;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     debug();
-    [self showRestaurantView:YES];
+    NSArray *candidates = [DataManager restaurantsByLocation:userLocation];
+    NSString *id = [[candidates objectAtIndex:[indexPath row]] objectForKey:@"id"];
+    [self showRestaurantView:id.intValue andAnimated:YES];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    int numRestaurantsNearby = [self.dataManager restaurantsByLocation:userLocation].count;
+    int numRestaurantsNearby = [DataManager restaurantsByLocation:userLocation].count;
     NSString *message;
     if (numRestaurantsNearby == 1) {
         message = @"%d ресторан около вас";

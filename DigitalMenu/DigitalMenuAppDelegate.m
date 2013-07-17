@@ -7,15 +7,20 @@
 //
 
 #import "DigitalMenuAppDelegate.h"
+#import "PickRestaurantViewController.h"
 
 @implementation DigitalMenuAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    self.navigationController = [[UINavigationController alloc] init];
+    PickRestaurantViewController *viewController = [[PickRestaurantViewController alloc] init];
+    [self.navigationController pushViewController:viewController animated:YES];
+    [self.window addSubview:self.navigationController.view];
     return YES;
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

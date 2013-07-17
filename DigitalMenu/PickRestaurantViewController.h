@@ -13,10 +13,9 @@
 #import "LoadingScreenViewControllerDelegate.h"
 
 @interface PickRestaurantViewController : UIViewController <SplashScreenViewControllerDelegate, LoadingScreenViewControllerDelegate, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate> {
-    DataManager *dataManager;
     IBOutlet UITableView *restaurantsView;
 }
-@property (strong, nonatomic) DataManager *dataManager;
+
 @property (strong, nonatomic) UITableView *restaurantsView;
 
 @end

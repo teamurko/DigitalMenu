@@ -123,7 +123,7 @@ BOOL didGuess = NO;
                 [view setHidden:NO];
             }
         } else {
-            NSLog(@"В меню!");
+            [self showRestaurantView:YES];
         }
     } cancelButtonTitle:@"Нет, показать список" otherButtonTitles:@"Да, перейти на страницу", nil];
 }
@@ -133,8 +133,10 @@ BOOL didGuess = NO;
     RestaurantViewController *restaurantViewController = [[RestaurantViewController alloc] init];
     restaurantViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
 //    restaurantViewController.delegate = self;
-    [restaurantViewController.navigationItem setHidesBackButton:YES];
-    [self presentViewController:restaurantViewController animated:animated completion:nil];
+    [restaurantViewController.navigationItem setHidesBackButton:NO animated:YES];
+    restaurantViewController.navigationItem.leftBarButtonItem.title = @"List";
+    restaurantViewController.navigationItem.rightBarButtonItem.title = @"Map";
+    [self presentViewController:restaurantViewController animated:YES completion:nil];
 }
 
 

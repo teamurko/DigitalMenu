@@ -6,14 +6,13 @@
 //  Copyright (c) 2013 Stanislav Pak. All rights reserved.
 //
 #import <UIKit/UIKit.h>
-#import <MapKit/MapKit.h>
 
 #import "DataManager.h"
 #import "SplashScreenViewController.h"
 #import "SplashScreenViewControllerDelegate.h"
 #import "LoadingScreenViewControllerDelegate.h"
 
-@interface PickRestaurantViewController : UITableViewController <SplashScreenViewControllerDelegate, LoadingScreenViewControllerDelegate, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate> {
+@interface PickRestaurantViewController : UIViewController <SplashScreenViewControllerDelegate, LoadingScreenViewControllerDelegate, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate> {
     DataManager *dataManager;
     IBOutlet UITableView *restaurantsView;
 }

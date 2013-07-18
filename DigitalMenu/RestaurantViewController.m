@@ -11,6 +11,7 @@
 #import "Debug.h"
 #import "DataManager.h"
 #import "RestaurantViewController.h"
+#import "PickRestaurantViewController.h"
 
 @interface RestaurantViewController ()
 
@@ -41,17 +42,12 @@
 {
     UIView *mainView = [[UIView alloc] init];
     self.view = mainView;
-
-//    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self];
-//    navigationController.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"LIST" style:UIBarButtonSystemItemAction target:self action:@selector(printMessage)];
-//    [navigationController.navigationBar setBackgroundColor:[UIColor redColor]];
-//    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor whiteColor];
     
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(20, 80, 280, 300)];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(10, 20, 300, 250)];
     tableView.layer.borderWidth = 3.0f;
     
     [self.view addSubview:tableView];
-//    [self.view addSubview:navigationController.view];
     
     [self.view clipsToBounds];
 }
@@ -59,6 +55,7 @@
 - (void) returnToList
 {
     [self.navigationController popViewControllerAnimated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"makeVisible" object:nil];
 }
 
 - (void) showOnMap

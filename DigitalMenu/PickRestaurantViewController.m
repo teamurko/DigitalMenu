@@ -35,6 +35,7 @@ CLLocation *userLocation = nil;
 BOOL isLoaded = NO;
 BOOL didStartLoading = NO;
 BOOL didGuess = NO;
+BOOL didShowGuessView = NO;
 
 
 - (void) loadData
@@ -82,7 +83,9 @@ BOOL didGuess = NO;
 }
 
 - (void) showGuessView
-{    
+{
+    if (didShowGuessView) return;
+    didShowGuessView = YES;
     UIFont * titleFont = [UIFont fontWithName:@"Chalkduster" size:12.0f];
     UIFont * messageFont = [UIFont fontWithName:@"Chalkduster" size:12.0f];
     
@@ -118,9 +121,7 @@ BOOL didGuess = NO;
         // alertView.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
     } completionBlock:^(NSUInteger buttonIndex, WCAlertView *alertView) {
         if (buttonIndex == alertView.cancelButtonIndex) {
-            for (UIView *view in self.view.subviews) {
-                [view setHidden:NO];
-            }
+            [self makeVisible];
         } else {
             NSString *id = [[candidates objectAtIndex:0] objectForKey:@"id"];
             [self showRestaurantView:id.intValue andAnimated:YES];
@@ -128,14 +129,23 @@ BOOL didGuess = NO;
     } cancelButtonTitle:@"Нет, показать список" otherButtonTitles:@"Да, перейти на страницу", nil];
 }
 
+- (void) makeVisible
+{
+    for (UIView *view in self.view.subviews) {
+        [view setHidden:NO];
+    }
+}
+
+- (void) viewDidLoad
+{
+    [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(makeVisible) name:@"makeVisible" object:nil];
+}
+
 - (void) showRestaurantView: (NSInteger)restaurandId andAnimated:(BOOL)animated
 {
     RestaurantViewController *restaurantViewController = [[RestaurantViewController alloc] initWithRestaurandId:restaurandId];
     restaurantViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-//    restaurantViewController.delegate = self;
-//    [restaurantViewController.navigationItem setHidesBackButton:YES animated:YES];
-//    restaurantViewController.navigationItem.leftBarButtonItem.title = @"List";
-//    restaurantViewController.navigationItem.rightBarButtonItem.title = @"Map";
     [self.navigationController pushViewController:restaurantViewController animated:YES];
 }
 
@@ -178,16 +188,11 @@ BOOL didGuess = NO;
         [self.view addSubview:self.restaurantsView];
         [self.view addSubview:restaurantsLabel];
         
-        [self showGuessView];
         self.view.clipsToBounds = YES;
+        [self showGuessView];
     }
 }
 
-- (void)viewDidLoad
-{
-    debug();
-    [super viewDidLoad];
-}
 
 - (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
@@ -206,27 +211,10 @@ BOOL didGuess = NO;
     NSLog(@"%@", error);
 }
 
-- (void) viewWillAppear:(BOOL)animated
-{
-}
-
-- (void) viewDidAppear:(BOOL)animated
-{
-}
-
 - (BOOL) isDataLoaded
 {
     return isLoaded;
 }
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
-
-
-#pragma mark - Table view data source
-
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

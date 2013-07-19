@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RestaurantViewController : UIViewController
+@interface RestaurantViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 {
     NSInteger restaurantId;
 }

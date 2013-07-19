@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		CE1A7889177262E300864D25 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1A7888177262E300864D25 /* DataManager.m */; };
 		CE4F0B8A1773A961003A5F92 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = CE4F0B891773A961003A5F92 /* data.json */; };
-		CE58AE731779019500F01173 /* CuisinesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE58AE721779019500F01173 /* CuisinesViewController.m */; };
 		CE58AE761779158800F01173 /* DishCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE58AE751779158800F01173 /* DishCategoriesViewController.m */; };
 		CE5D80AB1795EE9F00790685 /* WCAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5D80AA1795EE9F00790685 /* WCAlertView.m */; };
 		CE5D80B117960F1400790685 /* RestaurantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5D80B017960F1400790685 /* RestaurantViewController.m */; };
@@ -40,16 +39,16 @@
 		CEB738771776597F008B29A8 /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB7386B1776597F008B29A8 /* SBJsonStreamWriterAccumulator.m */; };
 		CEB738781776597F008B29A8 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB7386D1776597F008B29A8 /* SBJsonStreamWriterState.m */; };
 		CEB738791776597F008B29A8 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB7386F1776597F008B29A8 /* SBJsonWriter.m */; };
+		CEE256C31798A1F300826524 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE256C21798A1F300826524 /* MapViewController.m */; };
 		CEE865D7178CAC17004780AC /* SplashScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE865D6178CAC17004780AC /* SplashScreenViewController.m */; };
 		CEE865DA178CBAE3004780AC /* LoadingScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE865D9178CBAE3004780AC /* LoadingScreenViewController.m */; };
+		CEF27E311799E845002CAB81 /* RestaurantLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF27E301799E845002CAB81 /* RestaurantLocation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CE1A7887177262E300864D25 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		CE1A7888177262E300864D25 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		CE4F0B891773A961003A5F92 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
-		CE58AE711779019500F01173 /* CuisinesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CuisinesViewController.h; sourceTree = "<group>"; };
-		CE58AE721779019500F01173 /* CuisinesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CuisinesViewController.m; sourceTree = "<group>"; };
 		CE58AE741779158800F01173 /* DishCategoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DishCategoriesViewController.h; sourceTree = "<group>"; };
 		CE58AE751779158800F01173 /* DishCategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DishCategoriesViewController.m; sourceTree = "<group>"; };
 		CE5D80A91795EE9F00790685 /* WCAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCAlertView.h; sourceTree = "<group>"; };
@@ -102,10 +101,14 @@
 		CEB7386D1776597F008B29A8 /* SBJsonStreamWriterState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterState.m; sourceTree = "<group>"; };
 		CEB7386E1776597F008B29A8 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		CEB7386F1776597F008B29A8 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		CEE256C11798A1F300826524 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		CEE256C21798A1F300826524 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		CEE865D5178CAC17004780AC /* SplashScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScreenViewController.h; sourceTree = "<group>"; };
 		CEE865D6178CAC17004780AC /* SplashScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashScreenViewController.m; sourceTree = "<group>"; };
 		CEE865D8178CBAE3004780AC /* LoadingScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingScreenViewController.h; sourceTree = "<group>"; };
 		CEE865D9178CBAE3004780AC /* LoadingScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingScreenViewController.m; sourceTree = "<group>"; };
+		CEF27E2F1799E845002CAB81 /* RestaurantLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantLocation.h; sourceTree = "<group>"; };
+		CEF27E301799E845002CAB81 /* RestaurantLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantLocation.m; sourceTree = "<group>"; };
 		CEF93BC91792F25C0006F8CB /* SplashScreenViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SplashScreenViewControllerDelegate.h; sourceTree = "<group>"; };
 		CEF93BCB179303D60006F8CB /* Debug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Debug.h; sourceTree = "<group>"; };
 		CEF93BCC179322BD0006F8CB /* LoadingScreenViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadingScreenViewControllerDelegate.h; sourceTree = "<group>"; };
@@ -179,6 +182,8 @@
 				CEB322E2176E0E6400F46463 /* DigitalMenuAppDelegate.m */,
 				CEB322EA176E0E6400F46463 /* MainStoryboard.storyboard */,
 				CEB322D9176E0E6400F46463 /* Supporting Files */,
+				CEF27E2F1799E845002CAB81 /* RestaurantLocation.h */,
+				CEF27E301799E845002CAB81 /* RestaurantLocation.m */,
 			);
 			path = DigitalMenu;
 			sourceTree = "<group>";
@@ -242,8 +247,6 @@
 				CEE865D8178CBAE3004780AC /* LoadingScreenViewController.h */,
 				CEE865D5178CAC17004780AC /* SplashScreenViewController.h */,
 				CEE865D6178CAC17004780AC /* SplashScreenViewController.m */,
-				CE58AE711779019500F01173 /* CuisinesViewController.h */,
-				CE58AE721779019500F01173 /* CuisinesViewController.m */,
 				CE71E4CE177A3B080018C76B /* DishesViewController.h */,
 				CE71E4CF177A3B080018C76B /* DishesViewController.m */,
 				CE71E4D1177A48AB0018C76B /* BasketViewController.h */,
@@ -254,6 +257,8 @@
 				CEB322EE176E0E6400F46463 /* PickRestaurantViewController.m */,
 				CE5D80AF17960F1400790685 /* RestaurantViewController.h */,
 				CE5D80B017960F1400790685 /* RestaurantViewController.m */,
+				CEE256C11798A1F300826524 /* MapViewController.h */,
+				CEE256C21798A1F300826524 /* MapViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -370,7 +375,6 @@
 				CEB738771776597F008B29A8 /* SBJsonStreamWriterAccumulator.m in Sources */,
 				CEB738781776597F008B29A8 /* SBJsonStreamWriterState.m in Sources */,
 				CEB738791776597F008B29A8 /* SBJsonWriter.m in Sources */,
-				CE58AE731779019500F01173 /* CuisinesViewController.m in Sources */,
 				CE58AE761779158800F01173 /* DishCategoriesViewController.m in Sources */,
 				CE71E4D0177A3B080018C76B /* DishesViewController.m in Sources */,
 				CE71E4D3177A48AB0018C76B /* BasketViewController.m in Sources */,
@@ -378,6 +382,8 @@
 				CEE865DA178CBAE3004780AC /* LoadingScreenViewController.m in Sources */,
 				CE5D80AB1795EE9F00790685 /* WCAlertView.m in Sources */,
 				CE5D80B117960F1400790685 /* RestaurantViewController.m in Sources */,
+				CEE256C31798A1F300826524 /* MapViewController.m in Sources */,
+				CEF27E311799E845002CAB81 /* RestaurantLocation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

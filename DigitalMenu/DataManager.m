@@ -68,15 +68,46 @@ const NSString *URL = @"/serverServices";
     return result;
 }
 
-+(NSDictionary*) restaurantById:(NSInteger)restaurantId
++(NSArray*) cuisinesByRestaurantId:(NSInteger)restaurantId
 {
     debug();
     NSString *url = [NSString stringWithFormat:@"%@%@/restaurants/%d/", SERVER, URL, restaurantId];
     NSString *data = [self requestData:url];
     SBJsonParser *parser = [[SBJsonParser alloc] init];
     NSDictionary *result = [parser objectWithString:data];
-    NSLog(@"%@", result);
-    return result;
+    return [result objectForKey:@"cuisine"];
 }
+
++(NSArray*) restaurants
+{
+    debug();
+    NSString *url = [NSString stringWithFormat:@"%@%@/restaurants/all", SERVER, URL];
+    NSString *data = [self requestData:url];
+    SBJsonParser *parser = [[SBJsonParser alloc] init];
+    NSDictionary *result = [parser objectWithString:data];
+    return [result objectForKey:@"restaurant"];
+}
+
++(NSDictionary*) restaurantById:(NSInteger)restaurantId
+{
+    debug();
+    for (NSDictionary *dict in [DataManager restaurants]) {
+        if ([[dict objectForKey:@"id"] intValue] == restaurantId) {
+            return dict;
+        }
+    }
+    return nil;
+}
+
++(CLLocation*) restaurantLocation:(NSInteger) restaurantId
+{
+    debug();
+    NSDictionary *restaurant = [DataManager restaurantById:restaurantId];
+    double lat = [[restaurant objectForKey:@"latitude"] doubleValue];
+    double lon = [[restaurant objectForKey:@"longitude"] doubleValue];
+    NSLog(@"%f %f", lon, lat);
+    return [[CLLocation alloc] initWithLatitude:lat longitude:lon];
+}
+
 
 @end

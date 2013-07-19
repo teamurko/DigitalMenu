@@ -10,14 +10,19 @@
 #import "PickRestaurantViewController.h"
 
 @implementation DigitalMenuAppDelegate
+@synthesize window = _window;
+@synthesize navigationController = _navigationController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    self.navigationController = [[UINavigationController alloc] init];
-    PickRestaurantViewController *viewController = [[PickRestaurantViewController alloc] init];
-    [self.navigationController pushViewController:viewController animated:YES];
+//    self.navigationController = [[UINavigationController alloc] init];
+//    PickRestaurantViewController *viewController = [[PickRestaurantViewController alloc] init];
+//    [self.navigationController pushViewController:viewController animated:YES];
+//    [self.window addSubview:self.navigationController.view];
+//    return YES;
     [self.window addSubview:self.navigationController.view];
+    [self.window makeKeyAndVisible];
     return YES;
 }
 

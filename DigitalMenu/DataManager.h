@@ -15,5 +15,8 @@
 +(void) load;
 +(NSArray*) restaurantsByLocation: (CLLocation*) location;
 +(NSDictionary*) restaurantById: (NSInteger) restaurantId;
++(NSArray*) cuisinesByRestaurantId: (NSInteger) restaurantId;
++(NSArray*) restaurants;
++(CLLocation*) restaurantLocation: (NSInteger) restaurantId;
 
 @end

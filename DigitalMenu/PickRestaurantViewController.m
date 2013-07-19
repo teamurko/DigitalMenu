@@ -12,7 +12,6 @@
 #import "RestaurantViewController.h"
 #import "SplashScreenViewController.h"
 #import "LoadingScreenViewController.h"
-#import "CuisinesViewController.h"
 #import "RestException.h"
 #import "WCAlertView.h"
 #import "DataManager.h"
@@ -174,13 +173,13 @@ BOOL didShowGuessView = NO;
         [mainView setBackgroundColor:[UIColor whiteColor]];
         self.view = mainView;
 
-        self.restaurantsView = [[UITableView alloc] initWithFrame:CGRectMake(10, 40, 300, 360)];
+        self.restaurantsView = [[UITableView alloc] initWithFrame:CGRectMake(10, 50, 300, 360)];
         self.restaurantsView.layer.borderWidth = 1.0f;
         [self.restaurantsView setDelegate:self];
         [self.restaurantsView setDataSource:self];
         [self.restaurantsView setHidden:YES];
         
-        UILabel *restaurantsLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 20, 300, 20)];
+        UILabel *restaurantsLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 20, 300, 30)];
         restaurantsLabel.text = @"  Выберите ваш ресторан из";
         restaurantsLabel.layer.borderWidth = 1.0f;
         [restaurantsLabel setHidden:YES];

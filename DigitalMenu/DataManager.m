@@ -109,5 +109,34 @@ const NSString *URL = @"/serverServices";
     return [[CLLocation alloc] initWithLatitude:lat longitude:lon];
 }
 
++(NSArray*) dishCategoriesByCuisineId:(NSInteger)cuisineId
+{
+    debug();
+    NSString *url = [NSString stringWithFormat:@"%@%@/cuisines/%d", SERVER, URL, cuisineId];
+    NSString *data = [self requestData:url];
+    SBJsonParser *parser = [[SBJsonParser alloc] init];
+    NSDictionary *result = [parser objectWithString:data];
+    return [result objectForKey:@"dish_type"];
+}
+
++(NSArray*) dishesByCategoryId:(NSInteger)categoryId
+{
+    debug();
+    NSString *url = [NSString stringWithFormat:@"%@%@/dishTypes/%d", SERVER, URL, categoryId];
+    NSString *data = [self requestData:url];
+    SBJsonParser *parser = [[SBJsonParser alloc] init];
+    NSDictionary *result = [parser objectWithString:data];
+    return [result objectForKey:@"dish"];
+}
+
++(NSDictionary*) dishById:(NSInteger)dishId
+{
+    debug();
+    NSString *url = [NSString stringWithFormat:@"%@%@/dishes/%d", SERVER, URL, dishId];
+    NSString *data = [self requestData:url];
+    SBJsonParser *parser = [[SBJsonParser alloc] init];
+    NSDictionary *result = [parser objectWithString:data];
+    return [result objectForKey:@"dish"];
+}
 
 @end

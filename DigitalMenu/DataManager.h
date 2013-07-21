@@ -18,5 +18,8 @@
 +(NSArray*) cuisinesByRestaurantId: (NSInteger) restaurantId;
 +(NSArray*) restaurants;
 +(CLLocation*) restaurantLocation: (NSInteger) restaurantId;
++(NSArray*) dishCategoriesByCuisineId: (NSInteger) cuisineId;
++(NSArray*) dishesByCategoryId: (NSInteger) categoryId;
++(NSDictionary*) dishById: (NSInteger) dishId;
 
 @end

@@ -94,8 +94,17 @@
 {
     debug();
     UITableViewCell *cell = [[UITableViewCell alloc] init];
-    NSNumber *dishId = [[OrderData dishIds] objectAtIndex:indexPath.row];
-    cell.textLabel.text = [[DataManager dishById:dishId.integerValue] objectForKey:@"name"];
+    NSInteger dishId = [[[OrderData dishIds] objectAtIndex:indexPath.row] integerValue];
+    
+    UILabel *name = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 45)];
+    name.text = [[DataManager dishById:dishId] objectForKey:@"name"];
+    name.layer.borderWidth = 1.0f;
+    [cell addSubview:name];
+    
+    UILabel *count = [[UILabel alloc] initWithFrame:CGRectMake(200, 0, 100, 45)];
+    count.text = [[NSString alloc] initWithFormat:@" %d", [OrderData countByDishId:dishId]];
+    [cell addSubview:count];
+    
     cell.layer.borderWidth = 1.0f;
     return cell;
 }

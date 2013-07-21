@@ -15,5 +15,6 @@
 + (void) addDish:(NSInteger) dishId;
 + (NSArray*) dishIds;
 + (void) clear;
++ (NSInteger) countByDishId:(NSInteger)dishId;
 
 @end

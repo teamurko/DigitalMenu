@@ -44,4 +44,9 @@ static NSMutableDictionary* volatile dishesCount_ = nil;
     [dishesCount_ removeAllObjects];
 }
 
++ (NSInteger) countByDishId:(NSInteger)dishId
+{
+    return [[dishesCount_ objectForKey:[NSNumber numberWithInteger:dishId]] integerValue];
+}
+
 @end

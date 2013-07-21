@@ -12,7 +12,6 @@
 #import "RestaurantViewController.h"
 #import "SplashScreenViewController.h"
 #import "LoadingScreenViewController.h"
-#import "RestException.h"
 #import "WCAlertView.h"
 #import "DataManager.h"
 #import "Debug.h"

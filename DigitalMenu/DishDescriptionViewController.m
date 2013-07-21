@@ -11,6 +11,7 @@
 #import "Debug.h"
 #import "DataManager.h"
 #import "DishDescriptionViewController.h"
+#import "OrderData.h"
 
 @interface DishDescriptionViewController ()
 
@@ -26,6 +27,12 @@
         self.dishId = dishId;
     }
     return self;
+}
+
+- (void)addDish:(id)sender
+{
+    debug();
+    [OrderData addDish:[[[DataManager dishById:self.dishId] objectForKey:@"id"] integerValue]];
 }
 
 - (void)loadView
@@ -47,24 +54,28 @@
     descriptionLabel.text = @"Описание";
     [self.view addSubview:descriptionLabel];
     
-    UITextView *description = [[UITextView alloc] initWithFrame:CGRectMake(20, 50, 280, 100)];
+    UITextView *description = [[UITextView alloc] initWithFrame:CGRectMake(20, 50, 280, 140)];
     description.text = [[DataManager dishById:self.dishId] objectForKey:@"summary"];
     [description setFont:[UIFont fontWithName:@"Helvetica" size:14.0]];
-    description.layer.borderWidth = 2.0f;
+    description.layer.borderWidth = 1.0f;
     [self.view addSubview:description];
     
-    UILabel *priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 160, 60, 30)];
+    UILabel *priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 200, 60, 30)];
     priceLabel.text = @"Цена:";
     [self.view addSubview:priceLabel];
     
-    UITextView *price = [[UITextView alloc] initWithFrame:CGRectMake(90, 160, 100, 30)];
+    UITextView *price = [[UITextView alloc] initWithFrame:CGRectMake(90, 200, 100, 30)];
     price.text = [[NSString alloc] initWithFormat:@"%@", [dishData objectForKey:@"price"]];
     price.font = [UIFont fontWithName:@"Courier" size:18.0];
     price.userInteractionEnabled = NO;
     [self.view addSubview:price];
     
-//    UIBarButtonItem *orderButton = [[UIBarButtonItem alloc] initWithTitle:@"Заказ" style:UIBarButtonItemStyleDone target:self action:@selector(showOrder:)];
-
+    
+    UIButton *addButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [addButton addTarget:self action:@selector(addDish:) forControlEvents:UIControlEventTouchDown];
+    [addButton setTitle:@"Добавить" forState:UIControlStateNormal];
+    addButton.frame = CGRectMake(200, 200, 90, 30);
+    [self.view addSubview:addButton];
     
     [self.view clipsToBounds];
 }

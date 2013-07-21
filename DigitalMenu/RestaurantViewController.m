@@ -14,6 +14,7 @@
 #import "MapViewController.h"
 #import "RestaurantViewController.h"
 #import "PickRestaurantViewController.h"
+#import "OrderViewController.h"
 
 #define kSegmentedControlHeight 40.0
 #define kLabelHeight			20.0
@@ -64,7 +65,8 @@ NSInteger chosenCuisineId;
 - (void) showOrder:(id)sender
 {
     debug();
-    NSLog(@"%@", sender);
+    OrderViewController *orderViewController = [[OrderViewController alloc] init];
+    [self.navigationController pushViewController:orderViewController animated:YES];
 }
 
 - (void) loadView
@@ -91,7 +93,7 @@ NSInteger chosenCuisineId;
 	
 	[self.view addSubview:segmentedControl];
     
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(10, 80, 300, 250)];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(10, 80, 300, 240)];
     tableView.layer.borderWidth = 3.0f;
     tableView.delegate = self;
     tableView.dataSource = self;

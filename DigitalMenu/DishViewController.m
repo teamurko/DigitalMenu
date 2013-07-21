@@ -12,6 +12,8 @@
 #import "DishViewController.h"
 #import "DataManager.h"
 #import "DishDescriptionViewController.h"
+#import "OrderViewController.h"
+#import "OrderData.h"
 
 @interface DishViewController ()
 
@@ -61,6 +63,8 @@
 - (void) showOrder:(id)sender
 {
     debug();
+    OrderViewController *orderViewController = [[OrderViewController alloc] init];
+    [self.navigationController pushViewController:orderViewController animated:YES];
 }
 
 - (void)viewDidLoad

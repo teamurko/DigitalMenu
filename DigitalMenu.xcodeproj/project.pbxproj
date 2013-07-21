@@ -11,8 +11,9 @@
 		CE4F0B8A1773A961003A5F92 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = CE4F0B891773A961003A5F92 /* data.json */; };
 		CE5D80AB1795EE9F00790685 /* WCAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5D80AA1795EE9F00790685 /* WCAlertView.m */; };
 		CE5D80B117960F1400790685 /* RestaurantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5D80B017960F1400790685 /* RestaurantViewController.m */; };
+		CE6D7B89179C207C00F7A6F9 /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6D7B88179C207C00F7A6F9 /* OrderViewController.m */; };
+		CE6D7B8C179C22DE00F7A6F9 /* OrderData.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6D7B8B179C22DE00F7A6F9 /* OrderData.m */; };
 		CE71E4CD177A37CC0018C76B /* spring.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CE71E4CC177A37CC0018C76B /* spring.jpg */; };
-		CE75BFBF176F974D00E17482 /* RestException.m in Sources */ = {isa = PBXBuildFile; fileRef = CE75BFBE176F974D00E17482 /* RestException.m */; };
 		CE77BD19179A20420016549A /* DishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE77BD18179A20420016549A /* DishViewController.m */; };
 		CE77BD1C179ABBE70016549A /* DishDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE77BD1B179ABBE70016549A /* DishDescriptionViewController.m */; };
 		CEB322D3176E0E6400F46463 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB322D2176E0E6400F46463 /* UIKit.framework */; };
@@ -52,9 +53,11 @@
 		CE5D80AA1795EE9F00790685 /* WCAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCAlertView.m; sourceTree = "<group>"; };
 		CE5D80AF17960F1400790685 /* RestaurantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantViewController.h; sourceTree = "<group>"; };
 		CE5D80B017960F1400790685 /* RestaurantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantViewController.m; sourceTree = "<group>"; };
+		CE6D7B87179C207C00F7A6F9 /* OrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderViewController.h; sourceTree = "<group>"; };
+		CE6D7B88179C207C00F7A6F9 /* OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderViewController.m; sourceTree = "<group>"; };
+		CE6D7B8A179C22DE00F7A6F9 /* OrderData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderData.h; sourceTree = "<group>"; };
+		CE6D7B8B179C22DE00F7A6F9 /* OrderData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderData.m; sourceTree = "<group>"; };
 		CE71E4CC177A37CC0018C76B /* spring.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = spring.jpg; sourceTree = "<group>"; };
-		CE75BFBD176F974D00E17482 /* RestException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestException.h; sourceTree = "<group>"; };
-		CE75BFBE176F974D00E17482 /* RestException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestException.m; sourceTree = "<group>"; };
 		CE77BD17179A20420016549A /* DishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DishViewController.h; sourceTree = "<group>"; };
 		CE77BD18179A20420016549A /* DishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DishViewController.m; sourceTree = "<group>"; };
 		CE77BD1A179ABBE70016549A /* DishDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DishDescriptionViewController.h; sourceTree = "<group>"; };
@@ -254,6 +257,8 @@
 				CE77BD18179A20420016549A /* DishViewController.m */,
 				CE77BD1A179ABBE70016549A /* DishDescriptionViewController.h */,
 				CE77BD1B179ABBE70016549A /* DishDescriptionViewController.m */,
+				CE6D7B87179C207C00F7A6F9 /* OrderViewController.h */,
+				CE6D7B88179C207C00F7A6F9 /* OrderViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -263,6 +268,8 @@
 			children = (
 				CE1A7887177262E300864D25 /* DataManager.h */,
 				CE1A7888177262E300864D25 /* DataManager.m */,
+				CE6D7B8A179C22DE00F7A6F9 /* OrderData.h */,
+				CE6D7B8B179C22DE00F7A6F9 /* OrderData.m */,
 			);
 			name = DataSource;
 			sourceTree = "<group>";
@@ -271,8 +278,6 @@
 			isa = PBXGroup;
 			children = (
 				CEF93BCB179303D60006F8CB /* Debug.h */,
-				CE75BFBD176F974D00E17482 /* RestException.h */,
-				CE75BFBE176F974D00E17482 /* RestException.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -358,7 +363,6 @@
 				CEB322DF176E0E6400F46463 /* main.m in Sources */,
 				CEB322E3176E0E6400F46463 /* DigitalMenuAppDelegate.m in Sources */,
 				CEB322EF176E0E6400F46463 /* PickRestaurantViewController.m in Sources */,
-				CE75BFBF176F974D00E17482 /* RestException.m in Sources */,
 				CE1A7889177262E300864D25 /* DataManager.m in Sources */,
 				CEB738701776597F008B29A8 /* SBJsonParser.m in Sources */,
 				CEB738711776597F008B29A8 /* SBJsonStreamParser.m in Sources */,
@@ -378,6 +382,8 @@
 				CEF27E311799E845002CAB81 /* RestaurantLocation.m in Sources */,
 				CE77BD19179A20420016549A /* DishViewController.m in Sources */,
 				CE77BD1C179ABBE70016549A /* DishDescriptionViewController.m in Sources */,
+				CE6D7B89179C207C00F7A6F9 /* OrderViewController.m in Sources */,
+				CE6D7B8C179C22DE00F7A6F9 /* OrderData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

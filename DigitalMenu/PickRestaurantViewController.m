@@ -75,7 +75,10 @@ BOOL didStartLoading = NO;
 {
     debug();
     [super viewDidLoad];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(makeVisible) name:@"makeVisible" object:nil];
+    UIImage *backgroundImage = [UIImage imageNamed:@"navigation_bar.png"];
+    [self.navigationController.navigationBar setBackgroundImage:backgroundImage forBarMetrics:UIBarMetricsDefault];
+    UIImage *toolbarImage = [UIImage imageNamed:@"restaurant_description_footer.png"];
+    [self.navigationController.toolbar setBackgroundImage:toolbarImage forToolbarPosition:UIToolbarPositionBottom barMetrics:UIBarMetricsDefault];
 }
 
 - (void) showRestaurantView: (NSInteger)restaurandId andAnimated:(BOOL)animated
@@ -118,7 +121,6 @@ BOOL didStartLoading = NO;
     [mapView setRegion:region animated:YES];
     
     [view addSubview:mapView];
-
 }
 
 - (void) loadView
@@ -164,11 +166,17 @@ BOOL didStartLoading = NO;
     [self.navigationController setToolbarHidden:YES];
 }
 
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:NO];
+    [self.navigationController setToolbarHidden:NO];
+
+}
+
 - (void) viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    [self.navigationController setNavigationBarHidden:NO];
-    [self.navigationController setToolbarHidden:NO];
 }
 
 - (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
@@ -218,6 +226,7 @@ BOOL didStartLoading = NO;
     UITextView *nameView = [[UITextView alloc] initWithFrame:CGRectMake(70, 0, 150, 30)];
     nameView.text = [restaurant objectForKey:@"name"];
     [nameView setFont:[UIFont boldSystemFontOfSize:14]];
+    nameView.editable = NO;
     [cell addSubview:nameView];
 
     
@@ -239,6 +248,7 @@ BOOL didStartLoading = NO;
     UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(22, 1, 60, 20)];
     timeLabel.adjustsFontSizeToFitWidth = YES;
     timeLabel.text = [UtilHelper renderedWorkHours:[[restaurant objectForKey:@"open_from"] integerValue]  andTill:[[restaurant objectForKey:@"open_till"] integerValue]];
+    timeView.editable = NO;
     [timeView addSubview:clockView];
     [timeView addSubview:timeLabel];
     [cell addSubview:timeView];

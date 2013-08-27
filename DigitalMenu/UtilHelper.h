@@ -17,5 +17,7 @@
 + (double) approximateDistance:(CLLocation*) from andTo:(CLLocation*) to;
 + (UIColor*) mainGreenColor;
 + (UIView*) buttonView:(id) object andImage:(UIImage*)image andActImage:(UIImage*)actImage andAction:(SEL)action offsetTop:(CGFloat)top offsetBottom:(CGFloat)bottom offsetRight:(CGFloat)right offsetLeft:(CGFloat)left;
-
++ (UIImage*) imageFromColor:(UIColor*)color andSize:(CGSize)size;
++ (UIColor*) orangeNormal;
++ (UIColor*) orangeSelected;
 @end

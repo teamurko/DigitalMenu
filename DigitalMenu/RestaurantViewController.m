@@ -9,6 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "Debug.h"
+#import "UtilHelper.h"
 #import "DataManager.h"
 #import "DishViewController.h"
 #import "MapViewController.h"
@@ -35,14 +36,7 @@
 @synthesize restaurantId = _restaurantId;
 
 NSInteger chosenCuisineId;
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-    }
-    return self;
-}
+NSMutableArray *ids;
 
 - (id) initWithRestaurandId:(NSInteger)restaurantId
 {
@@ -60,6 +54,10 @@ NSInteger chosenCuisineId;
     NSLog(@"%@", sender);
     UISegmentedControl *segmentControl = (UISegmentedControl*)sender;
     NSLog(@"Segment index %d", segmentControl.selectedSegmentIndex);
+    chosenCuisineId = [[ids objectAtIndex:segmentControl.selectedSegmentIndex] integerValue];
+    //FIXME do not fucking write shit code
+    UITableView *tableView = [self.view.subviews objectAtIndex:[self.view subviews].count - 2];
+    [tableView reloadData];
 }
 
 - (void) showOrder:(id)sender
@@ -72,12 +70,16 @@ NSInteger chosenCuisineId;
 - (void) loadView
 {
     debug();
+    [super loadView];
+    [self.navigationController setNavigationBarHidden:NO];
+    [self.navigationController setToolbarHidden:NO];
+    
     UIView *mainView = [[UIView alloc] init];
     self.view = mainView;
     self.view.backgroundColor = [UIColor whiteColor];
     
 	NSMutableArray *segmentTextContent = [[NSMutableArray alloc] init];
-    NSMutableArray *ids = [[NSMutableArray alloc] init];
+    ids = [[NSMutableArray alloc] init];
     for (NSDictionary *dict in [DataManager cuisinesByRestaurantId:self.restaurantId]) {
         [segmentTextContent addObject:[dict objectForKey:@"name"]];
         [ids addObject:[dict objectForKey:@"id"]];
@@ -109,34 +111,79 @@ NSInteger chosenCuisineId;
     [self.view clipsToBounds];
 }
 
-- (void) returnToList
+- (void) backToAll
 {
     [self.navigationController popViewControllerAnimated:YES];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"makeVisible" object:nil];
 }
 
-- (void) showOnMap
+- (void) showMenu
 {
     debug();
 
-    MapViewController *mapViewController = [[MapViewController alloc] initWithRestaurandId:self.restaurantId];
-    mapViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [self.navigationController pushViewController:mapViewController animated:YES];
+//    MapViewController *mapViewController = [[MapViewController alloc] initWithRestaurandId:self.restaurantId];
+//    mapViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+//    [self.navigationController pushViewController:mapViewController animated:YES];
+}
+
+- (void) showMap
+{
+    debug();
+}
+
+- (void) showOrder
+{
+    debug();
 }
 
 - (void)viewDidLoad
 {
     debug();
     [super viewDidLoad];
-    
-    UIBarButtonItem *listButton = [[UIBarButtonItem alloc] initWithTitle:@"К списку" style:UIBarButtonItemStylePlain target:self action:@selector(returnToList)];
-    UIBarButtonItem *mapButton = [[UIBarButtonItem alloc] initWithTitle:@"На карте" style:UIBarButtonItemStyleDone target:self action:@selector(showOnMap)];
+    UIImage *backgroundImage = [UIImage imageNamed:@"navigation_bar.png"];
+    [self.navigationController.navigationBar setBackgroundImage:backgroundImage forBarMetrics:UIBarMetricsDefault];
 
-    self.navigationItem.rightBarButtonItem = mapButton;
-    self.navigationItem.leftBarButtonItem = listButton;
+    UIView *backButtonView = [UtilHelper buttonView:self andImage:[UIImage imageNamed:@"back2.png"] andActImage:[UIImage imageNamed:@"back_act.png"] andAction:@selector(backToAll) offsetTop:9 offsetBottom:0 offsetRight:0 offsetLeft:9];
+    backButtonView.frame = CGRectMake(10, 10, 40, 40);
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:backButtonView];
+    
+    UIView *menuButtonView = [UtilHelper buttonView:self andImage:[UIImage imageNamed:@"menu.png"] andActImage:[UIImage imageNamed:@"menu_act.png"] andAction:@selector(showMenu) offsetTop:9 offsetBottom:0 offsetRight:9 offsetLeft:0];
+    menuButtonView.frame = CGRectMake(10, 10, 40, 40);
+    UIBarButtonItem *menuButton = [[UIBarButtonItem alloc] initWithCustomView:menuButtonView];
+
+    self.navigationItem.rightBarButtonItem = menuButton;
+    self.navigationItem.leftBarButtonItem = backButton;
     NSDictionary *data = [DataManager restaurantById:self.restaurantId];
-    NSLog(@"%@", data);
+    self.navigationItem.titleView.frame = CGRectMake(0, 0, 40, 40);
+    self.navigationItem.titleView.layer.borderWidth = 1.0f;
     self.navigationItem.title = [[NSString alloc] initWithFormat:@"%@", [data objectForKey:@"name"]];
+
+    UIImage *toolbarImage = [UIImage imageNamed:@"restaurant_description_footer.png"];
+    [self.navigationController.toolbar setBackgroundImage:toolbarImage forToolbarPosition:UIToolbarPositionBottom barMetrics:UIBarMetricsDefault];
+  
+    UIView *mapButtonView = [UtilHelper buttonView:self andImage:[UIImage imageNamed:@"mapButton.png"] andActImage:[UIImage imageNamed:@"mapButtonAct.png"] andAction:@selector(showMap) offsetTop:15 offsetBottom:12 offsetRight:35 offsetLeft:32];
+    mapButtonView.layer.borderWidth = 1;
+    UIBarButtonItem *mapButton = [[UIBarButtonItem alloc] initWithCustomView:mapButtonView];
+    
+    UIView *restButtonView = [UtilHelper buttonView:self andImage:[UIImage imageNamed:@"restButton.png"] andActImage:[UIImage imageNamed:@"restButtonAct.png"] andAction:@selector(showMenu) offsetTop:15 offsetBottom:12 offsetRight:35 offsetLeft:35];
+    restButtonView.layer.borderWidth = 1;
+    UIBarButtonItem *restButton = [[UIBarButtonItem alloc] initWithCustomView:restButtonView];
+
+    UIView *orderButtonView = [UtilHelper buttonView:self andImage:[UIImage imageNamed:@"orderButton.png"] andActImage:[UIImage imageNamed:@"orderButtonAct.png"] andAction:@selector(showOrder) offsetTop:15 offsetBottom:12 offsetRight:35 offsetLeft:35];
+    orderButtonView.layer.borderWidth = 1;
+    UIBarButtonItem *orderButton = [[UIBarButtonItem alloc] initWithCustomView:orderButtonView];
+
+    [self setToolbarItems:[NSArray arrayWithObjects:mapButton, restButton, orderButton, nil]];
+//    UIBarButtonItem *mapButton = [Util]
+//    NSMutableArray *toolbarItems = [[NSMutableArray alloc] init];
+//    [toolbarItems addObject:backButton];
+//    [toolbarItems addObject:toolbarImage];
+//    [self setToolbarItems:toolbarItems];
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning

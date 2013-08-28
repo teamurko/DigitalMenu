@@ -21,7 +21,8 @@
 //    [self.navigationController pushViewController:viewController animated:YES];
 //    [self.window addSubview:self.navigationController.view];
 //    return YES;
-    [self.window addSubview:self.navigationController.view];
+//    self.navigationController.view.frame = CGRectMake(0, 30, 300, 300);
+    [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleBlackOpaque];
     [self.window makeKeyAndVisible];
     return YES;
 }

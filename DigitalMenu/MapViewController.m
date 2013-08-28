@@ -39,6 +39,7 @@
     
     MKMapView *mapView = [[MKMapView alloc] initWithFrame:CGRectMake(10, 20, 300, 350)];
     CLLocation *location = [DataManager restaurantLocation:self.restaurantId];
+    NSLog(@"%@", location);
     NSDictionary *restaurant = [DataManager restaurantById:self.restaurantId];
 
     RestaurantLocation *position = [[RestaurantLocation alloc] initWithPosition:location.coordinate andName:[restaurant objectForKey:@"name"]];

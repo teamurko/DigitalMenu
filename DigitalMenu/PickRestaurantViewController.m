@@ -8,12 +8,14 @@
 
 #import <CoreLocation/CoreLocation.h>
 #import <QuartzCore/QuartzCore.h>
+#import <MapKit/MapKit.h>
 
+#import "RestaurantLocation.h"
+#import "MapViewController.h"
 #import "RestaurantViewController.h"
 #import "SplashScreenViewController.h"
-#import "LoadingScreenViewController.h"
-#import "WCAlertView.h"
 #import "DataManager.h"
+#import "UtilHelper.h"
 #import "Debug.h"
 
 #import "PickRestaurantViewController.h"
@@ -32,112 +34,48 @@ CLLocation *userLocation = nil;
 
 BOOL isLoaded = NO;
 BOOL didStartLoading = NO;
-BOOL didGuess = NO;
-BOOL didShowGuessView = NO;
+
+- (id) init
+{
+    self = [super init];
+    if (self) {
+    }
+    return self;
+}
 
 
 - (void) loadData
 {
     debug();
-    isLoaded = false;
-    [DataManager load];
+    isLoaded = NO;
     while (!userLocation) {
-        [NSThread sleepForTimeInterval:0.2];
+        [NSThread sleepForTimeInterval:0.1];
     }
-    isLoaded = true;
+    [DataManager load:userLocation];
+    isLoaded = YES;
 }
 
 - (void) showSplashScreen:(BOOL)animated
 {
+    debug();
     SplashScreenViewController *splashViewController = [[SplashScreenViewController alloc] init];
     splashViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     splashViewController.delegate = self;
-    [splashViewController.navigationItem setHidesBackButton:YES];
     [self presentViewController:splashViewController animated:animated completion:nil];
 }
 
 - (void) dismissSplashScreen:(BOOL)animated
 {
+    debug();
     [[self presentedViewController] dismissViewControllerAnimated:animated completion:nil];
 }
 
-- (void) showLoadingScreen:(BOOL)animated
-{
-    LoadingScreenViewController *loadingViewController = [[LoadingScreenViewController alloc] init];
-    loadingViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    loadingViewController.delegate = self;
-    [loadingViewController.navigationItem setHidesBackButton:YES];
-    [self presentViewController:loadingViewController animated:YES completion:nil];
-}
-
-- (void) showLoading:(BOOL)animated
-{
-    [self showLoadingScreen:animated];
-}
-
-- (void) dismissLoadingScreen:(BOOL)animated
-{
-    [[self presentedViewController] dismissViewControllerAnimated:animated completion:nil];
-}
-
-- (void) showGuessView
-{
-    if (didShowGuessView) return;
-    didShowGuessView = YES;
-    UIFont * titleFont = [UIFont fontWithName:@"Chalkduster" size:12.0f];
-    UIFont * messageFont = [UIFont fontWithName:@"Chalkduster" size:12.0f];
-    
-    // Set default appearnce block for all WCAlertViews
-    // Similar functionality to UIAppearnce Proxy
-    
-    [WCAlertView setDefaultCustomiaztonBlock:^(WCAlertView *alertView) {
-        alertView.labelTextColor = [UIColor colorWithRed:0.11f green:0.08f blue:0.39f alpha:1.00f];
-        alertView.labelShadowColor = [UIColor whiteColor];
-        
-        UIColor *topGradient = [UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:1.0f];
-        UIColor *middleGradient = [UIColor colorWithRed:0.93f green:0.94f blue:0.96f alpha:1.0f];
-        UIColor *bottomGradient = [UIColor colorWithRed:0.89f green:0.89f blue:0.92f alpha:1.00f];
-        alertView.gradientColors = @[topGradient,middleGradient,bottomGradient];
-        
-        alertView.outerFrameColor = [UIColor colorWithRed:250.0f/255.0f green:250.0f/255.0f blue:250.0f/255.0f alpha:1.0f];
-        
-        alertView.buttonTextColor = [UIColor colorWithRed:0.11f green:0.08f blue:0.39f alpha:1.00f];
-        alertView.buttonShadowColor = [UIColor whiteColor];
-        
-        alertView.titleFont = titleFont;
-        alertView.messageFont = messageFont;
-    }];
-    
-    NSArray *candidates = [DataManager restaurantsByLocation:userLocation];
-    NSString * guessPlaceName = [[candidates objectAtIndex:0] objectForKey:@"name"];
-    NSString *message = [[NSString alloc] initWithFormat:@"Вы находитесь в %@?", guessPlaceName];
-    [WCAlertView showAlertWithTitle:@"Угадайка" message:message customizationBlock:^(WCAlertView *alertView) {
-        
-        // You can also set different appearance for this alert using customization block
-        
-        alertView.style = WCAlertViewStyleWhiteHatched;
-        // alertView.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
-    } completionBlock:^(NSUInteger buttonIndex, WCAlertView *alertView) {
-        if (buttonIndex == alertView.cancelButtonIndex) {
-            [self makeVisible];
-        } else {
-            NSString *id = [[candidates objectAtIndex:0] objectForKey:@"id"];
-            [self showRestaurantView:id.intValue andAnimated:YES];
-        }
-    } cancelButtonTitle:@"Нет, показать список" otherButtonTitles:@"Да, перейти на страницу", nil];
-}
-
-- (void) makeVisible
-{
-    for (UIView *view in self.view.subviews) {
-        [view setHidden:NO];
-    }
-}
 
 - (void) viewDidLoad
 {
+    debug();
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(makeVisible) name:@"makeVisible" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(makeVisible) name:@"makeVisible" object:nil];
 }
 
 - (void) showRestaurantView: (NSInteger)restaurandId andAnimated:(BOOL)animated
@@ -158,8 +96,34 @@ BOOL didShowGuessView = NO;
     [locationManager startUpdatingLocation];
 }
 
+- (void) addMapView:(UIView*) view
+{
+    debug();
+    MKMapView *mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, 320, 250)];
+    for (NSDictionary* restaurantData in [DataManager nearbyRestaurants]) {
+        NSInteger restaurantId = [[restaurantData objectForKey:@"id"] integerValue];
+        CLLocation *location = [DataManager restaurantLocation:restaurantId];
+        NSString *name = [NSString stringWithFormat:@"%@", [restaurantData objectForKey:@"name"]];
+        RestaurantLocation *position = [[RestaurantLocation alloc] initWithPosition:location.coordinate andName:name];
+        [mapView addAnnotation:position];
+        [mapView setShowsUserLocation:YES];
+        [mapView setCenterCoordinate:location.coordinate animated:YES];
+    }
+    MKCoordinateRegion region;
+    MKCoordinateSpan span;
+    region.center = mapView.region.center;
+    span.latitudeDelta = mapView.region.span.latitudeDelta / 2000;
+    span.longitudeDelta = mapView.region.span.longitudeDelta / 2000;
+    region.span = span;
+    [mapView setRegion:region animated:YES];
+    
+    [view addSubview:mapView];
+
+}
+
 - (void) loadView
 {
+    debug();
     if (!didStartLoading && !isLoaded) {
         didStartLoading = YES;
         [self startFindingLocation];
@@ -171,35 +135,47 @@ BOOL didShowGuessView = NO;
         UIView *mainView = [[UIView alloc] init];
         [mainView setBackgroundColor:[UIColor whiteColor]];
         self.view = mainView;
+        [self addMapView:self.view];
 
-        self.restaurantsView = [[UITableView alloc] initWithFrame:CGRectMake(10, 50, 300, 360)];
+        self.restaurantsView = [[UITableView alloc] initWithFrame:CGRectMake(0, 250, 320, 300)];
         self.restaurantsView.layer.borderWidth = 1.0f;
         [self.restaurantsView setDelegate:self];
         [self.restaurantsView setDataSource:self];
-        [self.restaurantsView setHidden:YES];
-        
-        UILabel *restaurantsLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 20, 300, 30)];
-        restaurantsLabel.text = @"  Выберите ваш ресторан из";
-        restaurantsLabel.layer.borderWidth = 1.0f;
-        [restaurantsLabel setHidden:YES];
         
         [self.view addSubview:self.restaurantsView];
-        [self.view addSubview:restaurantsLabel];
         
         self.view.clipsToBounds = YES;
-        [self showGuessView];
+        [self reloadInputViews];
     }
+    [NSThread sleepForTimeInterval:0.1];
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    debug();
+    [super viewDidAppear:animated];
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    debug();
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES];
+    [self.navigationController setToolbarHidden:YES];
+}
+
+- (void) viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [self.navigationController setNavigationBarHidden:NO];
+    [self.navigationController setToolbarHidden:NO];
+}
 
 - (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     debug();
     if (locations.count > 0) {
         userLocation = [locations objectAtIndex:0];
-        //FIXME remove after debug
-//        userLocation = [[CLLocation alloc] initWithLatitude:55.7475 longitude:37.5843];
-        userLocation = [[CLLocation alloc] initWithLatitude:55.746475 longitude:37.675166];
     }
 }
 
@@ -216,14 +192,57 @@ BOOL didShowGuessView = NO;
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [DataManager restaurantsByLocation:userLocation].count;
+    debug();
+    return [DataManager nearbyRestaurants].count;
 }
+
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 70;
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [[UITableViewCell alloc] init];
-    cell.textLabel.text = [[[DataManager restaurantsByLocation:userLocation] objectAtIndex:indexPath.row] objectForKey:@"name"];
-    cell.layer.borderWidth = 1.0f;
+    NSDictionary *restaurant = [[DataManager nearbyRestaurants] objectAtIndex:indexPath.row];
+    NSInteger restaurantId = [[restaurant objectForKey:@"id"] integerValue];
+    
+    UIImage *logo = [UIImage imageNamed:@"stub_logo.png"];
+    UIImageView *logoView = [[UIImageView alloc] initWithImage:logo];
+    [logoView setTransform:CGAffineTransformMakeScale(0.5, 0.5)];
+    logoView.frame = CGRectMake(10, 5, 60, 60);
+    [cell addSubview:logoView];
+
+    
+    UITextView *nameView = [[UITextView alloc] initWithFrame:CGRectMake(70, 0, 150, 30)];
+    nameView.text = [restaurant objectForKey:@"name"];
+    [nameView setFont:[UIFont boldSystemFontOfSize:14]];
+    [cell addSubview:nameView];
+
+    
+    UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 40, 230, 20)];
+//    descriptionLabel.layer.borderWidth = 1.0f;
+    descriptionLabel.text = [restaurant objectForKey:@"description"];
+    [descriptionLabel setFont:[UIFont systemFontOfSize:11]];
+    [cell addSubview:descriptionLabel];
+
+    UILabel *distanceLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 27, 50, 15)];
+    [distanceLabel setFont:[UIFont systemFontOfSize:10]];
+    distanceLabel.text = [UtilHelper renderedDistanceKm:[UtilHelper approximateDistance:userLocation andTo:[DataManager restaurantLocation:restaurantId]]];
+//    distanceLabel.layer.borderWidth = 1.0f;
+    [cell addSubview:distanceLabel];
+    
+    UITextView *timeView = [[UITextView alloc] initWithFrame:CGRectMake(230, 5, 90, 20)];
+    UIImageView *clockView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"clock.png"]];
+    [clockView setTransform:CGAffineTransformMakeScale(0.5, 0.5)];
+    UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(22, 1, 60, 20)];
+    timeLabel.adjustsFontSizeToFitWidth = YES;
+    timeLabel.text = [UtilHelper renderedWorkHours:[[restaurant objectForKey:@"open_from"] integerValue]  andTill:[[restaurant objectForKey:@"open_till"] integerValue]];
+    [timeView addSubview:clockView];
+    [timeView addSubview:timeLabel];
+    [cell addSubview:timeView];
+    
     return cell;
 }
 
@@ -236,23 +255,36 @@ BOOL didShowGuessView = NO;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     debug();
-    NSArray *candidates = [DataManager restaurantsByLocation:userLocation];
+    NSArray *candidates = [DataManager nearbyRestaurants];
     NSString *id = [[candidates objectAtIndex:[indexPath row]] objectForKey:@"id"];
     [self showRestaurantView:id.intValue andAnimated:YES];
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    int numRestaurantsNearby = [DataManager restaurantsByLocation:userLocation].count;
-    NSString *message;
-    if (numRestaurantsNearby == 1) {
-        message = @"%d ресторан около вас";
-    } else if (numRestaurantsNearby > 1 && numRestaurantsNearby < 5) {
-        message = @"%d ресторана около вас";
-    } else {
-        message = @"%d ресторанов около вас";
-    }
-    return [[NSString alloc] initWithFormat:message, numRestaurantsNearby];
+    return 5;
 }
+
+- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 5)];
+    [headerView setBackgroundColor:[UtilHelper mainGreenColor]];
+    return headerView;
+}
+
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+//{
+//    return @"";
+//    int numRestaurantsNearby = [DataManager nearbyRestaurants].count;
+//    NSString *message;
+//    if (numRestaurantsNearby == 1) {
+//        message = @"%d ресторан около вас";
+//    } else if (numRestaurantsNearby > 1 && numRestaurantsNearby < 5) {
+//        message = @"%d ресторана около вас";
+//    } else {
+//        message = @"%d ресторанов около вас";
+//    }
+//    return [[NSString alloc] initWithFormat:message, numRestaurantsNearby];
+//}
 
 @end

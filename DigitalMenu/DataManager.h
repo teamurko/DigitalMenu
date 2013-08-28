@@ -12,14 +12,14 @@
 @interface DataManager : NSObject {
 }
 
-+(void) load;
++(void) load:(CLLocation*)userLocation;
 +(NSArray*) restaurantsByLocation: (CLLocation*) location;
 +(NSDictionary*) restaurantById: (NSInteger) restaurantId;
 +(NSArray*) cuisinesByRestaurantId: (NSInteger) restaurantId;
-+(NSArray*) restaurants;
 +(CLLocation*) restaurantLocation: (NSInteger) restaurantId;
 +(NSArray*) dishCategoriesByCuisineId: (NSInteger) cuisineId;
 +(NSArray*) dishesByCategoryId: (NSInteger) categoryId;
 +(NSDictionary*) dishById: (NSInteger) dishId;
++(NSArray*) nearbyRestaurants;
 
 @end

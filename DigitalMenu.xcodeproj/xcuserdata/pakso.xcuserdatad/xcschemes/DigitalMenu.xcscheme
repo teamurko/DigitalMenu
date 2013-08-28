@@ -47,7 +47,8 @@
       buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
-      allowLocationSimulation = "YES">
+      allowLocationSimulation = "YES"
+      simulatorIPhoneDisplay = "3.000000">
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
@@ -60,8 +61,8 @@
       <AdditionalOptions>
       </AdditionalOptions>
       <LocationScenarioReference
-         identifier = "New York, NY, USA"
-         referenceType = "1">
+         identifier = "../../test.gpx"
+         referenceType = "0">
       </LocationScenarioReference>
    </LaunchAction>
    <ProfileAction

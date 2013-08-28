@@ -10,9 +10,8 @@
 #import "DataManager.h"
 #import "SplashScreenViewController.h"
 #import "SplashScreenViewControllerDelegate.h"
-#import "LoadingScreenViewControllerDelegate.h"
 
-@interface PickRestaurantViewController : UIViewController <SplashScreenViewControllerDelegate, LoadingScreenViewControllerDelegate, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate> {
+@interface PickRestaurantViewController : UIViewController <SplashScreenViewControllerDelegate, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate> {
     IBOutlet UITableView *restaurantsView;
 }
 

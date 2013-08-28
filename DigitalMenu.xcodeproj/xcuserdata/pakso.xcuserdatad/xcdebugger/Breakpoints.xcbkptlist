@@ -53,5 +53,31 @@
          landmarkName = "@implementation MainViewController"
          landmarkType = "3">
       </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "DigitalMenu/PickRestaurantViewController.m"
+         timestampString = "399587407.771118"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "103"
+         endingLineNumber = "103"
+         landmarkName = "-addMapView:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "DigitalMenu/DigitalMenuAppDelegate.m"
+         timestampString = "399594225.606545"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "31"
+         endingLineNumber = "31"
+         landmarkName = "-applicationWillResignActive:"
+         landmarkType = "5">
+      </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

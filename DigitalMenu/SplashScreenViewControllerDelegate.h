@@ -10,5 +10,5 @@
 
 @protocol SplashScreenViewControllerDelegate <NSObject>
 - (void) dismissSplashScreen:(BOOL)animated;
-- (void) showLoading:(BOOL)animated;
+- (BOOL) isDataLoaded;
 @end

@@ -74,6 +74,8 @@
     UIButton *addButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [addButton addTarget:self action:@selector(addDish:) forControlEvents:UIControlEventTouchDown];
     [addButton setTitle:@"Добавить" forState:UIControlStateNormal];
+    [addButton setShowsTouchWhenHighlighted:YES];
+    [addButton setUserInteractionEnabled:YES];
     addButton.frame = CGRectMake(200, 200, 90, 30);
     [self.view addSubview:addButton];
     

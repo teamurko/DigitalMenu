@@ -10,12 +10,14 @@
 
 #import "SplashScreenViewControllerDelegate.h"
 
-@interface SplashScreenViewController: UIViewController 
+@interface SplashScreenViewController: UIViewController
 {
     UIImageView *view;
+    UIProgressView *progressView;
 }
 
 @property (strong, nonatomic) UIImageView *view;
+@property (strong, nonatomic) UIProgressView *progressView;
 @property (assign, nonatomic) id<SplashScreenViewControllerDelegate> delegate;
 
 @end

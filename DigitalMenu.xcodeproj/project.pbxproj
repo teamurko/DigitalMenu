@@ -8,14 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		CE1A7889177262E300864D25 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1A7888177262E300864D25 /* DataManager.m */; };
+		CE1B11BA17D12EA900689797 /* restaurant_description_footer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1B11B917D12EA900689797 /* restaurant_description_footer@2x.png */; };
+		CE1B11BC17D1480100689797 /* navigation_bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1B11BB17D1480100689797 /* navigation_bar@2x.png */; };
+		CE1B11BE17D1497100689797 /* back_act@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1B11BD17D1497100689797 /* back_act@2x.png */; };
+		CE1B11C017D14AB900689797 /* menu_act@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1B11BF17D14AB900689797 /* menu_act@2x.png */; };
+		CE1B11C417D150AA00689797 /* orderButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1B11C117D150AA00689797 /* orderButton@2x.png */; };
+		CE1B11C517D150AA00689797 /* restButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1B11C217D150AA00689797 /* restButton@2x.png */; };
+		CE1B11C617D150AA00689797 /* mapButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1B11C317D150AA00689797 /* mapButton@2x.png */; };
+		CE1B11CA17D158B200689797 /* orderButtonAct@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1B11C717D158B200689797 /* orderButtonAct@2x.png */; };
+		CE1B11CB17D158B200689797 /* restButtonAct@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1B11C817D158B200689797 /* restButtonAct@2x.png */; };
+		CE1B11CC17D158B200689797 /* mapButtonAct@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1B11C917D158B200689797 /* mapButtonAct@2x.png */; };
+		CE3BD05717CA30C9000D863B /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = CE3BD05617CA30C9000D863B /* title.png */; };
 		CE4F0B8A1773A961003A5F92 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = CE4F0B891773A961003A5F92 /* data.json */; };
 		CE5D80AB1795EE9F00790685 /* WCAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5D80AA1795EE9F00790685 /* WCAlertView.m */; };
 		CE5D80B117960F1400790685 /* RestaurantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5D80B017960F1400790685 /* RestaurantViewController.m */; };
 		CE6D7B89179C207C00F7A6F9 /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6D7B88179C207C00F7A6F9 /* OrderViewController.m */; };
 		CE6D7B8C179C22DE00F7A6F9 /* OrderData.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6D7B8B179C22DE00F7A6F9 /* OrderData.m */; };
-		CE71E4CD177A37CC0018C76B /* spring.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CE71E4CC177A37CC0018C76B /* spring.jpg */; };
 		CE77BD19179A20420016549A /* DishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE77BD18179A20420016549A /* DishViewController.m */; };
 		CE77BD1C179ABBE70016549A /* DishDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE77BD1B179ABBE70016549A /* DishDescriptionViewController.m */; };
+		CE9288C117CF93B60030F19A /* stub_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CE9288C017CF93B60030F19A /* stub_logo.png */; };
+		CE9288C517CF93FA0030F19A /* progress_mask.png in Resources */ = {isa = PBXBuildFile; fileRef = CE9288C417CF93FA0030F19A /* progress_mask.png */; };
+		CE9288C717CF9C430030F19A /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = CE9288C617CF9C430030F19A /* clock.png */; };
 		CEB322D3176E0E6400F46463 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB322D2176E0E6400F46463 /* UIKit.framework */; };
 		CEB322D5176E0E6400F46463 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB322D4176E0E6400F46463 /* Foundation.framework */; };
 		CEB322D7176E0E6400F46463 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB322D6176E0E6400F46463 /* CoreGraphics.framework */; };
@@ -39,15 +52,30 @@
 		CEB738771776597F008B29A8 /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB7386B1776597F008B29A8 /* SBJsonStreamWriterAccumulator.m */; };
 		CEB738781776597F008B29A8 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB7386D1776597F008B29A8 /* SBJsonStreamWriterState.m */; };
 		CEB738791776597F008B29A8 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB7386F1776597F008B29A8 /* SBJsonWriter.m */; };
+		CEC80D6917D000B1009D7840 /* restaurant_description_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC80D6817D000B1009D7840 /* restaurant_description_header@2x.png */; };
+		CEC80D6B17D002E3009D7840 /* back2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC80D6A17D002E3009D7840 /* back2@2x.png */; };
+		CEC80D6D17D00A9F009D7840 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC80D6C17D00A9F009D7840 /* menu@2x.png */; };
+		CEC934A417CEC2A700073317 /* UtilHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC934A317CEC2A700073317 /* UtilHelper.m */; };
 		CEE256C31798A1F300826524 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE256C21798A1F300826524 /* MapViewController.m */; };
 		CEE865D7178CAC17004780AC /* SplashScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE865D6178CAC17004780AC /* SplashScreenViewController.m */; };
-		CEE865DA178CBAE3004780AC /* LoadingScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE865D9178CBAE3004780AC /* LoadingScreenViewController.m */; };
+		CEEF2AC317C6CA37007A1215 /* test.gpx in Resources */ = {isa = PBXBuildFile; fileRef = CEEF2AC217C6CA37007A1215 /* test.gpx */; };
 		CEF27E311799E845002CAB81 /* RestaurantLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF27E301799E845002CAB81 /* RestaurantLocation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CE1A7887177262E300864D25 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		CE1A7888177262E300864D25 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
+		CE1B11B917D12EA900689797 /* restaurant_description_footer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "restaurant_description_footer@2x.png"; sourceTree = "<group>"; };
+		CE1B11BB17D1480100689797 /* navigation_bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation_bar@2x.png"; sourceTree = "<group>"; };
+		CE1B11BD17D1497100689797 /* back_act@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_act@2x.png"; sourceTree = "<group>"; };
+		CE1B11BF17D14AB900689797 /* menu_act@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_act@2x.png"; sourceTree = "<group>"; };
+		CE1B11C117D150AA00689797 /* orderButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orderButton@2x.png"; sourceTree = "<group>"; };
+		CE1B11C217D150AA00689797 /* restButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "restButton@2x.png"; sourceTree = "<group>"; };
+		CE1B11C317D150AA00689797 /* mapButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mapButton@2x.png"; sourceTree = "<group>"; };
+		CE1B11C717D158B200689797 /* orderButtonAct@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orderButtonAct@2x.png"; sourceTree = "<group>"; };
+		CE1B11C817D158B200689797 /* restButtonAct@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "restButtonAct@2x.png"; sourceTree = "<group>"; };
+		CE1B11C917D158B200689797 /* mapButtonAct@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mapButtonAct@2x.png"; sourceTree = "<group>"; };
+		CE3BD05617CA30C9000D863B /* title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title.png; sourceTree = "<group>"; };
 		CE4F0B891773A961003A5F92 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		CE5D80A91795EE9F00790685 /* WCAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCAlertView.h; sourceTree = "<group>"; };
 		CE5D80AA1795EE9F00790685 /* WCAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCAlertView.m; sourceTree = "<group>"; };
@@ -57,11 +85,13 @@
 		CE6D7B88179C207C00F7A6F9 /* OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderViewController.m; sourceTree = "<group>"; };
 		CE6D7B8A179C22DE00F7A6F9 /* OrderData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderData.h; sourceTree = "<group>"; };
 		CE6D7B8B179C22DE00F7A6F9 /* OrderData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderData.m; sourceTree = "<group>"; };
-		CE71E4CC177A37CC0018C76B /* spring.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = spring.jpg; sourceTree = "<group>"; };
 		CE77BD17179A20420016549A /* DishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DishViewController.h; sourceTree = "<group>"; };
 		CE77BD18179A20420016549A /* DishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DishViewController.m; sourceTree = "<group>"; };
 		CE77BD1A179ABBE70016549A /* DishDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DishDescriptionViewController.h; sourceTree = "<group>"; };
 		CE77BD1B179ABBE70016549A /* DishDescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DishDescriptionViewController.m; sourceTree = "<group>"; };
+		CE9288C017CF93B60030F19A /* stub_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stub_logo.png; sourceTree = "<group>"; };
+		CE9288C417CF93FA0030F19A /* progress_mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = progress_mask.png; sourceTree = "<group>"; };
+		CE9288C617CF9C430030F19A /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
 		CEB322CF176E0E6400F46463 /* DigitalMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DigitalMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB322D2176E0E6400F46463 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CEB322D4176E0E6400F46463 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -101,17 +131,20 @@
 		CEB7386D1776597F008B29A8 /* SBJsonStreamWriterState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterState.m; sourceTree = "<group>"; };
 		CEB7386E1776597F008B29A8 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		CEB7386F1776597F008B29A8 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		CEC80D6817D000B1009D7840 /* restaurant_description_header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "restaurant_description_header@2x.png"; sourceTree = "<group>"; };
+		CEC80D6A17D002E3009D7840 /* back2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back2@2x.png"; sourceTree = "<group>"; };
+		CEC80D6C17D00A9F009D7840 /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
+		CEC934A217CEC2A700073317 /* UtilHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilHelper.h; sourceTree = "<group>"; };
+		CEC934A317CEC2A700073317 /* UtilHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilHelper.m; sourceTree = "<group>"; };
 		CEE256C11798A1F300826524 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		CEE256C21798A1F300826524 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		CEE865D5178CAC17004780AC /* SplashScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScreenViewController.h; sourceTree = "<group>"; };
 		CEE865D6178CAC17004780AC /* SplashScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashScreenViewController.m; sourceTree = "<group>"; };
-		CEE865D8178CBAE3004780AC /* LoadingScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingScreenViewController.h; sourceTree = "<group>"; };
-		CEE865D9178CBAE3004780AC /* LoadingScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingScreenViewController.m; sourceTree = "<group>"; };
+		CEEF2AC217C6CA37007A1215 /* test.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = test.gpx; sourceTree = "<group>"; };
 		CEF27E2F1799E845002CAB81 /* RestaurantLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantLocation.h; sourceTree = "<group>"; };
 		CEF27E301799E845002CAB81 /* RestaurantLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantLocation.m; sourceTree = "<group>"; };
 		CEF93BC91792F25C0006F8CB /* SplashScreenViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SplashScreenViewControllerDelegate.h; sourceTree = "<group>"; };
 		CEF93BCB179303D60006F8CB /* Debug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Debug.h; sourceTree = "<group>"; };
-		CEF93BCC179322BD0006F8CB /* LoadingScreenViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadingScreenViewControllerDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +175,7 @@
 		CEB322C6176E0E6400F46463 = {
 			isa = PBXGroup;
 			children = (
+				CEEF2AC217C6CA37007A1215 /* test.gpx */,
 				CEB322F7176E5D3A00F46463 /* CoreLocation.framework */,
 				CEB322F5176E321A00F46463 /* MapKit.framework */,
 				CEB322D8176E0E6400F46463 /* DigitalMenu */,
@@ -191,7 +225,23 @@
 		CEB322D9176E0E6400F46463 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				CE71E4CC177A37CC0018C76B /* spring.jpg */,
+				CE1B11C717D158B200689797 /* orderButtonAct@2x.png */,
+				CE1B11C817D158B200689797 /* restButtonAct@2x.png */,
+				CE1B11C917D158B200689797 /* mapButtonAct@2x.png */,
+				CE1B11C117D150AA00689797 /* orderButton@2x.png */,
+				CE1B11C217D150AA00689797 /* restButton@2x.png */,
+				CE1B11C317D150AA00689797 /* mapButton@2x.png */,
+				CE1B11BF17D14AB900689797 /* menu_act@2x.png */,
+				CE1B11BD17D1497100689797 /* back_act@2x.png */,
+				CE1B11BB17D1480100689797 /* navigation_bar@2x.png */,
+				CE1B11B917D12EA900689797 /* restaurant_description_footer@2x.png */,
+				CEC80D6C17D00A9F009D7840 /* menu@2x.png */,
+				CEC80D6A17D002E3009D7840 /* back2@2x.png */,
+				CEC80D6817D000B1009D7840 /* restaurant_description_header@2x.png */,
+				CE9288C617CF9C430030F19A /* clock.png */,
+				CE9288C017CF93B60030F19A /* stub_logo.png */,
+				CE9288C417CF93FA0030F19A /* progress_mask.png */,
+				CE3BD05617CA30C9000D863B /* title.png */,
 				CEB322DA176E0E6400F46463 /* DigitalMenu-Info.plist */,
 				CEB322DB176E0E6400F46463 /* InfoPlist.strings */,
 				CEB322DE176E0E6400F46463 /* main.m */,
@@ -243,8 +293,6 @@
 		CEF936FC1795C0BD0045178B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				CEE865D9178CBAE3004780AC /* LoadingScreenViewController.m */,
-				CEE865D8178CBAE3004780AC /* LoadingScreenViewController.h */,
 				CEE865D5178CAC17004780AC /* SplashScreenViewController.h */,
 				CEE865D6178CAC17004780AC /* SplashScreenViewController.m */,
 				CEB322ED176E0E6400F46463 /* PickRestaurantViewController.h */,
@@ -278,6 +326,8 @@
 			isa = PBXGroup;
 			children = (
 				CEF93BCB179303D60006F8CB /* Debug.h */,
+				CEC934A217CEC2A700073317 /* UtilHelper.h */,
+				CEC934A317CEC2A700073317 /* UtilHelper.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -286,7 +336,6 @@
 			isa = PBXGroup;
 			children = (
 				CEF93BC91792F25C0006F8CB /* SplashScreenViewControllerDelegate.h */,
-				CEF93BCC179322BD0006F8CB /* LoadingScreenViewControllerDelegate.h */,
 			);
 			name = Delegates;
 			sourceTree = "<group>";
@@ -349,7 +398,24 @@
 				CEB322E9176E0E6400F46463 /* Default-568h@2x.png in Resources */,
 				CEB322EC176E0E6400F46463 /* MainStoryboard.storyboard in Resources */,
 				CE4F0B8A1773A961003A5F92 /* data.json in Resources */,
-				CE71E4CD177A37CC0018C76B /* spring.jpg in Resources */,
+				CEEF2AC317C6CA37007A1215 /* test.gpx in Resources */,
+				CE3BD05717CA30C9000D863B /* title.png in Resources */,
+				CE9288C117CF93B60030F19A /* stub_logo.png in Resources */,
+				CE9288C517CF93FA0030F19A /* progress_mask.png in Resources */,
+				CE9288C717CF9C430030F19A /* clock.png in Resources */,
+				CEC80D6917D000B1009D7840 /* restaurant_description_header@2x.png in Resources */,
+				CEC80D6B17D002E3009D7840 /* back2@2x.png in Resources */,
+				CEC80D6D17D00A9F009D7840 /* menu@2x.png in Resources */,
+				CE1B11BA17D12EA900689797 /* restaurant_description_footer@2x.png in Resources */,
+				CE1B11BC17D1480100689797 /* navigation_bar@2x.png in Resources */,
+				CE1B11BE17D1497100689797 /* back_act@2x.png in Resources */,
+				CE1B11C017D14AB900689797 /* menu_act@2x.png in Resources */,
+				CE1B11C417D150AA00689797 /* orderButton@2x.png in Resources */,
+				CE1B11C517D150AA00689797 /* restButton@2x.png in Resources */,
+				CE1B11C617D150AA00689797 /* mapButton@2x.png in Resources */,
+				CE1B11CA17D158B200689797 /* orderButtonAct@2x.png in Resources */,
+				CE1B11CB17D158B200689797 /* restButtonAct@2x.png in Resources */,
+				CE1B11CC17D158B200689797 /* mapButtonAct@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,7 +441,6 @@
 				CEB738781776597F008B29A8 /* SBJsonStreamWriterState.m in Sources */,
 				CEB738791776597F008B29A8 /* SBJsonWriter.m in Sources */,
 				CEE865D7178CAC17004780AC /* SplashScreenViewController.m in Sources */,
-				CEE865DA178CBAE3004780AC /* LoadingScreenViewController.m in Sources */,
 				CE5D80AB1795EE9F00790685 /* WCAlertView.m in Sources */,
 				CE5D80B117960F1400790685 /* RestaurantViewController.m in Sources */,
 				CEE256C31798A1F300826524 /* MapViewController.m in Sources */,
@@ -384,6 +449,7 @@
 				CE77BD1C179ABBE70016549A /* DishDescriptionViewController.m in Sources */,
 				CE6D7B89179C207C00F7A6F9 /* OrderViewController.m in Sources */,
 				CE6D7B8C179C22DE00F7A6F9 /* OrderData.m in Sources */,
+				CEC934A417CEC2A700073317 /* UtilHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,7 +537,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DigitalMenu/DigitalMenu-Prefix.pch";
 				INFOPLIST_FILE = "DigitalMenu/DigitalMenu-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -482,7 +550,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DigitalMenu/DigitalMenu-Prefix.pch";
 				INFOPLIST_FILE = "DigitalMenu/DigitalMenu-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -184,6 +184,7 @@ BOOL didStartLoading = NO;
     debug();
     if (locations.count > 0) {
         userLocation = [locations objectAtIndex:0];
+        userLocation = [[CLLocation alloc] initWithLatitude:55.8075448 longitude:37.6213657];
     }
 }
 

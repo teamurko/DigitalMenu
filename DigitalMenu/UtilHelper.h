@@ -20,4 +20,6 @@
 + (UIImage*) imageFromColor:(UIColor*)color andSize:(CGSize)size;
 + (UIColor*) orangeNormal;
 + (UIColor*) orangeSelected;
++ (CGFloat) cellStandardHeight;
++ (UITableViewCell*) gapCellView:(UITableView*)tableView;
 @end

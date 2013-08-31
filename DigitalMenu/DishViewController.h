@@ -10,13 +10,13 @@
 
 @interface DishViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 {
-    NSInteger dishCategory;
+    NSInteger categoryId;
     NSString *name;
 }
 
-@property NSInteger dishCategory;
+@property NSInteger cagegoryId;
 @property (strong, nonatomic) NSString *name;
 
-- (id) initWithDishCategory: (NSInteger) dishCategory andName: (NSString*) name;
+- (id) initWithCategoryId: (NSInteger)categoryId andName:(NSString*)name;
 
 @end

@@ -109,6 +109,7 @@ CLLocation *loc;
     NSString *data = [self requestData:url];
     SBJsonParser *parser = [[SBJsonParser alloc] init];
     NSDictionary *result = [parser objectWithString:data];
+    NSLog(@"Dish categories for cuisine %d: %@", cuisineId, result);
     return [result objectForKey:@"dish_type"];
 }
 

@@ -1,14 +1,14 @@
 //
-//  RestaurantViewController.h
+//  CategoriesViewController.h
 //  DigitalMenu
 //
-//  Created by Stanislav Pak on 17.07.13.
+//  Created by Stanislav Pak on 27.08.13.
 //  Copyright (c) 2013 Stanislav Pak. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface RestaurantViewController : UIViewController
+@interface CuisinesViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 {
     NSInteger restaurantId;
 }

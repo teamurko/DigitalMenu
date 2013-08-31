@@ -8,13 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DishDescriptionViewController : UIViewController
+@interface DishInfoViewController : UIViewController
 {
     NSInteger dishId;
+    NSString *name;
 }
 
 @property NSInteger dishId;
+@property (strong, nonatomic) NSString *name;
 
--(id) initWithDishId:(NSInteger)dishId;
+-(id) initWithDishId:(NSInteger)dishId andName:(NSString*)name;
 
 @end

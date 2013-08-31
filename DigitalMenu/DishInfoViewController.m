@@ -10,21 +10,24 @@
 
 #import "Debug.h"
 #import "DataManager.h"
-#import "DishDescriptionViewController.h"
+#import "UtilHelper.h"
+#import "DishInfoViewController.h"
 #import "OrderData.h"
 
-@interface DishDescriptionViewController ()
+@interface DishInfoViewController ()
 
 @end
 
-@implementation DishDescriptionViewController
-@synthesize  dishId = _dishId;
+@implementation DishInfoViewController
+@synthesize dishId = _dishId;
+@synthesize name = _name;
 
-- (id)initWithDishId:(NSInteger)dishId
+- (id)initWithDishId:(NSInteger)dishId andName:(NSString *)name
 {
     self = [super init];
     if (self) {
         self.dishId = dishId;
+        self.name = name;
     }
     return self;
 }
@@ -35,6 +38,23 @@
     [OrderData addDish:[[[DataManager dishById:self.dishId] objectForKey:@"id"] integerValue]];
 }
 
+- (void) backToDishes
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void) configureNavigationBar
+{
+    UIView *backButtonView = [UtilHelper buttonView:self andImage:[UIImage imageNamed:@"back2.png"] andActImage:[UIImage imageNamed:@"back_act.png"] andAction:@selector(backToDishes) offsetTop:9 offsetBottom:0 offsetRight:0 offsetLeft:9];
+    backButtonView.frame = CGRectMake(10, 10, 40, 40);
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:backButtonView];
+    self.navigationItem.leftBarButtonItem = backButton;
+    
+    self.navigationItem.title = self.name;
+    self.navigationItem.titleView.frame = CGRectMake(130, 15, 100, 20);
+}
+
+
 - (void)loadView
 {
     debug();
@@ -42,14 +62,14 @@
     UIView *mainView = [[UIView alloc] init];
     self.view = mainView;
     self.view.backgroundColor = [UIColor whiteColor];
-    self.title = [dishData objectForKey:@"name"];
-    self.navigationController.navigationBar.titleTextAttributes = @{UITextAttributeTextColor: [UIColor blackColor],
-                          UITextAttributeTextShadowColor: [UIColor blackColor],
-                         UITextAttributeTextShadowOffset: [NSValue valueWithUIOffset:UIOffsetMake(0.0f, 1.0f)],
-                                     UITextAttributeFont: [UIFont fontWithName:@"Helvetica" size:14.0f]
-     };
-    [self.navigationController.navigationItem.titleView sizeToFit];
-    
+    self.title = self.name;
+//    self.navigationController.navigationBar.titleTextAttributes = @{UITextAttributeTextColor: [UIColor blackColor],
+//                          UITextAttributeTextShadowColor: [UIColor blackColor],
+//                         UITextAttributeTextShadowOffset: [NSValue valueWithUIOffset:UIOffsetMake(0.0f, 1.0f)],
+//                                     UITextAttributeFont: [UIFont fontWithName:@"Helvetica" size:14.0f]
+//     };
+//    [self.navigationController.navigationItem.titleView sizeToFit];
+
     UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, 100, 30)];
     descriptionLabel.text = @"Описание";
     [self.view addSubview:descriptionLabel];
@@ -78,8 +98,8 @@
     [addButton setUserInteractionEnabled:YES];
     addButton.frame = CGRectMake(200, 200, 90, 30);
     [self.view addSubview:addButton];
-    
-    [self.view clipsToBounds];
+ 
+    [self configureNavigationBar];
 }
 
 - (void)viewDidLoad

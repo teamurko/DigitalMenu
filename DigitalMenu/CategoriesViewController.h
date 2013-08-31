@@ -2,7 +2,7 @@
 //  CategoriesViewController.h
 //  DigitalMenu
 //
-//  Created by Stanislav Pak on 27.08.13.
+//  Created by Stanislav Pak on 01.09.13.
 //  Copyright (c) 2013 Stanislav Pak. All rights reserved.
 //
 
@@ -10,11 +10,13 @@
 
 @interface CategoriesViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 {
-    NSInteger restaurantId;
+    NSInteger cuisineId;
+    NSString *name;
 }
 
-@property NSInteger restaurantId;
+@property NSInteger cuisineId;
+@property (strong, nonatomic) NSString *name;
 
-- (id) initWithRestaurandId:(NSInteger) restaurantId;
+- (id) initWithCuisineId:(NSInteger)cuisineId andName:(NSString*)name;
 
 @end

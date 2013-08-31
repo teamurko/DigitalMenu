@@ -62,7 +62,7 @@
     [button setBackgroundImage:image forState:UIControlStateNormal];
     [button setBackgroundImage:actImage forState:UIControlStateSelected];
     button.frame= CGRectMake(left, top, image.size.width, image.size.height);
-    button.layer.borderWidth = 1;
+//    button.layer.borderWidth = 1;
 //    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, image.size.height, image.size.width, 10)];
 //    label.text = @"Order";
 //    [label setFont:[UIFont systemFontOfSize:10]];
@@ -98,6 +98,23 @@
 + (UIColor*) orangeSelected
 {
     return [UIColor colorWithRed:252.0/255 green:172.0/255 blue:0.0/255 alpha:1.0];   
+}
+
++ (CGFloat) cellStandardHeight
+{
+    return 83;
+}
+
++ (UITableViewCell*) gapCellView:(UITableView *)tableView
+{
+    static NSString *GAP_CELL_ID = @"GAP_CELL_ID";
+    UITableViewCell *gapCell = [tableView dequeueReusableCellWithIdentifier:GAP_CELL_ID];
+    if (!gapCell) {
+        gapCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:GAP_CELL_ID];
+        gapCell.contentView.alpha = 0;
+        [gapCell setUserInteractionEnabled:NO];
+    }
+    return gapCell;
 }
 
 @end

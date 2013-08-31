@@ -12,10 +12,12 @@
 #import "UtilHelper.h"
 #import "DataManager.h"
 #import "DishViewController.h"
-#import "RestaurantViewController.h"
 #import "PickRestaurantViewController.h"
 #import "OrderViewController.h"
-#import "CategoriesViewController.h"
+#import "CuisinesViewController.h"
+
+#import "RestaurantViewController.h"
+
 
 #define kSegmentedControlHeight 40.0
 #define kLabelHeight			20.0
@@ -35,29 +37,15 @@
 @implementation RestaurantViewController
 @synthesize restaurantId = _restaurantId;
 
-NSInteger chosenCuisineId;
-NSMutableArray *ids;
-
 - (id) initWithRestaurandId:(NSInteger)restaurantId
 {
     debug();
     self = [super init];
     if (self) {
         self.restaurantId = restaurantId;
+        self.view = nil;
     }
     return self;
-}
-
-- (void)changeCuisine:(id)sender
-{
-    debug();
-    NSLog(@"%@", sender);
-    UISegmentedControl *segmentControl = (UISegmentedControl*)sender;
-    NSLog(@"Segment index %d", segmentControl.selectedSegmentIndex);
-    chosenCuisineId = [[ids objectAtIndex:segmentControl.selectedSegmentIndex] integerValue];
-    //FIXME do not fucking write shit code
-    UITableView *tableView = [self.view.subviews objectAtIndex:[self.view subviews].count - 2];
-    [tableView reloadData];
 }
 
 - (void) showOrder:(id)sender
@@ -220,7 +208,7 @@ NSMutableArray *ids;
 - (void) showMenu
 {
     debug();
-    CategoriesViewController *categoriesViewController = [[CategoriesViewController alloc] initWithRestaurandId:self.restaurantId];
+    CuisinesViewController *categoriesViewController = [[CuisinesViewController alloc] initWithRestaurandId:self.restaurantId];
     categoriesViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self.navigationController pushViewController:categoriesViewController animated:YES];
 }
@@ -266,15 +254,15 @@ NSMutableArray *ids;
     self.navigationItem.title = [[NSString alloc] initWithFormat:@"%@", [data objectForKey:@"name"]];
     
     UIView *mapButtonView = [UtilHelper buttonView:self andImage:[UIImage imageNamed:@"mapButton.png"] andActImage:[UIImage imageNamed:@"mapButtonAct.png"] andAction:@selector(showMap) offsetTop:15 offsetBottom:12 offsetRight:35 offsetLeft:32];
-    mapButtonView.layer.borderWidth = 1;
+//    mapButtonView.layer.borderWidth = 1;
     UIBarButtonItem *mapButton = [[UIBarButtonItem alloc] initWithCustomView:mapButtonView];
     
     UIView *restButtonView = [UtilHelper buttonView:self andImage:[UIImage imageNamed:@"restButton.png"] andActImage:[UIImage imageNamed:@"restButtonAct.png"] andAction:nil offsetTop:15 offsetBottom:12 offsetRight:35 offsetLeft:35];
-    restButtonView.layer.borderWidth = 1;
+//    restButtonView.layer.borderWidth = 1;
     UIBarButtonItem *restButton = [[UIBarButtonItem alloc] initWithCustomView:restButtonView];
     
     UIView *orderButtonView = [UtilHelper buttonView:self andImage:[UIImage imageNamed:@"orderButton.png"] andActImage:[UIImage imageNamed:@"orderButtonAct.png"] andAction:@selector(showOrder) offsetTop:15 offsetBottom:12 offsetRight:35 offsetLeft:35];
-    orderButtonView.layer.borderWidth = 1;
+//    orderButtonView.layer.borderWidth = 1;
     UIBarButtonItem *orderButton = [[UIBarButtonItem alloc] initWithCustomView:orderButtonView];
     
     [self setToolbarItems:[NSArray arrayWithObjects:mapButton, restButton, orderButton, nil]];    
@@ -296,46 +284,5 @@ NSMutableArray *ids;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    debug();
-    return [DataManager dishCategoriesByCuisineId:chosenCuisineId].count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    debug();
-    UITableViewCell *cell = [[UITableViewCell alloc] init];
-    cell.textLabel.text = [[[DataManager dishCategoriesByCuisineId:chosenCuisineId] objectAtIndex:indexPath.row] objectForKey:@"name"];
-    cell.layer.borderWidth = 1.0f;
-    return cell;
-}
-
-- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // for simplicity we provide only 1 section
-    debug();
-    return 1;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    debug();
-    NSDictionary *data = [[DataManager dishCategoriesByCuisineId:chosenCuisineId] objectAtIndex:indexPath.row];
-    NSInteger categoryId = [[data objectForKey:@"id"] integerValue];
-    NSString *name = [data objectForKey:@"name"];
-    DishViewController *dishViewController = [[DishViewController alloc] initWithDishCategory:categoryId andName:name];
-    [self.navigationController pushViewController:dishViewController animated:YES];
-//    NSArray *candidates = [DataManager restaurantsByLocation:userLocation];
-//    NSString *id = [[candidates objectAtIndex:[indexPath row]] objectForKey:@"id"];
-//    [self showRestaurantView:id.intValue andAnimated:YES];
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    return @"Приятного аппетита!";
-}
-
 
 @end

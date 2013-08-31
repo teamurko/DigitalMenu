@@ -2,7 +2,7 @@
 //  CategoriesViewController.m
 //  DigitalMenu
 //
-//  Created by Stanislav Pak on 01.09.13.
+//  Created by Stanislav Pak on 27.08.13.
 //  Copyright (c) 2013 Stanislav Pak. All rights reserved.
 //
 
@@ -11,66 +11,74 @@
 #import "Debug.h"
 #import "UtilHelper.h"
 #import "DataManager.h"
-#import "DishViewController.h"
 #import "CategoriesViewController.h"
 
-@interface CategoriesViewController ()
+#import "CuisinesViewController.h"
+
+@interface CuisinesViewController ()
 
 @end
 
-@implementation CategoriesViewController
-@synthesize cuisineId = _cuisineId;
-@synthesize name = _name;
+@implementation CuisinesViewController
 
-NSArray *categories;
+@synthesize restaurantId = _restaurantId;
 
-- (id) initWithCuisineId:(NSInteger)cuisineId andName:(NSString *)name
+NSArray *cuisines;
+
+- (id) initWithRestaurandId:(NSInteger)restaurantId
 {
     self = [super init];
     if (self) {
-        self.cuisineId = cuisineId;
-        self.name = name;
-        categories = nil;
+        self.restaurantId = restaurantId;
+        cuisines = nil;
     }
     return self;
 }
 
-- (void) loadCategories
+- (void) loadCuisines
 {
-    if (!categories) {
-        categories = [DataManager dishCategoriesByCuisineId:self.cuisineId];
+    if (!cuisines) {
+        cuisines = [DataManager cuisinesByRestaurantId:self.restaurantId];        
     }
+}
+
+- (void) backToMainScreen
+{
+    debug();
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void) loadView
 {
-    debug();
-    [self loadCategories];
+    [self loadCuisines];
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, 320, 200) style:UITableViewStylePlain];
+    tableView.backgroundColor = [UIColor whiteColor];
     tableView.delegate = self;
     tableView.dataSource = self;
     self.view = tableView;
 }
 
-- (void) backToCuisines
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 - (void) configureNavigationBar
 {
-    UIView *backButtonView = [UtilHelper buttonView:self andImage:[UIImage imageNamed:@"back2.png"] andActImage:[UIImage imageNamed:@"back_act.png"] andAction:@selector(backToCuisines) offsetTop:9 offsetBottom:0 offsetRight:0 offsetLeft:9];
+    UIView *backButtonView = [UtilHelper buttonView:self andImage:[UIImage imageNamed:@"back2.png"] andActImage:[UIImage imageNamed:@"back_act.png"] andAction:@selector(backToMainScreen) offsetTop:9 offsetBottom:0 offsetRight:0 offsetLeft:9];
     backButtonView.frame = CGRectMake(10, 10, 40, 40);
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:backButtonView];
     self.navigationItem.leftBarButtonItem = backButton;
     
-    self.navigationItem.title = self.name;
+//    self.navigationItem.title = [[cuisines objectAtIndex:currentCuisineIndex] objectForKey:@"name"];
     self.navigationItem.titleView.frame = CGRectMake(130, 15, 100, 20);
+    self.navigationItem.title = @"Menu";
 }
 
 - (void) viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    cuisines = nil;
 }
 
 - (void)viewDidLoad
@@ -99,29 +107,28 @@ NSArray *categories;
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     debug();
-    [self loadCategories];
-    assert(categories.count > 0);
-    return categories.count * 2 - 1;
+    [self loadCuisines];
+    assert(cuisines.count > 0);
+    return cuisines.count * 2 - 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     debug();
-    [self loadCategories];
+    [self loadCuisines];
     if (indexPath.row % 2 == 1) {
         return [UtilHelper gapCellView:tableView];
     }
-
     static float distanceBetweenImageAndName = 20;
     UITableViewCell *cell = [[UITableViewCell alloc] init];
-    UIImageView *cuisineImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"soup_picture.png"]];
-    cuisineImageView.frame = CGRectOffset(cuisineImageView.frame, 10, 8);
-    NSString *categoryName = [[categories objectAtIndex:indexPath.row / 2] objectForKey:@"name"];
+    UIImageView *cuisineImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cuisine_greek.png"]];
+    cuisineImageView.frame = CGRectOffset(cuisineImageView.frame, 10, 23);
+    NSString *cuisineName = [[cuisines objectAtIndex:indexPath.row / 2] objectForKey:@"name"];
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(cuisineImageView.frame.origin.x + cuisineImageView.frame.size.width + distanceBetweenImageAndName, 20, 150, 45)];
-    label.text = categoryName;
+    label.text = cuisineName;
     [label setFont:[UIFont systemFontOfSize:20]];
     label.backgroundColor = [UIColor clearColor];
-    //    label.layer.borderWidth = 1;
+//    label.layer.borderWidth = 1;
     
     UIImageView *arrowImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow.png"]];
     arrowImageView.frame = CGRectOffset(arrowImageView.frame, label.frame.origin.x
@@ -142,12 +149,12 @@ NSArray *categories;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     debug();
-    [self loadCategories];
-    NSDictionary *categoryData = [categories objectAtIndex:indexPath.row / 2];
-    NSInteger categoryId = [[categoryData objectForKey:@"id"] integerValue];
-    NSString *categoryName = [categoryData objectForKey:@"name"];
-    DishViewController *dishViewController = [[DishViewController alloc] initWithCategoryId:categoryId andName:categoryName];
-    [self.navigationController pushViewController:dishViewController animated:YES];
+    [self loadCuisines];
+    NSDictionary *cuisineData = [cuisines objectAtIndex:indexPath.row / 2];
+    NSInteger cuisineId = [[cuisineData objectForKey:@"id"] integerValue];
+    NSString *name = [cuisineData objectForKey:@"name"];
+    CategoriesViewController *categoriesViewController = [[CategoriesViewController alloc] initWithCuisineId:cuisineId andName:name];
+    [self.navigationController pushViewController:categoriesViewController animated:YES];
 }
 
 

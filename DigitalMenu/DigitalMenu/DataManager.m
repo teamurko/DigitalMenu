@@ -23,19 +23,12 @@ CLLocation *loc;
 
 +(void) testLoad
 {
-    NSURL *deliveryClubUrl = [NSURL URLWithString:@"http://delivery-club.ru/entities/food/#min_sum=5000&show=opened"];
+    NSURL *deliveryClubUrl = [NSURL URLWithString:@"www.delivery-club.ru/entities/food/#min_sum=5000&show=opened"];
     NSData *restsData = [NSData dataWithContentsOfURL:deliveryClubUrl];
     TFHpple *restParser = [TFHpple hppleWithHTMLData:restsData];
-    NSString *restsXpathQueryString = @"//li[@class='dum xx_r_2 xx_h xx_f xx_c']";
+    NSString *restsXpathQueryString = @"//div[@class='content-wrapper']/ul/li/a";
     NSArray *restNodes =  [restParser searchWithXPathQuery:restsXpathQueryString];
     for (TFHppleElement *element in restNodes) {
-        for (TFHppleElement *child in [element children]) {
-            NSLog(@"%@", [child text]);
-            NSLog(@"%@", [child objectForKey:@"raw"]);
-            NSArray *array = [child objectForKey:@"nodeChildArray"];
-            NSLog(@"%@", [[array objectAtIndex:0] objectForKey:@"nodeContent"]);
-            
-        }
         NSLog(@"%@", [[element firstChild] content]);
     }
     NSLog(@"FINISH");

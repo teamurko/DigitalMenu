@@ -68,6 +68,10 @@
 		CEC80D6B17D002E3009D7840 /* back2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC80D6A17D002E3009D7840 /* back2@2x.png */; };
 		CEC80D6D17D00A9F009D7840 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC80D6C17D00A9F009D7840 /* menu@2x.png */; };
 		CEC934A417CEC2A700073317 /* UtilHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC934A317CEC2A700073317 /* UtilHelper.m */; };
+		CEDFF7DA17DD1B3300AFDC51 /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDFF7D917DD1B3300AFDC51 /* TFHpple.m */; };
+		CEDFF7DD17DD1B4500AFDC51 /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDFF7DC17DD1B4500AFDC51 /* TFHppleElement.m */; };
+		CEDFF7E017DD1B5B00AFDC51 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDFF7DF17DD1B5B00AFDC51 /* XPathQuery.m */; };
+		CEDFF7E217DD1EA100AFDC51 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CEDFF7E117DD1EA100AFDC51 /* libxml2.dylib */; };
 		CEE256C31798A1F300826524 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE256C21798A1F300826524 /* MapViewController.m */; };
 		CEE865D7178CAC17004780AC /* SplashScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE865D6178CAC17004780AC /* SplashScreenViewController.m */; };
 		CEEF2AC317C6CA37007A1215 /* test.gpx in Resources */ = {isa = PBXBuildFile; fileRef = CEEF2AC217C6CA37007A1215 /* test.gpx */; };
@@ -162,6 +166,13 @@
 		CEC80D6C17D00A9F009D7840 /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
 		CEC934A217CEC2A700073317 /* UtilHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilHelper.h; sourceTree = "<group>"; };
 		CEC934A317CEC2A700073317 /* UtilHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilHelper.m; sourceTree = "<group>"; };
+		CEDFF7D817DD1B2200AFDC51 /* TFHpple.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFHpple.h; sourceTree = "<group>"; };
+		CEDFF7D917DD1B3300AFDC51 /* TFHpple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHpple.m; sourceTree = "<group>"; };
+		CEDFF7DB17DD1B3D00AFDC51 /* TFHppleElement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFHppleElement.h; sourceTree = "<group>"; };
+		CEDFF7DC17DD1B4500AFDC51 /* TFHppleElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHppleElement.m; sourceTree = "<group>"; };
+		CEDFF7DE17DD1B5500AFDC51 /* XPathQuery.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
+		CEDFF7DF17DD1B5B00AFDC51 /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
+		CEDFF7E117DD1EA100AFDC51 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		CEE256C11798A1F300826524 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		CEE256C21798A1F300826524 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		CEE865D5178CAC17004780AC /* SplashScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScreenViewController.h; sourceTree = "<group>"; };
@@ -178,6 +189,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEDFF7E217DD1EA100AFDC51 /* libxml2.dylib in Frameworks */,
 				CEB322F8176E5D3A00F46463 /* CoreLocation.framework in Frameworks */,
 				CEB322F6176E321A00F46463 /* MapKit.framework in Frameworks */,
 				CEB322D3176E0E6400F46463 /* UIKit.framework in Frameworks */,
@@ -201,6 +213,7 @@
 		CEB322C6176E0E6400F46463 = {
 			isa = PBXGroup;
 			children = (
+				CEDFF7E117DD1EA100AFDC51 /* libxml2.dylib */,
 				CEEF2AC217C6CA37007A1215 /* test.gpx */,
 				CEB322F7176E5D3A00F46463 /* CoreLocation.framework */,
 				CEB322F5176E321A00F46463 /* MapKit.framework */,
@@ -231,6 +244,7 @@
 		CEB322D8176E0E6400F46463 /* DigitalMenu */ = {
 			isa = PBXGroup;
 			children = (
+				CEDFF7D717DD1ADE00AFDC51 /* Hppl */,
 				CE5D80A81795EE5F00790685 /* Views */,
 				CEF936FF1795C1700045178B /* Delegates */,
 				CEF936FE1795C1130045178B /* Util */,
@@ -324,6 +338,19 @@
 				CE4F0B891773A961003A5F92 /* data.json */,
 			);
 			name = data;
+			sourceTree = "<group>";
+		};
+		CEDFF7D717DD1ADE00AFDC51 /* Hppl */ = {
+			isa = PBXGroup;
+			children = (
+				CEDFF7DB17DD1B3D00AFDC51 /* TFHppleElement.h */,
+				CEDFF7D817DD1B2200AFDC51 /* TFHpple.h */,
+				CEDFF7D917DD1B3300AFDC51 /* TFHpple.m */,
+				CEDFF7DE17DD1B5500AFDC51 /* XPathQuery.h */,
+				CEDFF7DF17DD1B5B00AFDC51 /* XPathQuery.m */,
+				CEDFF7DC17DD1B4500AFDC51 /* TFHppleElement.m */,
+			);
+			name = Hppl;
 			sourceTree = "<group>";
 		};
 		CEF936FC1795C0BD0045178B /* Controllers */ = {
@@ -502,6 +529,9 @@
 				CEC934A417CEC2A700073317 /* UtilHelper.m in Sources */,
 				CE6EB22917CD033100223FC2 /* CuisinesViewController.m in Sources */,
 				CEBFB18017D296560078BD78 /* CategoriesViewController.m in Sources */,
+				CEDFF7DA17DD1B3300AFDC51 /* TFHpple.m in Sources */,
+				CEDFF7DD17DD1B4500AFDC51 /* TFHppleElement.m in Sources */,
+				CEDFF7E017DD1B5B00AFDC51 /* XPathQuery.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,6 +618,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DigitalMenu/DigitalMenu-Prefix.pch";
+				"HEADER_SEARCH_PATHS[arch=*]" = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = "DigitalMenu/DigitalMenu-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -601,6 +632,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DigitalMenu/DigitalMenu-Prefix.pch";
+				"HEADER_SEARCH_PATHS[arch=*]" = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = "DigitalMenu/DigitalMenu-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
